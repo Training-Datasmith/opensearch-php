@@ -24,7 +24,7 @@ class WhoAmI extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/whoami";
+        return '/_plugins/_security/whoami';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class WhoAmI extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -24,7 +24,7 @@ class Initialize extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/ubi/initialize";
+        return '/_plugins/ubi/initialize';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class Initialize extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

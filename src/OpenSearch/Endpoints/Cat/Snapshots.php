@@ -36,7 +36,7 @@ class Snapshots extends AbstractEndpoint
         if (isset($repository)) {
             return "/_cat/snapshots/$repository";
         }
-        return "/_cat/snapshots";
+        return '/_cat/snapshots';
     }
 
     public function getParamWhitelist(): array
@@ -56,7 +56,7 @@ class Snapshots extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -71,7 +71,7 @@ class Snapshots extends AbstractEndpoint
             return $this;
         }
         if (is_array($repository) === true) {
-            $repository = implode(",", $repository);
+            $repository = implode(',', $repository);
         }
         $this->repository = rawurlencode((string) $repository);
 

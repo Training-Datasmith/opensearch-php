@@ -37,7 +37,7 @@ class ClientEndpoint extends NamespaceEndpoint
     public function renderClass(): string
     {
         if (empty($this->endpoints)) {
-            throw new Exception("No endpoints has been added. I cannot render the class");
+            throw new Exception('No endpoints has been added. I cannot render the class');
         }
         $twig = $this->getTwig();
 

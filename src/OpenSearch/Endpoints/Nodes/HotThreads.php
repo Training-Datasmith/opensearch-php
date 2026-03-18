@@ -36,7 +36,7 @@ class HotThreads extends AbstractEndpoint
         if (isset($node_id)) {
             return "/_nodes/$node_id/hot_threads";
         }
-        return "/_nodes/hot_threads";
+        return '/_nodes/hot_threads';
     }
 
     public function getParamWhitelist(): array
@@ -52,7 +52,7 @@ class HotThreads extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -67,7 +67,7 @@ class HotThreads extends AbstractEndpoint
             return $this;
         }
         if (is_array($node_id) === true) {
-            $node_id = implode(",", $node_id);
+            $node_id = implode(',', $node_id);
         }
         $this->node_id = rawurlencode((string) $node_id);
 

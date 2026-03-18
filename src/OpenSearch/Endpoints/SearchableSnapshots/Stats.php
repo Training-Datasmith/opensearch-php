@@ -32,7 +32,7 @@ class Stats extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_searchable_snapshots/stats";
         }
-        return "/_searchable_snapshots/stats";
+        return '/_searchable_snapshots/stats';
     }
 
     public function getParamWhitelist(): array

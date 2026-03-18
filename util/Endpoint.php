@@ -37,14 +37,14 @@ class Endpoint
         'include', 'include_once', 'instanceof', 'insteadof', 'interface',
         'isset', 'list', 'namespace', 'new', 'or', 'print', 'private',
         'protected', 'public', 'require', 'require_once', 'return', 'static',
-        'switch', 'throw', 'trait', 'try', 'unset', 'use', 'var', 'while', 'xor'
+        'switch', 'throw', 'trait', 'try', 'unset', 'use', 'var', 'while', 'xor',
     ];
     // this is for backward compatibility
     public const BC_CLASS_NAME = [
         'Cat\Nodeattrs'      => 'NodeAttrs',
         'Indices\Forcemerge' => 'ForceMerge',
         'Mtermvectors'       => 'MTermVectors',
-        'Termvectors'        => 'TermVectors'
+        'Termvectors'        => 'TermVectors',
     ];
 
     public $namespace;
@@ -141,7 +141,7 @@ class Endpoint
             $method = "'PUT'";
         } elseif (!empty($this->content['body']) && ($action === ['GET', 'POST'] || $action === ['POST', 'GET'])) {
             $method = 'isset($this->body) ? \'POST\' : \'GET\'';
-        } elseif ($this->getClassName() == "Refresh" || $this->getClassName() == "Flush") {
+        } elseif ($this->getClassName() == 'Refresh' || $this->getClassName() == 'Flush') {
             $method = "'POST'";
         } else {
             $method = sprintf("'%s'", reset($action));
@@ -260,7 +260,7 @@ class Endpoint
                     ]);
                     $this->addNamespace('OpenSearch\Exception\RuntimeException');
                 } else {
-                    $params .= sprintf("%s\$%s = \$this->%s ? rawurlencode(\$this->%s) : null;", $tab8, $part, $part, $part);
+                    $params .= sprintf('%s$%s = $this->%s ? rawurlencode($this->%s) : null;', $tab8, $part, $part, $part);
                 }
                 if (isset($value['deprecated']) && $value['deprecated']) {
                     $deprecated .= $twig->render('deprecated.twig', [
@@ -285,7 +285,7 @@ class Endpoint
             }
             $check = '';
             if (!in_array($parts[0], $this->requiredParts)) {
-                $check = sprintf("isset(\$%s)", $parts[0]);
+                $check = sprintf('isset($%s)', $parts[0]);
             }
             $url = str_replace('{' . $parts[0] .'}', '$' . $parts[0], $path);
             for ($i = 1; $i < count($parts); $i++) {
@@ -293,7 +293,7 @@ class Endpoint
                 if (in_array($parts[$i], $this->requiredParts)) {
                     continue;
                 }
-                $check .= sprintf("%sisset(\$%s)", empty($check) ? '' : ' && ', $parts[$i]);
+                $check .= sprintf('%sisset($%s)', empty($check) ? '' : ' && ', $parts[$i]);
             }
             // Fix for missing / at the beginning of URL
             // @see https://github.com/elastic/elasticsearch-php/pull/970
@@ -362,7 +362,7 @@ class Endpoint
 
     private function addNamespace(string $namespace): void
     {
-        $this->useNamespace[$namespace] = sprintf("use %s;", $namespace);
+        $this->useNamespace[$namespace] = sprintf('use %s;', $namespace);
     }
 
     private function getNamespaces(): string
@@ -413,7 +413,7 @@ class Endpoint
     protected function addProperty(string $name)
     {
         if (!in_array($name, ['body', 'index', 'id'])) {
-            $this->properties[$name] = sprintf("    protected \$%s;", $name);
+            $this->properties[$name] = sprintf('    protected $%s;', $name);
         }
     }
 
@@ -485,7 +485,7 @@ class Endpoint
             }
         }
 
-        $result .= "     */";
+        $result .= '     */';
         return $result;
     }
 
@@ -556,7 +556,7 @@ class Endpoint
                 $desc .= ($desc ? ' ' : '') . '(Options: ' . implode(', ', $values['options']) . ')';
             }
 
-            $descLines[] = sprintf("     * - %s: %s", $name, trim($desc));
+            $descLines[] = sprintf('     * - %s: %s', $name, trim($desc));
             $this->addedPartInDoc[] = $name;
         }
 

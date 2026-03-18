@@ -41,7 +41,7 @@ class Status extends AbstractEndpoint
         if (isset($repository)) {
             return "/_snapshot/$repository/_status";
         }
-        return "/_snapshot/_status";
+        return '/_snapshot/_status';
     }
 
     public function getParamWhitelist(): array
@@ -54,7 +54,7 @@ class Status extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -79,7 +79,7 @@ class Status extends AbstractEndpoint
             return $this;
         }
         if (is_array($snapshot) === true) {
-            $snapshot = implode(",", $snapshot);
+            $snapshot = implode(',', $snapshot);
         }
         $this->snapshot = rawurlencode((string) $snapshot);
 

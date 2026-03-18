@@ -24,7 +24,7 @@ class GetPermissionsInfo extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/permissionsinfo";
+        return '/_plugins/_security/api/permissionsinfo';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetPermissionsInfo extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

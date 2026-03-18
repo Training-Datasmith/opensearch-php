@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\DataFrameTransformDeprecated;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class StopTransform extends AbstractEndpoint
 {
@@ -43,7 +43,7 @@ class StopTransform extends AbstractEndpoint
         return [
             'wait_for_completion',
             'timeout',
-            'allow_no_match'
+            'allow_no_match',
         ];
     }
 

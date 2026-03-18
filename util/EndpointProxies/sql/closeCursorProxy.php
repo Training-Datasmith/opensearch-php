@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return <<<'EOD'
     /**
      * This API will be removed in a future version. Use 'close' API instead.

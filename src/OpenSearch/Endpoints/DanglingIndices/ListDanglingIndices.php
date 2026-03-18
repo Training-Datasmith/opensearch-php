@@ -30,7 +30,7 @@ class ListDanglingIndices extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_dangling";
+        return '/_dangling';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class ListDanglingIndices extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

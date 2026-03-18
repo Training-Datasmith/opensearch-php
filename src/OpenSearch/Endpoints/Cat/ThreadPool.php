@@ -36,7 +36,7 @@ class ThreadPool extends AbstractEndpoint
         if (isset($thread_pool_patterns)) {
             return "/_cat/thread_pool/$thread_pool_patterns";
         }
-        return "/_cat/thread_pool";
+        return '/_cat/thread_pool';
     }
 
     public function getParamWhitelist(): array
@@ -55,7 +55,7 @@ class ThreadPool extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -70,7 +70,7 @@ class ThreadPool extends AbstractEndpoint
             return $this;
         }
         if (is_array($thread_pool_patterns) === true) {
-            $thread_pool_patterns = implode(",", $thread_pool_patterns);
+            $thread_pool_patterns = implode(',', $thread_pool_patterns);
         }
         $this->thread_pool_patterns = rawurlencode((string) $thread_pool_patterns);
 

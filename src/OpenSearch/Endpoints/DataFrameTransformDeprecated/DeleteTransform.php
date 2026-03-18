@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\DataFrameTransformDeprecated;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class DeleteTransform extends AbstractEndpoint
 {
@@ -41,7 +41,7 @@ class DeleteTransform extends AbstractEndpoint
     public function getParamWhitelist(): array
     {
         return [
-            'force'
+            'force',
         ];
     }
 

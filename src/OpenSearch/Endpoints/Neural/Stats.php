@@ -38,7 +38,7 @@ class Stats extends AbstractEndpoint
         if (isset($stat)) {
             return "/_plugins/_neural/stats/$stat";
         }
-        return "/_plugins/_neural/stats";
+        return '/_plugins/_neural/stats';
     }
 
     public function getParamWhitelist(): array
@@ -53,7 +53,7 @@ class Stats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -78,7 +78,7 @@ class Stats extends AbstractEndpoint
             return $this;
         }
         if (is_array($stat) === true) {
-            $stat = implode(",", $stat);
+            $stat = implode(',', $stat);
         }
         $this->stat = rawurlencode((string) $stat);
 

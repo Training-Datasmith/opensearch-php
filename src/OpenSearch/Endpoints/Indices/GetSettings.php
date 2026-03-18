@@ -43,7 +43,7 @@ class GetSettings extends AbstractEndpoint
         if (isset($name)) {
             return "/_settings/$name";
         }
-        return "/_settings";
+        return '/_settings';
     }
 
     public function getParamWhitelist(): array
@@ -61,7 +61,7 @@ class GetSettings extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -76,7 +76,7 @@ class GetSettings extends AbstractEndpoint
             return $this;
         }
         if (is_array($name) === true) {
-            $name = implode(",", $name);
+            $name = implode(',', $name);
         }
         $this->name = rawurlencode((string) $name);
 

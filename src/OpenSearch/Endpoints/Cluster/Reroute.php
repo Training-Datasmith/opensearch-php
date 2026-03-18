@@ -30,7 +30,7 @@ class Reroute extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cluster/reroute";
+        return '/_cluster/reroute';
     }
 
     public function getParamWhitelist(): array
@@ -47,7 +47,7 @@ class Reroute extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

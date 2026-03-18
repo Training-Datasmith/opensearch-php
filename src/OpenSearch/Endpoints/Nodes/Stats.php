@@ -52,7 +52,7 @@ class Stats extends AbstractEndpoint
         if (isset($metric)) {
             return "/_nodes/stats/$metric";
         }
-        return "/_nodes/stats";
+        return '/_nodes/stats';
     }
 
     public function getParamWhitelist(): array
@@ -70,7 +70,7 @@ class Stats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -85,7 +85,7 @@ class Stats extends AbstractEndpoint
             return $this;
         }
         if (is_array($node_id) === true) {
-            $node_id = implode(",", $node_id);
+            $node_id = implode(',', $node_id);
         }
         $this->node_id = rawurlencode((string) $node_id);
 
@@ -98,7 +98,7 @@ class Stats extends AbstractEndpoint
             return $this;
         }
         if (is_array($metric) === true) {
-            $metric = implode(",", $metric);
+            $metric = implode(',', $metric);
         }
         $this->metric = rawurlencode((string) $metric);
 
@@ -111,7 +111,7 @@ class Stats extends AbstractEndpoint
             return $this;
         }
         if (is_array($index_metric) === true) {
-            $index_metric = implode(",", $index_metric);
+            $index_metric = implode(',', $index_metric);
         }
         $this->index_metric = rawurlencode((string) $index_metric);
 

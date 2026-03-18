@@ -24,7 +24,7 @@ class GetFindings extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security_analytics/findings/_search";
+        return '/_plugins/_security_analytics/findings/_search';
     }
 
     public function getParamWhitelist(): array
@@ -47,7 +47,7 @@ class GetFindings extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

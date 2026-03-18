@@ -35,7 +35,7 @@ class Scroll extends AbstractEndpoint
             @trigger_error('A scroll id can be quite large and should be specified as part of the body', E_USER_DEPRECATED);
             return "/_search/scroll/$scroll_id";
         }
-        return "/_search/scroll";
+        return '/_search/scroll';
     }
 
     public function getParamWhitelist(): array
@@ -48,7 +48,7 @@ class Scroll extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

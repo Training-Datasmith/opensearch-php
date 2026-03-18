@@ -24,7 +24,7 @@ class GetSteps extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_flow_framework/workflow/_steps";
+        return '/_plugins/_flow_framework/workflow/_steps';
     }
 
     public function getParamWhitelist(): array
@@ -35,7 +35,7 @@ class GetSteps extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

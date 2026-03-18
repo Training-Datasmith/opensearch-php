@@ -41,7 +41,7 @@ class YamlTests
         'Cat\Nodeattrs\_10_BasicTest::TestCatNodesAttrsOutput' => 'Regexp error, it seems not compatible with PHP',
         'Cat\Shards\_10_BasicTest::TestCatShardsOutput' => 'Regexp error, it seems not compatible with PHP',
         'Search\Aggregation\_10_HistogramTest::HistogramProfiler' => "Error reading 'n' field from YAML",
-        'Indices\GetAlias\_10_BasicTest::GetAliasAgainstClosedIndices' => 'Failed asserting that true is false'
+        'Indices\GetAlias\_10_BasicTest::GetAliasAgainstClosedIndices' => 'Failed asserting that true is false',
     ];
 
     public const PHP_RESERVED_WORDS     = [
@@ -53,7 +53,7 @@ class YamlTests
         'include', 'include_once', 'instanceof', 'insteadof', 'interface',
         'isset', 'list', 'namespace', 'new', 'or', 'print', 'private',
         'protected', 'public', 'require', 'require_once', 'return', 'static',
-        'switch', 'throw', 'trait', 'try', 'unset', 'use', 'var', 'while', 'xor'
+        'switch', 'throw', 'trait', 'try', 'unset', 'use', 'var', 'while', 'xor',
     ];
 
     private $tests = [];
@@ -68,7 +68,7 @@ class YamlTests
     {
         if (!is_dir($testDir)) {
             throw new Exception(sprintf(
-                "The directory %s specified does not exist",
+                'The directory %s specified does not exist',
                 $testDir
             ));
         }
@@ -77,13 +77,13 @@ class YamlTests
         }
         self::$testSuite = ucfirst($testSuite);
 
-        $this->testOutput = sprintf("%s/%s", $testOutput, self::$testSuite);
+        $this->testOutput = sprintf('%s/%s', $testOutput, self::$testSuite);
         $this->testDir = $testDir;
         $this->tests = $this->getAllTests($testDir);
 
         self::$esVersion = $esVersion;
         list($major, $minor, $patch) = explode('.', self::$esVersion);
-        self::$minorEsVersion = sprintf("%s.%s", $major, $minor);
+        self::$minorEsVersion = sprintf('%s.%s', $major, $minor);
     }
 
     private function getAllTests(string $dir): array
@@ -96,11 +96,11 @@ class YamlTests
                 $test = yaml_parse_file($file->getPathname(), -1, $ndocs, [
                     YAML_MAP_TAG => function ($value, $tag, $flags) {
                         return empty($value) ? new stdClass() : $value;
-                    }
+                    },
                 ]);
                 if (false === $test) {
                     throw new Exception(sprintf(
-                        "YAML parse error file %s",
+                        'YAML parse error file %s',
                         $file->getPathname()
                     ));
                 }
@@ -120,7 +120,7 @@ class YamlTests
             $yamlFileName = substr($testFile, strlen($this->testDir) + 1);
 
             # Delete and create the output directory
-            $testDirName = sprintf("%s/%s", $this->testOutput, str_replace('\\', '/', $namespace));
+            $testDirName = sprintf('%s/%s', $this->testOutput, str_replace('\\', '/', $namespace));
             if (!is_dir($testDirName) && !mkdir($testDirName, 0777, true) && !is_dir($testDirName)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $testDirName));
             }
@@ -146,9 +146,9 @@ class YamlTests
                             $functionName = $this->filterFunctionName(ucwords($name), $alreadyAssignedNames);
                             $alreadyAssignedNames[] = $functionName;
 
-                            $skippedTest = sprintf("%s\\%s::%s", $namespace, $testName, $functionName);
-                            $skippedAllTest = sprintf("%s\\%s::*", $namespace, $testName);
-                            $skippedAllFiles = sprintf("%s\\*", $namespace);
+                            $skippedTest = sprintf('%s\\%s::%s', $namespace, $testName, $functionName);
+                            $skippedAllTest = sprintf('%s\\%s::*', $namespace, $testName);
+                            $skippedAllFiles = sprintf('%s\\*', $namespace);
                             $skip = self::SKIPPED_TEST;
                             if (isset($skip[$skippedAllFiles]) || isset($skip[$skippedAllTest])) {
                                 $allSkipped = true;
@@ -156,7 +156,7 @@ class YamlTests
                                     self::TEMPLATE_FUNCTION_SKIPPED,
                                     [
                                         ':name' => $functionName,
-                                        ':skipped_msg'  => $skip[$skippedAllTest]
+                                        ':skipped_msg'  => $skip[$skippedAllTest],
                                     ]
                                 );
                             } elseif (isset($skip[$skippedTest])) {
@@ -164,7 +164,7 @@ class YamlTests
                                     self::TEMPLATE_FUNCTION_SKIPPED,
                                     [
                                         ':name' => $functionName,
-                                        ':skipped_msg'  => $skip[$skippedTest]
+                                        ':skipped_msg'  => $skip[$skippedTest],
                                     ]
                                 );
                             } else {
@@ -172,7 +172,7 @@ class YamlTests
                                     self::TEMPLATE_FUNCTION_TEST,
                                     [
                                         ':name' => $functionName,
-                                        ':test' => (string) new ActionTest($actions)
+                                        ':test' => (string) new ActionTest($actions),
                                     ]
                                 );
                             }
@@ -188,7 +188,7 @@ class YamlTests
                         ':test-name' => $testName,
                         ':tests'     => $functions,
                         ':yamlfile'  => sprintf(self::OPENSEARCH_GIT_URL, self::$minorEsVersion, $yamlFileName),
-                        ':group'     => strtolower(self::$testSuite)
+                        ':group'     => strtolower(self::$testSuite),
                     ]
                 );
             } else {
@@ -201,7 +201,7 @@ class YamlTests
                         ':setup'     => $setup,
                         ':teardown'  => $teardown,
                         ':yamlfile'  => sprintf(self::OPENSEARCH_GIT_URL, self::$minorEsVersion, $yamlFileName),
-                        ':group'     => strtolower(self::$testSuite)
+                        ':group'     => strtolower(self::$testSuite),
                     ]
                 );
             }
@@ -210,7 +210,7 @@ class YamlTests
                 eval(substr($test, 5)); // remove <?php header
             } catch (ParseError $e) {
                 throw new Exception(sprintf(
-                    "The PHP code generate in %s not valid: %s",
+                    'The PHP code generate in %s not valid: %s',
                     $testDirName . '/' . $testName . '.php',
                     $e->getMessage()
                 ));
@@ -219,7 +219,7 @@ class YamlTests
         }
         return [
             'tests' => $numTest,
-            'files' => $numFile
+            'files' => $numFile,
         ];
     }
 
@@ -304,7 +304,7 @@ class YamlTests
 
     private function filterFunctionName(string $name, array $alreadyAssigned = []): string
     {
-        $result = preg_replace("/[^a-zA-Z0-9_]/", "", $name);
+        $result = preg_replace('/[^a-zA-Z0-9_]/', '', $name);
         while (in_array($result, $alreadyAssigned)) {
             $result .= '_';
         }

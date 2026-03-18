@@ -43,7 +43,7 @@ class Stats extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_stats";
         }
-        return "/_stats";
+        return '/_stats';
     }
 
     public function getParamWhitelist(): array
@@ -62,7 +62,7 @@ class Stats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -77,7 +77,7 @@ class Stats extends AbstractEndpoint
             return $this;
         }
         if (is_array($metric) === true) {
-            $metric = implode(",", $metric);
+            $metric = implode(',', $metric);
         }
         $this->metric = rawurlencode((string) $metric);
 

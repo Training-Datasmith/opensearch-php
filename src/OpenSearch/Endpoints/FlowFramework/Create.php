@@ -24,7 +24,7 @@ class Create extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_flow_framework/workflow";
+        return '/_plugins/_flow_framework/workflow';
     }
 
     public function getParamWhitelist(): array
@@ -39,7 +39,7 @@ class Create extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -91,7 +91,7 @@ class ClientBuilder
     private $selector = RoundRobinSelector::class;
 
     private array $connectionPoolArgs = [
-        'randomizeHosts' => true
+        'randomizeHosts' => true,
     ];
 
     private ?array $hosts = null;
@@ -280,7 +280,7 @@ class ClientBuilder
         } elseif (is_object($connectionPool)) {
             $this->connectionPool = $connectionPool;
         } else {
-            throw new InvalidArgumentException("Serializer must be a class path or instantiated object extending AbstractConnectionPool");
+            throw new InvalidArgumentException('Serializer must be a class path or instantiated object extending AbstractConnectionPool');
         }
 
         return $this;
@@ -541,11 +541,11 @@ class ClientBuilder
 
         if (!is_null($this->sigV4CredentialProvider)) {
             if (is_null($this->sigV4Region)) {
-                throw new RuntimeException("A region must be supplied for SigV4 request signing.");
+                throw new RuntimeException('A region must be supplied for SigV4 request signing.');
             }
 
             if (is_null($this->sigV4Service)) {
-                $this->setSigV4Service("es");
+                $this->setSigV4Service('es');
             }
 
             $this->handler = new SigV4Handler($this->sigV4Region, $this->sigV4Service, $this->sigV4CredentialProvider, $this->handler);
@@ -563,7 +563,7 @@ class ClientBuilder
         }
 
         if (!is_null($sslOptions)) {
-            $sslHandler = (fn(callable $handler, array $sslOptions) => function (array $request) use ($handler, $sslOptions) {
+            $sslHandler = (fn (callable $handler, array $sslOptions) => function (array $request) use ($handler, $sslOptions) {
                 // Add our custom headers
                 foreach ($sslOptions as $key => $value) {
                     $request['client'][$key] = $value;
@@ -590,7 +590,7 @@ class ClientBuilder
 
             $this->connectionParams['client']['curl'] += [
                 CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
-                CURLOPT_USERPWD  => $this->basicAuthentication
+                CURLOPT_USERPWD  => $this->basicAuthentication,
             ];
         }
 
@@ -705,8 +705,8 @@ class ClientBuilder
             } elseif (is_array($host)) {
                 $host = $this->normalizeExtendedHost($host);
             } else {
-                $this->logger->error("Could not parse host: ".print_r($host, true));
-                throw new RuntimeException("Could not parse host: ".print_r($host, true));
+                $this->logger->error('Could not parse host: '.print_r($host, true));
+                throw new RuntimeException('Could not parse host: '.print_r($host, true));
             }
 
             $connections[] = $this->connectionFactory->create($host);

@@ -28,7 +28,7 @@ class ExplainPolicy extends AbstractEndpoint
         if (isset($index)) {
             return "/_plugins/_ism/explain/$index";
         }
-        return "/_plugins/_ism/explain";
+        return '/_plugins/_ism/explain';
     }
 
     public function getParamWhitelist(): array
@@ -38,7 +38,7 @@ class ExplainPolicy extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

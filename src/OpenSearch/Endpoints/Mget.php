@@ -32,7 +32,7 @@ class Mget extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_mget";
         }
-        return "/_mget";
+        return '/_mget';
     }
 
     public function getParamWhitelist(): array
@@ -50,7 +50,7 @@ class Mget extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

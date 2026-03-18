@@ -20,8 +20,8 @@ declare(strict_types=1);
  */
 
 use OpenSearch\Common\Exceptions\NoNodesAvailableException;
-use OpenSearch\Util\YamlTests;
 use OpenSearch\Tests\Utility;
+use OpenSearch\Util\YamlTests;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -42,7 +42,7 @@ $version = $serverInfo['version']['number'];
 $buildHash = $serverInfo['version']['build_hash'];
 
 // Check if the rest-spec folder with the build hash exists
-if (!is_dir(sprintf("%s/rest-spec/%s", __DIR__, $buildHash))) {
+if (!is_dir(sprintf('%s/rest-spec/%s', __DIR__, $buildHash))) {
     printf("ERROR: I cannot find the rest-spec for build hash %s\n", $buildHash);
     printf("You need to execute 'php util/RestSpecRunner.php'\n");
     exit(1);
@@ -56,7 +56,7 @@ printf("Using OpenSearch %s version\n", $version);
 printf("With build hash %s\n", $buildHash);
 
 $yamlOutputTest = __DIR__ . '/../tests/OpenSearch/Tests/Yaml';
-$yamlTestFolder = sprintf("%s/rest-spec/%s/rest-api-spec/test/%s", __DIR__, $buildHash, strtolower($stack));
+$yamlTestFolder = sprintf('%s/rest-spec/%s/rest-api-spec/test/%s', __DIR__, $buildHash, strtolower($stack));
 
 $test = new YamlTests($yamlTestFolder, $yamlOutputTest, $version, $stack);
 $result = $test->build();

@@ -28,7 +28,7 @@ class UndeployModel extends AbstractEndpoint
         if (isset($model_id)) {
             return "/_plugins/_ml/models/$model_id/_undeploy";
         }
-        return "/_plugins/_ml/models/_undeploy";
+        return '/_plugins/_ml/models/_undeploy';
     }
 
     public function getParamWhitelist(): array
@@ -38,7 +38,7 @@ class UndeployModel extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

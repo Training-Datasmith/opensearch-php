@@ -41,25 +41,25 @@ LICENSE;
         $success = true;
 
         // Load the OpenAPI specification file
-        $url = "https://github.com/opensearch-project/opensearch-api-specification/releases/download/main-latest/opensearch-openapi.yaml";
+        $url = 'https://github.com/opensearch-project/opensearch-api-specification/releases/download/main-latest/opensearch-openapi.yaml';
         $yamlContent = file_get_contents($url);
         $data = Yaml::parse($yamlContent);
 
         $list_of_dicts = [];
-        foreach ($data["paths"] as $path => $pathDetails) {
+        foreach ($data['paths'] as $path => $pathDetails) {
             foreach ($pathDetails as $method => $methodDetails) {
-                if (isset($methodDetails["x-operation-group"]) && $methodDetails["x-operation-group"] == "nodes.hot_threads") {
-                    if (isset($methodDetails["deprecated"]) && $methodDetails["deprecated"]) {
+                if (isset($methodDetails['x-operation-group']) && $methodDetails['x-operation-group'] == 'nodes.hot_threads') {
+                    if (isset($methodDetails['deprecated']) && $methodDetails['deprecated']) {
                         continue;
                     }
                 }
-                $methodDetails["path"] = $path;
-                $methodDetails["method"] = $method;
+                $methodDetails['path'] = $path;
+                $methodDetails['method'] = $method;
                 $list_of_dicts[] = $methodDetails;
             }
         }
 
-        $outputDir = dirname(__DIR__) . "/output";
+        $outputDir = dirname(__DIR__) . '/output';
         if (!file_exists($outputDir)) {
             mkdir($outputDir);
         }
@@ -73,23 +73,23 @@ LICENSE;
         $namespaces = [];
 
         foreach ($list_of_dicts as $index => $endpoint) {
-            if (array_key_exists("parameters", $endpoint)) {
+            if (array_key_exists('parameters', $endpoint)) {
                 $params = [];
                 $parts = [];
 
                 // Iterate over the list of parameters and update them
-                foreach ($endpoint["parameters"] as $param_ref) {
+                foreach ($endpoint['parameters'] as $param_ref) {
                     $param_ref_value = substr(
-                        $param_ref["$" . "ref"],
-                        strrpos($param_ref["$" . "ref"], '/') + 1
+                        $param_ref['$' . 'ref'],
+                        strrpos($param_ref['$' . 'ref'], '/') + 1
                     );
-                    $param = $data["components"]["parameters"][$param_ref_value];
-                    if (isset($param["schema"]) && isset($param["schema"]["$" . "ref"])) {
+                    $param = $data['components']['parameters'][$param_ref_value];
+                    if (isset($param['schema']) && isset($param['schema']['$' . 'ref'])) {
                         $schema_path_ref = substr(
-                            $param["schema"]["$" . "ref"],
-                            strrpos($param["schema"]["$" . "ref"], '/') + 1
+                            $param['schema']['$' . 'ref'],
+                            strrpos($param['schema']['$' . 'ref'], '/') + 1
                         );
-                        $param["schema"] = $data["components"]["schemas"][$schema_path_ref];
+                        $param['schema'] = $data['components']['schemas'][$schema_path_ref];
                         $params[] = $param;
                     } else {
                         $params[] = $param;
@@ -100,7 +100,7 @@ LICENSE;
                 $params_copy = $params;
 
                 foreach ($params_copy as $key => $param) {
-                    if ($param["in"] === "path") {
+                    if ($param['in'] === 'path') {
                         $parts[] = $param;
                         unset($params[$key]);
                     }
@@ -170,21 +170,21 @@ LICENSE;
                         foreach ($part['schema']['oneOf'] as $item) {
                             if (isset($item['type'])) {
                                 $parts_dict['type'] = $item['type'];
-                                if ($item['type'] == "array") {
+                                if ($item['type'] == 'array') {
                                     break;
                                 }
                             }
                         }
                     }
                     if ($endpoint['x-operation-group'] === 'cluster.get_component_template' || $endpoint['x-operation-group'] === 'indices.get_index_template') {
-                        $part['name'] = "name";
+                        $part['name'] = 'name';
                         $parts_dict['type'] = 'array';
                     }
 
                     if (isset($part['description'])) {
                         $parts_dict['description'] = str_replace(
                             "\n",
-                            " ",
+                            ' ',
                             $part['description']
                         );
                     }
@@ -263,7 +263,7 @@ LICENSE;
             if (str_contains($key, '.')) {
                 [$namespace, $name] = explode('.', $key);
             } else {
-                $namespace = "__init__";
+                $namespace = '__init__';
                 $name = $key;
             }
 
@@ -288,17 +288,17 @@ LICENSE;
                         $api['documentation'] = ['description' => $method_dict['description']];
                     }
 
-                    if (isset($method_dict["x-version-deprecated"])) {
+                    if (isset($method_dict['x-version-deprecated'])) {
                         $deprecated_path_dict = array_merge(
                             $deprecated_path_dict,
-                            ["version" => $method_dict["x-version-deprecated"]]
+                            ['version' => $method_dict['x-version-deprecated']]
                         );
                     }
 
-                    if (isset($method_dict["x-deprecation-message"])) {
+                    if (isset($method_dict['x-deprecation-message'])) {
                         $deprecated_path_dict = array_merge(
                             $deprecated_path_dict,
-                            ["description" => $method_dict["x-deprecation-message"]]
+                            ['description' => $method_dict['x-deprecation-message']]
                         );
                     } else {
                         $all_paths_have_deprecation = false;
@@ -322,7 +322,7 @@ LICENSE;
 
                         if (isset($data['components']['requestBodies'][$requestbody_ref]['content']['application/x-ndjson'])) {
                             $requestbody_schema = $data['components']['requestBodies'][$requestbody_ref]['content']['application/x-ndjson']['schema'];
-                            $body['serialize'] = "bulk";
+                            $body['serialize'] = 'bulk';
                         } else {
                             $requestbody_schema = $data['components']['requestBodies'][$requestbody_ref]['content']['application/json']['schema'];
                         }
@@ -384,7 +384,7 @@ LICENSE;
         // Generate endpoints
         foreach ($files as $entry) {
             foreach ($entry as $key => $api) {
-                $io->write(sprintf("Generating %s...", $key));
+                $io->write(sprintf('Generating %s...', $key));
                 $entry_json = json_encode($entry);
                 $endpoint = new Endpoint($key . '.json', $entry_json);
 
@@ -395,7 +395,7 @@ LICENSE;
                     mkdir($dir);
                 }
                 $outputFile = sprintf(
-                    "%s/%s.php",
+                    '%s/%s.php',
                     $dir,
                     $endpoint->getClassName()
                 );
@@ -405,7 +405,7 @@ LICENSE;
                     return Command::FAILURE;
                 }
 
-                $io->writeln("done ✅️");
+                $io->writeln('done ✅️');
 
                 $namespaces[$endpoint->namespace][] = $endpoint;
                 $countEndpoint++;
@@ -457,14 +457,14 @@ LICENSE;
 
         $destDir = \dirname(__DIR__, 2) . '/src/OpenSearch';
 
-        $io->info(sprintf("Copying the generated files to %s", $destDir));
+        $io->info(sprintf('Copying the generated files to %s', $destDir));
         $this->patchEndpoints();
         $this->cleanFolders();
-        $this->fixLicenseHeader($outputDir . "/Namespaces");
-        $this->fixLicenseHeader($outputDir . "/Endpoints");
-        $this->moveSubFolder($outputDir . "/Endpoints", $destDir . "/Endpoints");
-        $this->moveSubFolder($outputDir . "/Namespaces", $destDir . "/Namespaces");
-        rename($outputDir . "/Client.php", $destDir . "/Client.php");
+        $this->fixLicenseHeader($outputDir . '/Namespaces');
+        $this->fixLicenseHeader($outputDir . '/Endpoints');
+        $this->moveSubFolder($outputDir . '/Endpoints', $destDir . '/Endpoints');
+        $this->moveSubFolder($outputDir . '/Namespaces', $destDir . '/Namespaces');
+        rename($outputDir . '/Client.php', $destDir . '/Client.php');
 
         $this->removeDirectory($outputDir);
 
@@ -523,7 +523,7 @@ LICENSE;
     public function moveSubFolder(string $origin, string $destination): void
     {
         foreach (glob("{$origin}/*") as $file) {
-            rename($file, $destination . "/" . basename($file));
+            rename($file, $destination . '/' . basename($file));
         }
     }
 
@@ -594,7 +594,7 @@ LICENSE;
     {
         if (file_exists($filename)) {
             $result = exec("php -l $filename");
-            return str_contains($result, "No syntax errors");
+            return str_contains($result, 'No syntax errors');
         }
         return false;
     }
@@ -623,8 +623,8 @@ LICENSE;
             'Ml/Predict',
             'Ml/UndeployModel',
         ];
-        $outputDir = dirname(__DIR__) . "/output";
-        $destDir = dirname(__DIR__, 2) . "/src/OpenSearch";
+        $outputDir = dirname(__DIR__) . '/output';
+        $destDir = dirname(__DIR__, 2) . '/src/OpenSearch';
 
         $foldersToCheck = ['Endpoints', 'Namespaces'];
 
@@ -689,7 +689,7 @@ LICENSE;
             }
         }
         file_put_contents($filepath, implode('', $lines));
-        echo "Fixed " . realpath($filepath) . "\n";
+        echo 'Fixed ' . realpath($filepath) . "\n";
     }
 
     public function fixLicenseHeader(string $path): void

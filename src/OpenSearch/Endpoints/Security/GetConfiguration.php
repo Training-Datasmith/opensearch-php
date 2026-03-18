@@ -24,7 +24,7 @@ class GetConfiguration extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/securityconfig";
+        return '/_plugins/_security/api/securityconfig';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetConfiguration extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -24,7 +24,7 @@ class ConfigUpgradePerform extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/_upgrade_perform";
+        return '/_plugins/_security/api/_upgrade_perform';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class ConfigUpgradePerform extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

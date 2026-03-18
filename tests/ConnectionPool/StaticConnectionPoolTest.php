@@ -21,13 +21,13 @@ declare(strict_types=1);
 
 namespace OpenSearch\Tests\ConnectionPool;
 
+use Mockery as m;
 use OpenSearch\ClientBuilder;
 use OpenSearch\Common\Exceptions\NoNodesAvailableException;
 use OpenSearch\ConnectionPool\Selectors\SelectorInterface;
 use OpenSearch\ConnectionPool\StaticConnectionPool;
 use OpenSearch\Connections\Connection;
 use OpenSearch\Connections\ConnectionFactory;
-use Mockery as m;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 

@@ -32,7 +32,7 @@ class Search extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_search";
         }
-        return "/_search";
+        return '/_search';
     }
 
     public function getParamWhitelist(): array
@@ -90,7 +90,7 @@ class Search extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

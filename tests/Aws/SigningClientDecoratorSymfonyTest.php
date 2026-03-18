@@ -56,7 +56,7 @@ class SigningClientDecoratorSymfonyTest extends TestCase
             $credentials,
             $signer,
             [
-                'Host' => 'search.host'
+                'Host' => 'search.host',
             ]
         );
 

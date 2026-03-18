@@ -24,7 +24,7 @@ class PostStats extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ppl/stats";
+        return '/_plugins/_ppl/stats';
     }
 
     public function getParamWhitelist(): array
@@ -36,7 +36,7 @@ class PostStats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

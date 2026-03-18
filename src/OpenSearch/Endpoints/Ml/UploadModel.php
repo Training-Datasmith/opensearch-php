@@ -27,7 +27,7 @@ class UploadModel extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/models/_upload";
+        return '/_plugins/_ml/models/_upload';
     }
 
     public function getParamWhitelist(): array
@@ -37,7 +37,7 @@ class UploadModel extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

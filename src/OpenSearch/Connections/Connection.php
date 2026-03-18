@@ -43,9 +43,7 @@ use OpenSearch\Common\Exceptions\ScriptLangNotSupportedException;
 use OpenSearch\Common\Exceptions\ServerErrorResponseException;
 use OpenSearch\Common\Exceptions\TransportException;
 use OpenSearch\Common\Exceptions\Unauthorized401Exception;
-use OpenSearch\Serializers\SerializerInterface;
 use OpenSearch\Transport;
-use Psr\Log\LoggerInterface;
 
 // @phpstan-ignore classConstant.deprecatedClass
 @trigger_error(Connection::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
@@ -194,10 +192,10 @@ class Connection implements ConnectionInterface
             'body'        => $body,
             'headers'     => array_merge(
                 [
-                'Host'  => [$host]
+                'Host'  => [$host],
                 ],
                 $headers
-            )
+            ),
         ];
 
         $request = array_replace_recursive($request, $this->connectionParams, $options);
@@ -236,7 +234,7 @@ class Connection implements ConnectionInterface
 
                     if (isset($response['error']) === true) {
                         if ($response['error'] instanceof ConnectException || $response['error'] instanceof RingException) {
-                            $this->log->warning("Curl exception encountered.");
+                            $this->log->warning('Curl exception encountered.');
 
                             $exception = $this->getCurlRetryException($request, $response);
 
@@ -439,8 +437,8 @@ class Connection implements ConnectionInterface
             'client' => [
                 'timeout' => $this->pingTimeout,
                 'never_retry' => true,
-                'verbose' => true
-            ]
+                'verbose' => true,
+            ],
         ];
         try {
             $response = $this->performRequest('HEAD', '/', null, null, $options);
@@ -468,8 +466,8 @@ class Connection implements ConnectionInterface
         $options = [
             'client' => [
                 'timeout' => $this->pingTimeout,
-                'never_retry' => true
-            ]
+                'never_retry' => true,
+            ],
         ];
 
         return $this->performRequest('GET', '/_nodes/', null, null, $options);
@@ -553,7 +551,7 @@ class Connection implements ConnectionInterface
         if ($this->OSVersion === null) {
             $this->OSVersion = str_contains(strtolower(ini_get('disable_functions')), 'php_uname')
                 ? ''
-                : php_uname("r");
+                : php_uname('r');
         }
         return $this->OSVersion;
     }
@@ -566,7 +564,7 @@ class Connection implements ConnectionInterface
         if (str_contains(substr($uri, 7), ':')) {
             return $uri;
         }
-        return preg_replace('#([^/])/([^/])#', sprintf("$1:%s/$2", $port), $uri, 1);
+        return preg_replace('#([^/])/([^/])#', sprintf('$1:%s/$2', $port), $uri, 1);
     }
 
     /**
@@ -649,7 +647,7 @@ class Connection implements ConnectionInterface
             return;
         }
 
-        if ($statusCode === 500 && str_contains((string) $responseBody, "RoutingMissingException")) {
+        if ($statusCode === 500 && str_contains((string) $responseBody, 'RoutingMissingException')) {
             $exception = new RoutingMissingException($exception->getMessage(), [], 0, $exception);
         } elseif ($statusCode === 500 && preg_match('/ActionRequestValidationException.+ no documents to get/', (string) $responseBody) === 1) {
             $exception = new NoDocumentsToGetException($exception->getMessage(), [], 0, $exception);
@@ -670,7 +668,7 @@ class Connection implements ConnectionInterface
     {
         if (empty($body)) {
             return sprintf(
-                "Unknown %d error from OpenSearch %s",
+                'Unknown %d error from OpenSearch %s',
                 $statusCode,
                 $exception->getMessage()
             );

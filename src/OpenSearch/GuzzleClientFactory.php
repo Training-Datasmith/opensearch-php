@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace OpenSearch;
 
+use GuzzleHttp\Psr7\HttpFactory;
 use OpenSearch\Aws\SigningClientFactory;
 use OpenSearch\HttpClient\GuzzleHttpClientFactory;
-use Psr\Log\LoggerInterface;
-use GuzzleHttp\Psr7\HttpFactory;
 use OpenSearch\Serializers\SmartSerializer;
+use Psr\Log\LoggerInterface;
 
 /**
  * Creates an OpenSearch client using Guzzle.

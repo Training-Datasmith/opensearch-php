@@ -30,7 +30,7 @@ class GetScheduledExperiments extends AbstractEndpoint
         if (isset($experiment_id)) {
             return "/_plugins/_search_relevance/experiments/schedule/$experiment_id";
         }
-        return "/_plugins/_search_relevance/experiments/schedule";
+        return '/_plugins/_search_relevance/experiments/schedule';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetScheduledExperiments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

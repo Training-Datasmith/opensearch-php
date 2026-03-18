@@ -34,7 +34,7 @@ class Flush extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_flush";
         }
-        return "/_flush";
+        return '/_flush';
     }
 
     public function getParamWhitelist(): array
@@ -49,7 +49,7 @@ class Flush extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -24,7 +24,7 @@ class LeaderStats extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_replication/leader_stats";
+        return '/_plugins/_replication/leader_stats';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class LeaderStats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

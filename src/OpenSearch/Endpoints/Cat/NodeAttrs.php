@@ -30,7 +30,7 @@ class NodeAttrs extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cat/nodeattrs";
+        return '/_cat/nodeattrs';
     }
 
     public function getParamWhitelist(): array
@@ -48,7 +48,7 @@ class NodeAttrs extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

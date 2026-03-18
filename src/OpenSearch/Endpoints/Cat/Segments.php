@@ -34,7 +34,7 @@ class Segments extends AbstractEndpoint
         if (isset($index)) {
             return "/_cat/segments/$index";
         }
-        return "/_cat/segments";
+        return '/_cat/segments';
     }
 
     public function getParamWhitelist(): array
@@ -52,7 +52,7 @@ class Segments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

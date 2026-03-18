@@ -30,7 +30,7 @@ class Tasks extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cat/tasks";
+        return '/_cat/tasks';
     }
 
     public function getParamWhitelist(): array
@@ -50,7 +50,7 @@ class Tasks extends AbstractEndpoint
             'source',
             'filter_path',
             'node_id',
-            'parent_task'
+            'parent_task',
         ];
     }
 

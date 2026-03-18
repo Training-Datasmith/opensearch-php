@@ -24,7 +24,7 @@ class PitSegments extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cat/pit_segments";
+        return '/_cat/pit_segments';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class PitSegments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

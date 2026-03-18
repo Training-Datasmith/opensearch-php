@@ -15,9 +15,9 @@ declare(strict_types=1);
 
 namespace OpenSearch\Tests\ConnectionPool\Selectors;
 
+use Mockery as m;
 use OpenSearch;
 use OpenSearch\Connections\ConnectionInterface;
-use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
 // @phpstan-ignore classConstant.deprecatedClass

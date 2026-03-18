@@ -39,7 +39,7 @@ class NamespaceEndpoint
     public function renderClass(): string
     {
         if (empty($this->endpoints)) {
-            throw new Exception("No endpoints has been added. I cannot render the class");
+            throw new Exception('No endpoints has been added. I cannot render the class');
         }
         $twig = $this->getTwig();
         $namespaceName = $this->getNamespaceName() . 'Namespace';
@@ -87,7 +87,7 @@ class NamespaceEndpoint
     {
         if (in_array($endpoint->name, $this->endpointNames)) {
             throw new Exception(sprintf(
-                "The endpoint %s has been already added",
+                'The endpoint %s has been already added',
                 $endpoint->namespace
             ));
         }

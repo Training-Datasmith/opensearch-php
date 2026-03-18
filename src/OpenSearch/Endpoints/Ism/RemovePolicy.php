@@ -28,7 +28,7 @@ class RemovePolicy extends AbstractEndpoint
         if (isset($index)) {
             return "/_plugins/_ism/remove/$index";
         }
-        return "/_plugins/_ism/remove";
+        return '/_plugins/_ism/remove';
     }
 
     public function getParamWhitelist(): array
@@ -39,7 +39,7 @@ class RemovePolicy extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

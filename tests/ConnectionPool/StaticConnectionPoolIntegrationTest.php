@@ -21,9 +21,9 @@ declare(strict_types=1);
 
 namespace OpenSearch\Tests\ConnectionPool;
 
-use OpenSearch\Tests\Utility;
 use OpenSearch\ClientBuilder;
 use OpenSearch\ConnectionPool\StaticConnectionPool;
+use OpenSearch\Tests\Utility;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 

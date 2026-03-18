@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Helper\Iterators;
 
-use OpenSearch\Client;
 use Iterator;
+use OpenSearch\Client;
 
 // @phpstan-ignore classConstant.deprecatedClass
 @trigger_error(SearchResponseIterator::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
@@ -89,8 +89,8 @@ class SearchResponseIterator implements Iterator
                 [
                     'scroll_id' => $this->scroll_id,
                     'client' => [
-                        'ignore' => 404
-                    ]
+                        'ignore' => 404,
+                    ],
                 ]
             );
             $this->scroll_id = null;

@@ -32,7 +32,7 @@ class RankEval extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_rank_eval";
         }
-        return "/_rank_eval";
+        return '/_rank_eval';
     }
 
     public function getParamWhitelist(): array
@@ -46,7 +46,7 @@ class RankEval extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

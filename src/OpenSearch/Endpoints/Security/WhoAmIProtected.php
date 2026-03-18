@@ -24,7 +24,7 @@ class WhoAmIProtected extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/whoamiprotected";
+        return '/_plugins/_security/whoamiprotected';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class WhoAmIProtected extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

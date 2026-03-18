@@ -30,7 +30,7 @@ class SearchFeatures extends AbstractEndpoint
         if (isset($store)) {
             return "/_ltr/$store/_feature";
         }
-        return "/_ltr/_feature";
+        return '/_ltr/_feature';
     }
 
     public function getParamWhitelist(): array
@@ -43,7 +43,7 @@ class SearchFeatures extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

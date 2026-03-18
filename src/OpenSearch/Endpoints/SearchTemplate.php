@@ -32,7 +32,7 @@ class SearchTemplate extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_search/template";
         }
-        return "/_search/template";
+        return '/_search/template';
     }
 
     public function getParamWhitelist(): array
@@ -57,7 +57,7 @@ class SearchTemplate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -24,7 +24,7 @@ class PutJudgments extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_search_relevance/judgments";
+        return '/_plugins/_search_relevance/judgments';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class PutJudgments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

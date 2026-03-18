@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSearch\HttpClient;
 
 use GuzzleHttp\Exception\ConnectException;

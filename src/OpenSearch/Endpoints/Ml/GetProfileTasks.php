@@ -30,7 +30,7 @@ class GetProfileTasks extends AbstractEndpoint
         if (isset($task_id)) {
             return "/_plugins/_ml/profile/tasks/$task_id";
         }
-        return "/_plugins/_ml/profile/tasks";
+        return '/_plugins/_ml/profile/tasks';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetProfileTasks extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

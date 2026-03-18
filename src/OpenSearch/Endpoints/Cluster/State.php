@@ -40,7 +40,7 @@ class State extends AbstractEndpoint
         if (isset($metric)) {
             return "/_cluster/state/$metric";
         }
-        return "/_cluster/state";
+        return '/_cluster/state';
     }
 
     public function getParamWhitelist(): array
@@ -59,7 +59,7 @@ class State extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -74,7 +74,7 @@ class State extends AbstractEndpoint
             return $this;
         }
         if (is_array($metric) === true) {
-            $metric = implode(",", $metric);
+            $metric = implode(',', $metric);
         }
         $this->metric = rawurlencode((string) $metric);
 

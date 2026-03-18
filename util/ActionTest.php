@@ -23,9 +23,9 @@ namespace OpenSearch\Util;
 
 use OpenSearch\Common\Exceptions\BadRequest400Exception;
 use OpenSearch\Common\Exceptions\Conflict409Exception;
-use OpenSearch\Common\Exceptions\OpenSearchException;
 use OpenSearch\Common\Exceptions\Forbidden403Exception;
 use OpenSearch\Common\Exceptions\Missing404Exception;
+use OpenSearch\Common\Exceptions\OpenSearchException;
 use OpenSearch\Common\Exceptions\RequestTimeout408Exception;
 use OpenSearch\Common\Exceptions\Unauthorized401Exception;
 use PHPUnit\Runner\Version as PHPUnitVersion;
@@ -70,7 +70,7 @@ class ActionTest
         'warnings',
         'catch_unauthorized',
         'transform_and_set',
-        'allowed_warnings'
+        'allowed_warnings',
     ];
 
     private $headers = [];
@@ -98,7 +98,7 @@ class ActionTest
             ':endpoint'       => '',
             ':params'         => '',
             ':catch'          => '',
-            ':response-check' => ''
+            ':response-check' => '',
         ];
         foreach ($actions as $key => $value) {
             if (method_exists($this, $key)) {
@@ -110,7 +110,7 @@ class ActionTest
                         $value = [];
                     }
                     $value['client'] = [
-                        'headers' => $this->formatHeaders($this->headers)
+                        'headers' => $this->formatHeaders($this->headers),
                     ];
                     $this->headers = [];
                 }
@@ -145,7 +145,7 @@ class ActionTest
             $this->variables[] = $key;
             return YamlTests::render(self::TEMPLATE_TRANSFORM_AND_SET, [
                 ':var'   => $key,
-                ':param' => sprintf("\$response['%s'] . ':' . \$response['%s']", $param1, $param2)
+                ':param' => sprintf("\$response['%s'] . ':' . \$response['%s']", $param1, $param2),
             ]);
         }
         return '';
@@ -157,21 +157,21 @@ class ActionTest
         $this->variables[] = $action[$key];
         return YamlTests::render(self::TEMPLATE_SET_VARIABLE, [
             ':var'   => $action[$key],
-            ':value' => $this->convertResponseField($key)
+            ':value' => $this->convertResponseField($key),
         ]);
     }
 
     private function warnings(array $action, array &$vars)
     {
         $vars[':response-check'] .= YamlTests::render(self::TEMPLATE_WARNINGS, [
-            ':expected' => $action
+            ':expected' => $action,
         ]);
     }
 
     private function allowed_warnings(array $action, array &$vars)
     {
         $vars[':response-check'] .= YamlTests::render(self::TEMPLATE_ALLOWED_WARNINGS, [
-            ':expected' => $action
+            ':expected' => $action,
         ]);
     }
 
@@ -215,7 +215,7 @@ class ActionTest
                 );
         }
         $vars[':catch'] = YamlTests::render(self::TEMPLATE_CATCH, [
-            ':exception' => $expectedException
+            ':exception' => $expectedException,
         ]);
         $vars[':response-check'] .= $scriptException ?? '';
     }
@@ -235,14 +235,14 @@ class ActionTest
         $key = key($actions);
         if (null === $actions[$key]) {
             return YamlTests::render(self::TEMPLATE_IS_NULL, [
-                ':value' => $this->convertResponseField($key)
+                ':value' => $this->convertResponseField($key),
             ]);
         }
 
         if (is_string($actions[$key]) && substr($actions[$key], 0, 1) !== '$') {
             $expected = sprintf("'%s'", addslashes($actions[$key]));
         } elseif (is_string($actions[$key]) && substr($actions[$key], 0, 2) === '${') {
-            $expected = sprintf("\$%s", substr($actions[$key], 2, strlen($actions[$key]) - 3));
+            $expected = sprintf('$%s', substr($actions[$key], 2, strlen($actions[$key]) - 3));
         } elseif (is_bool($actions[$key])) {
             $expected = $actions[$key] ? 'true' : 'false';
         } elseif (is_array($actions[$key])) {
@@ -252,12 +252,12 @@ class ActionTest
         }
         $vars = [
             ':expected' => $expected,
-            ':value' => $this->convertResponseField($key)
+            ':value' => $this->convertResponseField($key),
         ];
         if (is_string($expected) && $this->isRegularExpression($expected)) {
             $vars[':expected'] = $this->convertJavaRegexToPhp($vars[':expected']);
             // Add /sx preg modifier to ignore whitespace
-            $vars[':expected'] .= "sx";
+            $vars[':expected'] .= 'sx';
             return YamlTests::render(
                 ($this->phpUnitVersion > 8) ? (self::TEMPLATE_PHPUNIT9_MATCH_REGEX) : (self::TEMPLATE_MATCH_REGEX),
                 $vars
@@ -272,7 +272,7 @@ class ActionTest
     private function is_true(string $value)
     {
         $vars = [
-            ':value' => $this->convertResponseField($value)
+            ':value' => $this->convertResponseField($value),
         ];
         return YamlTests::render(self::TEMPLATE_IS_TRUE, $vars);
     }
@@ -280,7 +280,7 @@ class ActionTest
     private function is_false(string $value)
     {
         $vars = [
-            ':value' => $this->convertResponseField($value)
+            ':value' => $this->convertResponseField($value),
         ];
         return YamlTests::render(self::TEMPLATE_IS_FALSE, $vars);
     }
@@ -291,7 +291,7 @@ class ActionTest
 
         return YamlTests::render(self::TEMPLATE_LENGTH, [
             ':expected' => (int) $actions[$key],
-            ':value'    => $this->convertResponseField($key)
+            ':value'    => $this->convertResponseField($key),
         ]);
     }
 
@@ -305,7 +305,7 @@ class ActionTest
                 $version[0] = '0';
             }
             if (empty($version[1])) {
-                $version[1] = sprintf("%s", PHP_INT_MAX);
+                $version[1] = sprintf('%s', PHP_INT_MAX);
             }
             if (strtolower($version[0]) === 'all' ||
                (version_compare(YamlTests::$esVersion, $version[0], '>=') && version_compare(YamlTests::$esVersion, $version[1], '<='))
@@ -314,7 +314,7 @@ class ActionTest
                 return YamlTests::render(self::TEMPLATE_SKIP_VERSION, [
                     ':testname'  => "__CLASS__ . '::' . __FUNCTION__",
                     ':esversion' => sprintf("'%s'", YamlTests::$esVersion),
-                    ':reason'    => sprintf("'%s'", addslashes($actions['reason']))
+                    ':reason'    => sprintf("'%s'", addslashes($actions['reason'])),
                 ]);
             }
         }
@@ -325,7 +325,7 @@ class ActionTest
                     $this->skippedTest = true;
                     return YamlTests::render(self::TEMPLATE_SKIP_FEATURE, [
                         ':testname' => "__CLASS__ . '::' . __FUNCTION__",
-                        ':feature'  => sprintf("'%s'", $feature)
+                        ':feature'  => sprintf("'%s'", $feature),
                     ]);
                 }
                 switch ($feature) {
@@ -333,7 +333,7 @@ class ActionTest
                         if (YamlTests::$testSuite !== 'platinum') {
                             $this->skippedTest = true;
                             return YamlTests::render(self::TEMPLATE_SKIP_XPACK, [
-                                ':testname' => "__CLASS__ . '::' . __FUNCTION__"
+                                ':testname' => "__CLASS__ . '::' . __FUNCTION__",
                             ]);
                         }
                         break;
@@ -341,7 +341,7 @@ class ActionTest
                         if (YamlTests::$testSuite !== 'free') {
                             $this->skippedTest = true;
                             return YamlTests::render(self::TEMPLATE_SKIP_OSS, [
-                                ':testname' => "__CLASS__ . '::' . __FUNCTION__"
+                                ':testname' => "__CLASS__ . '::' . __FUNCTION__",
                             ]);
                         }
                         break;
@@ -365,7 +365,7 @@ class ActionTest
         $key = key($actions);
         return YamlTests::render(self::TEMPLATE_GT, [
             ':expected' => $actions[$key],
-            ':value' => $this->convertResponseField($key)
+            ':value' => $this->convertResponseField($key),
         ]);
     }
 
@@ -374,7 +374,7 @@ class ActionTest
         $key = key($actions);
         return YamlTests::render(self::TEMPLATE_GTE, [
             ':expected' => $actions[$key],
-            ':value' => $this->convertResponseField($key)
+            ':value' => $this->convertResponseField($key),
         ]);
     }
 
@@ -383,7 +383,7 @@ class ActionTest
         $key = key($actions);
         return YamlTests::render(self::TEMPLATE_LT, [
             ':expected' => $actions[$key],
-            ':value' => $this->convertResponseField($key)
+            ':value' => $this->convertResponseField($key),
         ]);
     }
 
@@ -392,7 +392,7 @@ class ActionTest
         $key = key($actions);
         return YamlTests::render(self::TEMPLATE_LTE, [
             ':expected' => $actions[$key],
-            ':value' => $this->convertResponseField($key)
+            ':value' => $this->convertResponseField($key),
         ]);
     }
 
@@ -444,9 +444,9 @@ class ActionTest
             # Replace \. in $part
             $part = str_replace(chr(200), '.', $part);
             if (is_int($part)) {
-                $output .= sprintf("[%d]", $part);
+                $output .= sprintf('[%d]', $part);
             } else {
-                $output .= sprintf("[\"%s\"]", $part);
+                $output .= sprintf('["%s"]', $part);
             }
         }
         return $output;
@@ -476,7 +476,7 @@ class ActionTest
         preg_match_all('/(\/\^?)(.+)(\$?\/)/sx', $regex, $matches);
         if (isset($matches[2][0])) {
             $matches[2][0] = str_replace('/', '\/', $matches[2][0]);
-            return sprintf("%s%s%s", $matches[1][0], $matches[2][0], $matches[3][0]);
+            return sprintf('%s%s%s', $matches[1][0], $matches[2][0], $matches[3][0]);
         }
 
         return $regex;
@@ -505,7 +505,7 @@ class ActionTest
                     $params['client'][$key] = $value;
                 } else {
                     $params['client'] = [
-                        'ignore' => $value
+                        'ignore' => $value,
                     ];
                 }
                 unset($params[$key]);

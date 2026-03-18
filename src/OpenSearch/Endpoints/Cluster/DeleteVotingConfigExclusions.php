@@ -30,7 +30,7 @@ class DeleteVotingConfigExclusions extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cluster/voting_config_exclusions";
+        return '/_cluster/voting_config_exclusions';
     }
 
     public function getParamWhitelist(): array
@@ -41,7 +41,7 @@ class DeleteVotingConfigExclusions extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -36,7 +36,7 @@ class Aliases extends AbstractEndpoint
         if (isset($name)) {
             return "/_cat/aliases/$name";
         }
-        return "/_cat/aliases";
+        return '/_cat/aliases';
     }
 
     public function getParamWhitelist(): array
@@ -53,7 +53,7 @@ class Aliases extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -68,7 +68,7 @@ class Aliases extends AbstractEndpoint
             return $this;
         }
         if (is_array($name) === true) {
-            $name = implode(",", $name);
+            $name = implode(',', $name);
         }
         $this->name = rawurlencode((string) $name);
 

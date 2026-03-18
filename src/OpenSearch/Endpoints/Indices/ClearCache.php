@@ -34,7 +34,7 @@ class ClearCache extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_cache/clear";
         }
-        return "/_cache/clear";
+        return '/_cache/clear';
     }
 
     public function getParamWhitelist(): array
@@ -53,7 +53,7 @@ class ClearCache extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

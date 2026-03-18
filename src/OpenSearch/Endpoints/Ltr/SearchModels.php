@@ -30,7 +30,7 @@ class SearchModels extends AbstractEndpoint
         if (isset($store)) {
             return "/_ltr/$store/_model";
         }
-        return "/_ltr/_model";
+        return '/_ltr/_model';
     }
 
     public function getParamWhitelist(): array
@@ -43,7 +43,7 @@ class SearchModels extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

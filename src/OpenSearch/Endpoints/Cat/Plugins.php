@@ -30,7 +30,7 @@ class Plugins extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cat/plugins";
+        return '/_cat/plugins';
     }
 
     public function getParamWhitelist(): array
@@ -48,7 +48,7 @@ class Plugins extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

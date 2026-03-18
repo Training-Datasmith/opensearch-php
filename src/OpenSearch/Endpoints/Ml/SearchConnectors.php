@@ -24,7 +24,7 @@ class SearchConnectors extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/connectors/_search";
+        return '/_plugins/_ml/connectors/_search';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class SearchConnectors extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

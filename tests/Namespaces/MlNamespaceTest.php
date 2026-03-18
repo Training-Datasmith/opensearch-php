@@ -70,7 +70,7 @@ class MlNamespaceTest extends TestCase
 
         (new MlNamespace($transport, $endpointFactory))->getConnector([
             'id' => 'foobar',
-            'connector_id' => 'foobar'
+            'connector_id' => 'foobar',
         ]);
     }
 
@@ -114,7 +114,7 @@ class MlNamespaceTest extends TestCase
             ->willReturn([]);
 
         (new MlNamespace($transport, $endpointFactory))->deleteConnector([
-            'connector_id' => 'foobar'
+            'connector_id' => 'foobar',
         ]);
     }
 
@@ -208,7 +208,7 @@ class MlNamespaceTest extends TestCase
             ->willReturn([]);
 
         (new MlNamespace($transport, $endpointFactory))->deleteModelGroup([
-            'id' => 'foobar'
+            'id' => 'foobar',
         ]);
     }
 
@@ -247,7 +247,7 @@ class MlNamespaceTest extends TestCase
 
         (new MlNamespace($transport, $endpointFactory))->getModel([
             'id' => 'foobar',
-            'model_id' => 'foobar'
+            'model_id' => 'foobar',
         ]);
     }
 

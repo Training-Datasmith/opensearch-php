@@ -24,7 +24,7 @@ class GetConfigs extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_notifications/configs";
+        return '/_plugins/_notifications/configs';
     }
 
     public function getParamWhitelist(): array
@@ -74,7 +74,7 @@ class GetConfigs extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

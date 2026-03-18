@@ -21,8 +21,6 @@ declare(strict_types=1);
 
 namespace OpenSearch\ConnectionPool;
 
-use OpenSearch\ConnectionPool\Selectors\SelectorInterface;
-use OpenSearch\Connections\ConnectionFactoryInterface;
 use OpenSearch\Connections\ConnectionInterface;
 
 // @phpstan-ignore classConstant.deprecatedClass

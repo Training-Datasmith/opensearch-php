@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\SearchableSnapshots;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class RepositoryStats extends AbstractEndpoint
 {

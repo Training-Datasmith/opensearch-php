@@ -22,8 +22,8 @@ declare(strict_types=1);
 namespace OpenSearch\Namespaces;
 
 use OpenSearch\Endpoints\Cat\Aliases;
-use OpenSearch\Endpoints\Cat\AllPitSegments;
 use OpenSearch\Endpoints\Cat\Allocation;
+use OpenSearch\Endpoints\Cat\AllPitSegments;
 use OpenSearch\Endpoints\Cat\ClusterManager;
 use OpenSearch\Endpoints\Cat\Count;
 use OpenSearch\Endpoints\Cat\Fielddata;

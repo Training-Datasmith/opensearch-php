@@ -34,7 +34,7 @@ class ShardStores extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_shard_stores";
         }
-        return "/_shard_stores";
+        return '/_shard_stores';
     }
 
     public function getParamWhitelist(): array
@@ -48,7 +48,7 @@ class ShardStores extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

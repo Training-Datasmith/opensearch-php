@@ -28,7 +28,7 @@ class SegmentReplication extends AbstractEndpoint
         if (isset($index)) {
             return "/_cat/segment_replication/$index";
         }
-        return "/_cat/segment_replication";
+        return '/_cat/segment_replication';
     }
 
     public function getParamWhitelist(): array
@@ -55,7 +55,7 @@ class SegmentReplication extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

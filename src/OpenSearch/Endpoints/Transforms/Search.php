@@ -24,7 +24,7 @@ class Search extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_transform";
+        return '/_plugins/_transform';
     }
 
     public function getParamWhitelist(): array
@@ -39,7 +39,7 @@ class Search extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

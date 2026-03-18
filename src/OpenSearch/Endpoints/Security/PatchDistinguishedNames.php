@@ -24,7 +24,7 @@ class PatchDistinguishedNames extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/nodesdn";
+        return '/_plugins/_security/api/nodesdn';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class PatchDistinguishedNames extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

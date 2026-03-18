@@ -39,7 +39,7 @@ class Msearch extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_msearch";
         }
-        return "/_msearch";
+        return '/_msearch';
     }
 
     public function getParamWhitelist(): array
@@ -57,7 +57,7 @@ class Msearch extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

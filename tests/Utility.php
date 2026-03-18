@@ -60,9 +60,9 @@ class Utility
         $clientBuilder->setConnectionParams([
             'client' => [
                 'headers' => [
-                    'Accept' => []
-                ]
-            ]
+                    'Accept' => [],
+                ],
+            ],
         ]);
 
         $clientBuilder->setSSLVerification(false);
@@ -120,16 +120,16 @@ class Utility
 
         // Delete templates
         $client->indices()->deleteTemplate([
-            'name' => '*'
+            'name' => '*',
         ]);
         try {
             // Delete index template
             $client->indices()->deleteIndexTemplate([
-                'name' => '*'
+                'name' => '*',
             ]);
             // Delete component template
             $client->cluster()->deleteComponentTemplate([
-                'name' => '*'
+                'name' => '*',
             ]);
         } catch (OpenSearchException $e) {
             // We hit a version of ES that doesn't support index templates v2 yet, so it's safe to ignore
@@ -146,14 +146,14 @@ class Utility
     private static function wipeSnapshots(Client $client): void
     {
         $repos = $client->snapshot()->getRepository([
-            'repository' => '_all'
+            'repository' => '_all',
         ]);
         foreach ($repos as $repository => $value) {
             if ($value['type'] === 'fs') {
                 $response = $client->snapshot()->get([
                     'repository' => $repository,
                     'snapshot' => '_all',
-                    'ignore_unavailable' => true
+                    'ignore_unavailable' => true,
                 ]);
                 if (isset($response['responses'])) {
                     $response = $response['responses'][0];
@@ -164,8 +164,8 @@ class Utility
                             'repository' => $repository,
                             'snapshot' => $snapshot['snapshot'],
                             'client' => [
-                                'ignore' => 404
-                            ]
+                                'ignore' => 404,
+                            ],
                         ]);
                     }
                 }
@@ -173,8 +173,8 @@ class Utility
             $client->snapshot()->deleteRepository([
                 'repository' => $repository,
                 'client' => [
-                    'ignore' => 404
-                ]
+                    'ignore' => 404,
+                ],
             ]);
         }
     }
@@ -189,7 +189,7 @@ class Utility
         $policies = $client->slm()->getLifecycle();
         foreach ($policies as $policy) {
             $client->slm()->deleteLifecycle([
-                'policy_id' => $policy['name']
+                'policy_id' => $policy['name'],
             ]);
         }
     }
@@ -204,13 +204,13 @@ class Utility
         try {
             $client->indices()->deleteDataStream([
                 'name' => '*',
-                'expand_wildcards' => 'all'
+                'expand_wildcards' => 'all',
             ]);
         } catch (OpenSearchException $e) {
             // We hit a version of ES that doesn't understand expand_wildcards, try again without it
             try {
                 $client->indices()->deleteDataStream([
-                    'name' => '*'
+                    'name' => '*',
                 ]);
             } catch (OpenSearchException $e) {
                 // We hit a version of ES that doesn't serialize DeleteDataStreamAction.Request#wildcardExpressionsOriginallySpecified
@@ -229,7 +229,7 @@ class Utility
         try {
             $client->indices()->delete([
                 'index' => '*,-.ds-ilm-history-*',
-                'expand_wildcards' => 'open,closed,hidden'
+                'expand_wildcards' => 'open,closed,hidden',
             ]);
         } catch (Exception $e) {
             if ($e->getCode() != '404') {
@@ -259,7 +259,7 @@ class Utility
         }
         if (!empty($newSettings)) {
             $client->cluster()->putSettings([
-                'body' => $newSettings
+                'body' => $newSettings,
             ]);
         }
     }

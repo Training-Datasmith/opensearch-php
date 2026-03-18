@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\SearchableSnapshots;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class Mount extends AbstractEndpoint
 {
@@ -45,7 +45,7 @@ class Mount extends AbstractEndpoint
         return [
             'master_timeout',
             'wait_for_completion',
-            'cluster_manager_timeout'
+            'cluster_manager_timeout',
         ];
     }
 

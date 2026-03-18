@@ -30,7 +30,7 @@ class UpdateAliases extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_aliases";
+        return '/_aliases';
     }
 
     public function getParamWhitelist(): array
@@ -43,7 +43,7 @@ class UpdateAliases extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

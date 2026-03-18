@@ -30,7 +30,7 @@ class AllocationExplain extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cluster/allocation/explain";
+        return '/_cluster/allocation/explain';
     }
 
     public function getParamWhitelist(): array
@@ -42,7 +42,7 @@ class AllocationExplain extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

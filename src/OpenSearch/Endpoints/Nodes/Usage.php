@@ -44,7 +44,7 @@ class Usage extends AbstractEndpoint
         if (isset($metric)) {
             return "/_nodes/usage/$metric";
         }
-        return "/_nodes/usage";
+        return '/_nodes/usage';
     }
 
     public function getParamWhitelist(): array
@@ -55,7 +55,7 @@ class Usage extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -70,7 +70,7 @@ class Usage extends AbstractEndpoint
             return $this;
         }
         if (is_array($node_id) === true) {
-            $node_id = implode(",", $node_id);
+            $node_id = implode(',', $node_id);
         }
         $this->node_id = rawurlencode((string) $node_id);
 
@@ -83,7 +83,7 @@ class Usage extends AbstractEndpoint
             return $this;
         }
         if (is_array($metric) === true) {
-            $metric = implode(",", $metric);
+            $metric = implode(',', $metric);
         }
         $this->metric = rawurlencode((string) $metric);
 

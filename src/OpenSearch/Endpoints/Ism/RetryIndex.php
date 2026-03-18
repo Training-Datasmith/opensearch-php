@@ -28,7 +28,7 @@ class RetryIndex extends AbstractEndpoint
         if (isset($index)) {
             return "/_plugins/_ism/retry/$index";
         }
-        return "/_plugins/_ism/retry";
+        return '/_plugins/_ism/retry';
     }
 
     public function getParamWhitelist(): array
@@ -39,7 +39,7 @@ class RetryIndex extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

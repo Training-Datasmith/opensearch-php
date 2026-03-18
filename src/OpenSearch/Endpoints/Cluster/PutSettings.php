@@ -30,7 +30,7 @@ class PutSettings extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cluster/settings";
+        return '/_cluster/settings';
     }
 
     public function getParamWhitelist(): array
@@ -44,7 +44,7 @@ class PutSettings extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

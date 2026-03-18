@@ -30,7 +30,7 @@ class GetJudgments extends AbstractEndpoint
         if (isset($judgment_id)) {
             return "/_plugins/_search_relevance/judgments/$judgment_id";
         }
-        return "/_plugins/_search_relevance/judgments";
+        return '/_plugins/_search_relevance/judgments';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetJudgments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -24,7 +24,7 @@ class GetTenants extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/tenants";
+        return '/_plugins/_security/api/tenants';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetTenants extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

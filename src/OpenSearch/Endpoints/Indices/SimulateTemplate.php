@@ -36,7 +36,7 @@ class SimulateTemplate extends AbstractEndpoint
         if (isset($name)) {
             return "/_index_template/_simulate/$name";
         }
-        return "/_index_template/_simulate";
+        return '/_index_template/_simulate';
     }
 
     public function getParamWhitelist(): array
@@ -50,7 +50,7 @@ class SimulateTemplate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

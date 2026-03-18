@@ -30,7 +30,7 @@ class GetExperiments extends AbstractEndpoint
         if (isset($experiment_id)) {
             return "/_plugins/_search_relevance/experiments/$experiment_id";
         }
-        return "/_plugins/_search_relevance/experiments";
+        return '/_plugins/_search_relevance/experiments';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetExperiments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

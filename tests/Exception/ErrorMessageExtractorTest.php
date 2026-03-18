@@ -39,8 +39,8 @@ class ErrorMessageExtractorTest extends TestCase
     {
         $data = [
             'error' => [
-                'foo' => 'error message'
-            ]
+                'foo' => 'error message',
+            ],
         ];
         $message = ErrorMessageExtractor::extractErrorMessage($data);
         $this->assertEquals('{"foo":"error message"}', $message);
@@ -49,7 +49,7 @@ class ErrorMessageExtractorTest extends TestCase
     public function testLegacyErrorAsString(): void
     {
         $data = [
-            'error' => 'error message'
+            'error' => 'error message',
         ];
         $message = ErrorMessageExtractor::extractErrorMessage($data);
         $this->assertEquals('error message', $message);
@@ -62,13 +62,13 @@ class ErrorMessageExtractorTest extends TestCase
                 'root_cause' => [
                     [
                         'type' => 'root_cause_type',
-                        'reason' => 'root_cause_reason'
-                    ]
+                        'reason' => 'root_cause_reason',
+                    ],
                 ],
                 'type' => 'type',
-                'reason' => 'reason'
+                'reason' => 'reason',
             ],
-            'status' => 400
+            'status' => 400,
         ];
 
         $message = ErrorMessageExtractor::extractErrorMessage($data);

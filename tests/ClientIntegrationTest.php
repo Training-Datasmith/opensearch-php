@@ -65,7 +65,7 @@ class ClientIntegrationTest extends TestCase
     public function testNotFoundError()
     {
         $this->expectException(NotFoundHttpException::class);
-        $this->expectExceptionMessage("index_not_found_exception: no such index [foo]");
+        $this->expectExceptionMessage('index_not_found_exception: no such index [foo]');
         $this->client->get([
             'index' => 'foo',
             'id' => 'bar',
@@ -165,7 +165,7 @@ class ClientIntegrationTest extends TestCase
                     PHP_OS,
                     PHP_VERSION
                 ),
-            ]
+            ],
         ]);
 
         $guzzleHttpFactory = new HttpFactory();

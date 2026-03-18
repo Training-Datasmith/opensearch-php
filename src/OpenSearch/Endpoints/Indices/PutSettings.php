@@ -34,7 +34,7 @@ class PutSettings extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_settings";
         }
-        return "/_settings";
+        return '/_settings';
     }
 
     public function getParamWhitelist(): array
@@ -52,7 +52,7 @@ class PutSettings extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

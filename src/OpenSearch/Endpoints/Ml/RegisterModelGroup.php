@@ -24,7 +24,7 @@ class RegisterModelGroup extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/model_groups/_register";
+        return '/_plugins/_ml/model_groups/_register';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class RegisterModelGroup extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

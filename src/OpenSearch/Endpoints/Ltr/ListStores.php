@@ -24,7 +24,7 @@ class ListStores extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_ltr";
+        return '/_ltr';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class ListStores extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

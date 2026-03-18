@@ -24,7 +24,7 @@ class GetDashboardsInfo extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_opendistro/_security/kibanainfo";
+        return '/_opendistro/_security/kibanainfo';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetDashboardsInfo extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

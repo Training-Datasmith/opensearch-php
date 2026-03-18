@@ -43,7 +43,7 @@ class PutAlias extends AbstractEndpoint
         if (isset($name)) {
             return "/_alias/$name";
         }
-        return "/_alias";
+        return '/_alias';
     }
 
     public function getParamWhitelist(): array
@@ -56,7 +56,7 @@ class PutAlias extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

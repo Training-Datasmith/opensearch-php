@@ -54,8 +54,8 @@ class CreatePointInTimeIntegrationTest extends TestCase
             'body' => [
                 'title' => 'Remember the Titans',
                 'director' => 'Boaz Yakin',
-                'year' => 2000
-            ]
+                'year' => 2000,
+            ],
         ]);
     }
 

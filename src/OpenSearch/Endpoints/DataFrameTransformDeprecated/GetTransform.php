@@ -34,7 +34,7 @@ class GetTransform extends AbstractEndpoint
         if (isset($transform_id)) {
             return "/_data_frame/transforms/$transform_id";
         }
-        return "/_data_frame/transforms";
+        return '/_data_frame/transforms';
     }
 
     public function getParamWhitelist(): array
@@ -42,7 +42,7 @@ class GetTransform extends AbstractEndpoint
         return [
             'from',
             'size',
-            'allow_no_match'
+            'allow_no_match',
         ];
     }
 

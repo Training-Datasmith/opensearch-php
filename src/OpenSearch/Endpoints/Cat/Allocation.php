@@ -36,7 +36,7 @@ class Allocation extends AbstractEndpoint
         if (isset($node_id)) {
             return "/_cat/allocation/$node_id";
         }
-        return "/_cat/allocation";
+        return '/_cat/allocation';
     }
 
     public function getParamWhitelist(): array
@@ -55,7 +55,7 @@ class Allocation extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -70,7 +70,7 @@ class Allocation extends AbstractEndpoint
             return $this;
         }
         if (is_array($node_id) === true) {
-            $node_id = implode(",", $node_id);
+            $node_id = implode(',', $node_id);
         }
         $this->node_id = rawurlencode((string) $node_id);
 

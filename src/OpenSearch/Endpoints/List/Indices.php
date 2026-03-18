@@ -28,7 +28,7 @@ class Indices extends AbstractEndpoint
         if (isset($index)) {
             return "/_list/indices/$index";
         }
-        return "/_list/indices";
+        return '/_list/indices';
     }
 
     public function getParamWhitelist(): array
@@ -55,7 +55,7 @@ class Indices extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

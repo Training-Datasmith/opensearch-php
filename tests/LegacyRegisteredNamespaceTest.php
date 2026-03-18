@@ -21,11 +21,11 @@ declare(strict_types=1);
 
 namespace OpenSearch\Tests;
 
+use Mockery as m;
 use OpenSearch;
 use OpenSearch\ClientBuilder;
 use OpenSearch\Serializers\SerializerInterface;
 use OpenSearch\Transport;
-use Mockery as m;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,7 +47,7 @@ class LegacyRegisteredNamespaceTest extends TestCase
 
         $client = ClientBuilder::create()->registerNamespace($builder)->build();
         // @phpstan-ignore method.notFound
-        $this->assertSame("123", $client->foo()->fooMethod());
+        $this->assertSame('123', $client->foo()->fooMethod());
     }
 
     public function testNonExistingNamespace()
@@ -71,7 +71,7 @@ class FooNamespaceBuilder implements OpenSearch\Namespaces\NamespaceBuilderInter
 {
     public function getName(): string
     {
-        return "foo";
+        return 'foo';
     }
 
     public function getObject(Transport|OpenSearch\TransportInterface $transport, SerializerInterface $serializer)
@@ -84,7 +84,7 @@ class FooNamespace
 {
     public function fooMethod()
     {
-        return "123";
+        return '123';
     }
 }
 // @codingStandardsIgnoreEnd

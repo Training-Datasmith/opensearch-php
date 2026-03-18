@@ -34,7 +34,7 @@ class Refresh extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_refresh";
         }
-        return "/_refresh";
+        return '/_refresh';
     }
 
     public function getParamWhitelist(): array
@@ -47,7 +47,7 @@ class Refresh extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

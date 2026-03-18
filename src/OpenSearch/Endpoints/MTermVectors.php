@@ -32,7 +32,7 @@ class MTermVectors extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_mtermvectors";
         }
-        return "/_mtermvectors";
+        return '/_mtermvectors';
     }
 
     public function getParamWhitelist(): array
@@ -54,7 +54,7 @@ class MTermVectors extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

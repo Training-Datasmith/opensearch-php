@@ -24,7 +24,7 @@ class Migrate extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/migrate";
+        return '/_plugins/_security/api/migrate';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class Migrate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

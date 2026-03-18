@@ -34,7 +34,7 @@ class GetMapping extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_mapping";
         }
-        return "/_mapping";
+        return '/_mapping';
     }
 
     public function getParamWhitelist(): array
@@ -51,7 +51,7 @@ class GetMapping extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

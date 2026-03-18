@@ -36,7 +36,7 @@ class DataStreamsStats extends AbstractEndpoint
         if (isset($name)) {
             return "/_data_stream/$name/_stats";
         }
-        return "/_data_stream/_stats";
+        return '/_data_stream/_stats';
     }
 
     public function getParamWhitelist(): array
@@ -46,7 +46,7 @@ class DataStreamsStats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -61,7 +61,7 @@ class DataStreamsStats extends AbstractEndpoint
             return $this;
         }
         if (is_array($name) === true) {
-            $name = implode(",", $name);
+            $name = implode(',', $name);
         }
         $this->name = rawurlencode((string) $name);
 

@@ -30,7 +30,7 @@ class GetQueryGroup extends AbstractEndpoint
         if (isset($name)) {
             return "/_wlm/query_group/$name";
         }
-        return "/_wlm/query_group";
+        return '/_wlm/query_group';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetQueryGroup extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

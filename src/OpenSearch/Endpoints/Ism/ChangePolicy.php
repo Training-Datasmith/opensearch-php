@@ -28,7 +28,7 @@ class ChangePolicy extends AbstractEndpoint
         if (isset($index)) {
             return "/_plugins/_ism/change_policy/$index";
         }
-        return "/_plugins/_ism/change_policy";
+        return '/_plugins/_ism/change_policy';
     }
 
     public function getParamWhitelist(): array
@@ -39,7 +39,7 @@ class ChangePolicy extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

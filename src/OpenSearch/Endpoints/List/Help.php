@@ -24,7 +24,7 @@ class Help extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_list";
+        return '/_list';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class Help extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

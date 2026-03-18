@@ -36,7 +36,7 @@ class Fielddata extends AbstractEndpoint
         if (isset($fields)) {
             return "/_cat/fielddata/$fields";
         }
-        return "/_cat/fielddata";
+        return '/_cat/fielddata';
     }
 
     public function getParamWhitelist(): array
@@ -53,7 +53,7 @@ class Fielddata extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -68,7 +68,7 @@ class Fielddata extends AbstractEndpoint
             return $this;
         }
         if (is_array($fields) === true) {
-            $fields = implode(",", $fields);
+            $fields = implode(',', $fields);
         }
         $this->fields = rawurlencode((string) $fields);
 

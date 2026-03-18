@@ -24,7 +24,7 @@ class SearchModelGroup extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/model_groups/_search";
+        return '/_plugins/_ml/model_groups/_search';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class SearchModelGroup extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -47,9 +47,9 @@ class SearchResponseIteratorTest extends TestCase
             'size' => 1000,
             'body' => [
                 'query' => [
-                    'match_all' => new stdClass()
-                ]
-            ]
+                    'match_all' => new stdClass(),
+                ],
+            ],
         ];
 
         $mock_client = m::mock(Client::class);
@@ -76,9 +76,9 @@ class SearchResponseIteratorTest extends TestCase
             'size' => 1000,
             'body' => [
                 'query' => [
-                    'match_all' => new stdClass()
-                ]
-            ]
+                    'match_all' => new stdClass(),
+                ],
+            ],
         ];
 
         $mock_client = m::mock(Client::class);
@@ -93,10 +93,10 @@ class SearchResponseIteratorTest extends TestCase
                     'hits' => [
                         'hits' => [
                             [
-                                'foo' => 'bar'
-                            ]
-                        ]
-                    ]
+                                'foo' => 'bar',
+                            ],
+                        ],
+                    ],
                 ]
             );
 
@@ -108,7 +108,7 @@ class SearchResponseIteratorTest extends TestCase
                     'scroll' => '5m',
                     'body' => [
                         'scroll_id' => 'scroll_id_01',
-                    ]
+                    ],
                 ]
             )
             ->andReturn(
@@ -117,10 +117,10 @@ class SearchResponseIteratorTest extends TestCase
                     'hits' => [
                         'hits' => [
                             [
-                                'foo' => 'bar'
-                            ]
-                        ]
-                    ]
+                                'foo' => 'bar',
+                            ],
+                        ],
+                    ],
                 ]
             );
 
@@ -132,7 +132,7 @@ class SearchResponseIteratorTest extends TestCase
                     'scroll' => '5m',
                     'body' => [
                         'scroll_id' => 'scroll_id_02',
-                    ]
+                    ],
                 ]
             )
             ->andReturn(
@@ -141,10 +141,10 @@ class SearchResponseIteratorTest extends TestCase
                     'hits' => [
                         'hits' => [
                             [
-                                'foo' => 'bar'
-                            ]
-                        ]
-                    ]
+                                'foo' => 'bar',
+                            ],
+                        ],
+                    ],
                 ]
             );
 
@@ -156,15 +156,15 @@ class SearchResponseIteratorTest extends TestCase
                     'scroll' => '5m',
                     'body' => [
                         'scroll_id' => 'scroll_id_03',
-                    ]
+                    ],
                 ]
             )
             ->andReturn(
                 [
                     '_scroll_id' => 'scroll_id_04',
                     'hits' => [
-                        'hits' => []
-                    ]
+                        'hits' => [],
+                    ],
                 ]
             );
 
@@ -175,7 +175,7 @@ class SearchResponseIteratorTest extends TestCase
                     'scroll' => '5m',
                     'body' => [
                         'scroll_id' => 'scroll_id_04',
-                    ]
+                    ],
                 ]
             );
 
@@ -189,7 +189,7 @@ class SearchResponseIteratorTest extends TestCase
         $i = 0;
         foreach ($responses as $response) {
             $count += count($response['hits']['hits']);
-            $this->assertEquals($response['_scroll_id'], sprintf("scroll_id_%02d", ++$i));
+            $this->assertEquals($response['_scroll_id'], sprintf('scroll_id_%02d', ++$i));
         }
         $this->assertEquals(3, $count);
     }

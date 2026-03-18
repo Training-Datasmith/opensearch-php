@@ -34,7 +34,7 @@ class ForceMerge extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_forcemerge";
         }
-        return "/_forcemerge";
+        return '/_forcemerge';
     }
 
     public function getParamWhitelist(): array
@@ -52,7 +52,7 @@ class ForceMerge extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -77,7 +77,7 @@ class ClientTest extends TestCase
         $this->client->delete(
             [
                 'index' => null,
-                'id' => 'test'
+                'id' => 'test',
             ]
         );
     }
@@ -95,7 +95,7 @@ class ClientTest extends TestCase
         $this->client->delete(
             [
                 'index' => 'test',
-                'id' => null
+                'id' => null,
             ]
         );
     }

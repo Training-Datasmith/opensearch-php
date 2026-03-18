@@ -34,7 +34,7 @@ class Simulate extends AbstractEndpoint
         if (isset($id)) {
             return "/_ingest/pipeline/$id/_simulate";
         }
-        return "/_ingest/pipeline/_simulate";
+        return '/_ingest/pipeline/_simulate';
     }
 
     public function getParamWhitelist(): array
@@ -45,7 +45,7 @@ class Simulate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

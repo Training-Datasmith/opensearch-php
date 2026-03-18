@@ -24,7 +24,7 @@ class ListFeatures extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_notifications/features";
+        return '/_plugins/_notifications/features';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class ListFeatures extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

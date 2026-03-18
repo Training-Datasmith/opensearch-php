@@ -28,7 +28,7 @@ class Reindex extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_reindex";
+        return '/_reindex';
     }
 
     public function getParamWhitelist(): array
@@ -47,7 +47,7 @@ class Reindex extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

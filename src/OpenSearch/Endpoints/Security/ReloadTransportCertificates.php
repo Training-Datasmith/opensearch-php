@@ -24,7 +24,7 @@ class ReloadTransportCertificates extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/ssl/transport/reloadcerts";
+        return '/_plugins/_security/api/ssl/transport/reloadcerts';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class ReloadTransportCertificates extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

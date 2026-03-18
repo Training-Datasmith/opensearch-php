@@ -28,7 +28,7 @@ class Info extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/";
+        return '/';
     }
 
     public function getParamWhitelist(): array
@@ -38,7 +38,7 @@ class Info extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

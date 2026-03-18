@@ -43,12 +43,12 @@ class ClientBuilderTest extends TestCase
      */
     public function testIncludePortInHostHeader()
     {
-        $host = "localhost";
+        $host = 'localhost';
         $url = "$host:1234";
         $params = [
             'client' => [
-                'verbose' => true
-            ]
+                'verbose' => true,
+            ],
         ];
         $client = ClientBuilder::create()
             ->setConnectionParams($params)
@@ -72,12 +72,12 @@ class ClientBuilderTest extends TestCase
      */
     public function testNotIncludePortInHostHeaderAsDefault()
     {
-        $host = "localhost";
+        $host = 'localhost';
         $url  = "$host:1234";
         $params = [
             'client' => [
-                'verbose' => true
-            ]
+                'verbose' => true,
+            ],
         ];
         $client = ClientBuilder::create()
             ->setConnectionParams($params)
@@ -100,12 +100,12 @@ class ClientBuilderTest extends TestCase
      */
     public function testNotIncludePortInHostHeader()
     {
-        $host = "localhost";
+        $host = 'localhost';
         $url  = "$host:1234";
         $params = [
             'client' => [
-                'verbose' => true
-            ]
+                'verbose' => true,
+            ],
         ];
         $client = ClientBuilder::create()
             ->setConnectionParams($params)
@@ -128,12 +128,12 @@ class ClientBuilderTest extends TestCase
     {
         return [
             [[
-                'hosts' => ['localhost:9200']
+                'hosts' => ['localhost:9200'],
             ]],
             [[
                 'hosts'  => ['localhost:9200'],
-                'basicAuthentication' => ['username-value', 'password-value']
-            ]]
+                'basicAuthentication' => ['username-value', 'password-value'],
+            ]],
         ];
     }
 
@@ -152,7 +152,7 @@ class ClientBuilderTest extends TestCase
         $client = ClientBuilder::fromConfig(
             [
                 'hosts' => ['localhost:9200'],
-                'foo' => 'bar'
+                'foo' => 'bar',
             ],
             true
         );
@@ -164,7 +164,7 @@ class ClientBuilderTest extends TestCase
         $client = ClientBuilder::fromConfig(
             [
                 'hosts' => ['localhost:9200'],
-                'foo' => 'bar'
+                'foo' => 'bar',
             ],
             false
         );
@@ -173,7 +173,7 @@ class ClientBuilderTest extends TestCase
     public function testFromConfigUsingBasicAuthentication()
     {
         $config = [
-            'basicAuthentication' => ["foo", "bar"],
+            'basicAuthentication' => ['foo', 'bar'],
             'connectionParams' => [],
         ];
         $client = ClientBuilder::fromConfig($config);
@@ -203,8 +203,8 @@ class ClientBuilderTest extends TestCase
             'includePortInHostHeader' => true,
             'connectionParams' => [
                 'client' => [
-                    'verbose' => true
-                ]
+                    'verbose' => true,
+                ],
             ],
         ];
 

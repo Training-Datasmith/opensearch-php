@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\AsyncSearch;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class Get extends AbstractEndpoint
 {
@@ -41,7 +41,7 @@ class Get extends AbstractEndpoint
         return [
             'wait_for_completion_timeout',
             'keep_alive',
-            'typed_keys'
+            'typed_keys',
         ];
     }
 

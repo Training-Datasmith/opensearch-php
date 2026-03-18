@@ -30,7 +30,7 @@ class GetQuerySets extends AbstractEndpoint
         if (isset($query_set_id)) {
             return "/_plugins/_search_relevance/query_sets/$query_set_id";
         }
-        return "/_plugins/_search_relevance/query_sets";
+        return '/_plugins/_search_relevance/query_sets';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetQuerySets extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -28,7 +28,7 @@ class Shards extends AbstractEndpoint
         if (isset($index)) {
             return "/_list/shards/$index";
         }
-        return "/_list/shards";
+        return '/_list/shards';
     }
 
     public function getParamWhitelist(): array
@@ -51,7 +51,7 @@ class Shards extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

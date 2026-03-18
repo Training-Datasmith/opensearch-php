@@ -24,7 +24,7 @@ class PostScheduledExperiments extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_search_relevance/experiments/schedule";
+        return '/_plugins/_search_relevance/experiments/schedule';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class PostScheduledExperiments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

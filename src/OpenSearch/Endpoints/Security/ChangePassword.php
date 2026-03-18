@@ -24,7 +24,7 @@ class ChangePassword extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/account";
+        return '/_plugins/_security/api/account';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class ChangePassword extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

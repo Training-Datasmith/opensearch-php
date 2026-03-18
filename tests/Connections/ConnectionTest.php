@@ -21,6 +21,9 @@ declare(strict_types=1);
 
 namespace OpenSearch\Tests\Connections;
 
+use function base64_encode;
+
+use Exception;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
 use OpenSearch\Common\Exceptions\ServerErrorResponseException;
@@ -28,16 +31,15 @@ use OpenSearch\Connections\Connection;
 use OpenSearch\Serializers\SerializerInterface;
 use OpenSearch\Serializers\SmartSerializer;
 use OpenSearch\Tests\ClientBuilder\ArrayLogger;
-use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\Group;
-use Psr\Log\LoggerInterface;
-use ReflectionClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
-use function base64_encode;
 use function random_bytes;
+
+use ReflectionClass;
 
 // @phpstan-ignore classConstant.deprecatedClass
 @trigger_error(ConnectionTest::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
@@ -73,7 +75,7 @@ class ConnectionTest extends TestCase
     public function testConstructor()
     {
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -94,7 +96,7 @@ class ConnectionTest extends TestCase
     {
         $params = [];
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -118,7 +120,7 @@ class ConnectionTest extends TestCase
     {
         $params = [];
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -167,11 +169,11 @@ class ConnectionTest extends TestCase
     {
         $params = ['client' => ['headers' => [
             'Authorization' => [
-                'ApiKey ' . base64_encode(random_bytes(10))
-            ]
+                'ApiKey ' . base64_encode(random_bytes(10)),
+            ],
         ] ] ];
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -195,8 +197,8 @@ class ConnectionTest extends TestCase
     {
         $params = ['client' => ['headers' => [
             'Authorization' => [
-                'ApiKey ' . base64_encode(random_bytes(10))
-            ]
+                'ApiKey ' . base64_encode(random_bytes(10)),
+            ],
         ] ] ];
         $host = [
             'host' => 'localhost',
@@ -228,7 +230,7 @@ class ConnectionTest extends TestCase
             CURLOPT_USERPWD  => 'username:password',
         ] ] ];
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -284,7 +286,7 @@ class ConnectionTest extends TestCase
     public function testTryDeserializeErrorWithMasterNotDiscoveredException()
     {
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -305,7 +307,7 @@ class ConnectionTest extends TestCase
         $response = [
             'transfer_stats' => [],
             'status' => 503,
-            'body' => $body
+            'body' => $body,
         ];
 
         $result = $tryDeserializeError->invoke($connection, $response, ServerErrorResponseException::class);
@@ -319,7 +321,7 @@ class ConnectionTest extends TestCase
     public function testTryDeserializeErrorWith403Error()
     {
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -340,7 +342,7 @@ class ConnectionTest extends TestCase
         $response = [
             'transfer_stats' => [],
             'status' => 403,
-            'body' => $body
+            'body' => $body,
         ];
 
         $result = $tryDeserializeError->invoke($connection, $response, ServerErrorResponseException::class);
@@ -351,7 +353,7 @@ class ConnectionTest extends TestCase
     public function testHeaderClientParamIsResetAfterSent()
     {
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
 
         $connection = new Connection(
@@ -366,9 +368,9 @@ class ConnectionTest extends TestCase
         $options = [
             'client' => [
                 'headers' => [
-                    'Foo' => [ 'Bar' ]
-                ]
-            ]
+                    'Foo' => [ 'Bar' ],
+                ],
+            ],
         ];
 
         $headersBefore = $connection->getHeaders();
@@ -381,12 +383,12 @@ class ConnectionTest extends TestCase
     {
         $connectionParams = [];
         $host = [
-            'host' => 'localhost'
+            'host' => 'localhost',
         ];
         $requestParams = [
             'foo' => true,
             'baz' => false,
-            'bar' => 'baz'
+            'bar' => 'baz',
         ];
 
         $connection = new Connection(
@@ -414,7 +416,7 @@ class ConnectionTest extends TestCase
                 'host'   => 'localhost',
                 'port'   => 9200,
                 'scheme' => 'http',
-                'path'   => '/info'
+                'path'   => '/info',
             ],
             [],
             $this->serializer,
@@ -425,17 +427,17 @@ class ConnectionTest extends TestCase
             'body' => '{}',
             'http_method' => 'GET',
             'headers' => [
-                'User-Agent: Testing'
-            ]
+                'User-Agent: Testing',
+            ],
         ];
         $response = [
             'effective_url' => 'http://localhost/info',
             'status' => 200,
             'transfer_stats' => [
                 'primary_port' => 9200,
-                'total_time' => 1
+                'total_time' => 1,
             ],
-            'body' => '{}'
+            'body' => '{}',
         ];
         $connection->logRequestSuccess($request, $response);
         // Check for localhost:9200 in trace
@@ -461,7 +463,7 @@ class ConnectionTest extends TestCase
                 'host'   => 'localhost',
                 'port'   => 9200,
                 'scheme' => 'http',
-                'path'   => '/info'
+                'path'   => '/info',
             ],
             [],
             $this->serializer,
@@ -472,17 +474,17 @@ class ConnectionTest extends TestCase
             'body' => '{}',
             'http_method' => 'GET',
             'headers' => [
-                'User-Agent: Testing'
-            ]
+                'User-Agent: Testing',
+            ],
         ];
         $response = [
             'effective_url' => 'http://localhost/info',
             'status' => 400,
             'transfer_stats' => [
                 'primary_port' => 9200,
-                'total_time' => 1
+                'total_time' => 1,
             ],
-            'body' => '{}'
+            'body' => '{}',
         ];
         $connection->logRequestFail($request, $response, new Exception());
 

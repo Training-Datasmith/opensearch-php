@@ -24,7 +24,7 @@ class Authtoken extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/authtoken";
+        return '/_plugins/_security/api/authtoken';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class Authtoken extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

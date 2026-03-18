@@ -34,7 +34,7 @@ class Health extends AbstractEndpoint
         if (isset($index)) {
             return "/_cluster/health/$index";
         }
-        return "/_cluster/health";
+        return '/_cluster/health';
     }
 
     public function getParamWhitelist(): array
@@ -57,7 +57,7 @@ class Health extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

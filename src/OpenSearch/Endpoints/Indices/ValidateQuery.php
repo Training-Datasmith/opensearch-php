@@ -34,7 +34,7 @@ class ValidateQuery extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_validate/query";
         }
-        return "/_validate/query";
+        return '/_validate/query';
     }
 
     public function getParamWhitelist(): array
@@ -56,7 +56,7 @@ class ValidateQuery extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -21,11 +21,12 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints;
 
+use function array_filter;
+
 use OpenSearch\EndpointInterface;
 use OpenSearch\Exception\UnexpectedValueException;
-use OpenSearch\Serializers\SerializerInterface;
 
-use function array_filter;
+use OpenSearch\Serializers\SerializerInterface;
 
 abstract class AbstractEndpoint implements EndpointInterface
 {
@@ -117,7 +118,7 @@ abstract class AbstractEndpoint implements EndpointInterface
         if (is_array($index) === true) {
             $index = array_filter($index);
             $index = array_map(trim(...), $index);
-            $index = implode(",", $index);
+            $index = implode(',', $index);
         }
 
         $this->index = $index;
@@ -222,7 +223,7 @@ abstract class AbstractEndpoint implements EndpointInterface
         $ignore = $this->options['client']['ignore'] ?? null;
         if (isset($ignore) === true) {
             if (is_string($ignore)) {
-                $this->options['client']['ignore'] = explode(",", $ignore);
+                $this->options['client']['ignore'] = explode(',', $ignore);
             } elseif (is_array($ignore)) {
                 $this->options['client']['ignore'] = $ignore;
             } else {
@@ -263,7 +264,7 @@ abstract class AbstractEndpoint implements EndpointInterface
             if ($this->isNestedArray($value) === true) {
                 continue;
             }
-            $value = implode(",", $value);
+            $value = implode(',', $value);
         }
 
         return $params;

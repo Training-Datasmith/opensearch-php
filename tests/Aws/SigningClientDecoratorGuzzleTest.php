@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSearch\Tests\Aws;
 
 use Aws\Credentials\CredentialsInterface;
@@ -57,7 +59,7 @@ class SigningClientDecoratorGuzzleTest extends TestCase
             $credentials,
             $signer,
             [
-                'Host' => 'search.host'
+                'Host' => 'search.host',
             ]
         );
 

@@ -32,7 +32,7 @@ class Submit extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_async_search";
         }
-        return "/_async_search";
+        return '/_async_search';
     }
 
     public function getParamWhitelist(): array
@@ -78,7 +78,7 @@ class Submit extends AbstractEndpoint
             'typed_keys',
             'version',
             'seq_no_primary_term',
-            'max_concurrent_shard_requests'
+            'max_concurrent_shard_requests',
         ];
     }
 

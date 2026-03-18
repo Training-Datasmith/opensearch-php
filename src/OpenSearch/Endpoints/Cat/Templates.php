@@ -36,7 +36,7 @@ class Templates extends AbstractEndpoint
         if (isset($name)) {
             return "/_cat/templates/$name";
         }
-        return "/_cat/templates";
+        return '/_cat/templates';
     }
 
     public function getParamWhitelist(): array
@@ -54,7 +54,7 @@ class Templates extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

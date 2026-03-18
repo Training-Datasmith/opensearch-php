@@ -33,7 +33,7 @@ class BulkStream extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_bulk/stream";
         }
-        return "/_bulk/stream";
+        return '/_bulk/stream';
     }
 
     public function getParamWhitelist(): array
@@ -54,7 +54,7 @@ class BulkStream extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -24,7 +24,7 @@ class GetAllMemories extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/memory";
+        return '/_plugins/_ml/memory';
     }
 
     public function getParamWhitelist(): array
@@ -36,7 +36,7 @@ class GetAllMemories extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

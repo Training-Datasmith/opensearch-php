@@ -22,9 +22,7 @@ declare(strict_types=1);
 namespace OpenSearch\ConnectionPool;
 
 use OpenSearch\Common\Exceptions\NoNodesAvailableException;
-use OpenSearch\ConnectionPool\Selectors\SelectorInterface;
 use OpenSearch\Connections\Connection;
-use OpenSearch\Connections\ConnectionFactoryInterface;
 use OpenSearch\Connections\ConnectionInterface;
 
 // @phpstan-ignore classConstant.deprecatedClass
@@ -58,7 +56,7 @@ class StaticNoPingConnectionPool extends AbstractConnectionPool implements Conne
             }
         }
 
-        throw new NoNodesAvailableException("No alive nodes found in your cluster");
+        throw new NoNodesAvailableException('No alive nodes found in your cluster');
     }
 
     public function scheduleCheck(): void

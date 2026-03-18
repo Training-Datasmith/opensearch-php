@@ -32,7 +32,7 @@ class Count extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_count";
         }
-        return "/_count";
+        return '/_count';
     }
 
     public function getParamWhitelist(): array
@@ -56,7 +56,7 @@ class Count extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -145,7 +145,7 @@ class SigV4Handler
             'uri' => $uri->getPath(),
             'body' => $body,
             'headers' => $request->getHeaders(),
-            'client' => $client
+            'client' => $client,
         ];
         if ($uri->getQuery()) {
             $ringRequest['query_string'] = $uri->getQuery();

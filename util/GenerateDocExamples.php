@@ -84,7 +84,7 @@ foreach ($spec as $source) {
     $code = getClientSourceCode($source['parsed_source']);
     checkIfCodeHasValidSyntax($code);
 
-    $exampleFile = sprintf("%s/docs/examples/%s.asciidoc", dirname(__DIR__), $source['digest']);
+    $exampleFile = sprintf('%s/docs/examples/%s.asciidoc', dirname(__DIR__), $source['digest']);
     file_put_contents($exampleFile, $head . $code . "----\n");
     printf("File generated: %s.asciidoc\n", $source['digest']);
     $parsed++;
@@ -140,7 +140,7 @@ function prettyPrintArray(array $input, int $space): string
     $tab = str_repeat(' ', $space);
     foreach ($input as $key => $value) {
         if (is_int($key)) {
-            $output .= sprintf("%s", $tab);
+            $output .= sprintf('%s', $tab);
         } else {
             $output .= sprintf("%s'%s' => ", $tab, $key);
         }

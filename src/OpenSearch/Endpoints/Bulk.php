@@ -39,7 +39,7 @@ class Bulk extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_bulk";
         }
-        return "/_bulk";
+        return '/_bulk';
     }
 
     public function getParamWhitelist(): array
@@ -59,7 +59,7 @@ class Bulk extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

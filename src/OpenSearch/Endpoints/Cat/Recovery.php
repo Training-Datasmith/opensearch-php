@@ -34,7 +34,7 @@ class Recovery extends AbstractEndpoint
         if (isset($index)) {
             return "/_cat/recovery/$index";
         }
-        return "/_cat/recovery";
+        return '/_cat/recovery';
     }
 
     public function getParamWhitelist(): array
@@ -54,7 +54,7 @@ class Recovery extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

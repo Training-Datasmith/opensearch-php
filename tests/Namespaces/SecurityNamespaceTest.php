@@ -77,17 +77,17 @@ class SecurityNamespaceTest extends TestCase
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->changePassword([
             'password' => 'abc',
-            'current_password' => 'abc'
+            'current_password' => 'abc',
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -95,21 +95,21 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PUT', '/_plugins/_security/api/actiongroups/my_test_action_group', [], [
-                'allowed_actions' => ['indices:data/read*']
+                'allowed_actions' => ['indices:data/read*'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->createActionGroup([
             'action_group' => 'my_test_action_group',
-            'allowed_actions' => ['indices:data/read*']
+            'allowed_actions' => ['indices:data/read*'],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -119,7 +119,7 @@ class SecurityNamespaceTest extends TestCase
         $this->expectExceptionMessage('action_group is required for create_action_group');
 
         $this->securityNamespace->createActionGroup([
-            'allowed_actions' => ['indices:data/read*']
+            'allowed_actions' => ['indices:data/read*'],
         ]);
     }
 
@@ -129,71 +129,71 @@ class SecurityNamespaceTest extends TestCase
             ->with('PUT', '/_plugins/_security/api/roles/my_test_role', [], [
                 'cluster_permissions' => [
                     'cluster_composite_ops',
-                    'indices_monitor'
+                    'indices_monitor',
                 ],
                 'index_permissions' => [
                     [
                         'index_patterns' => [
-                            'movies*'
+                            'movies*',
                         ],
                         'dls' => '',
                         'fls' => [],
                         'masked_fields' => [],
                         'allowed_actions' => [
-                            'read'
-                        ]
-                    ]
+                            'read',
+                        ],
+                    ],
                 ],
                 'tenant_permissions' => [
                     [
                         'tenant_patterns' => [
-                            'human_resources'
+                            'human_resources',
                         ],
                         'allowed_actions' => [
-                            'kibana_all_read'
-                        ]
-                    ]
-                ]
+                            'kibana_all_read',
+                        ],
+                    ],
+                ],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->createRole([
             'role' => 'my_test_role',
             'cluster_permissions' => [
                 'cluster_composite_ops',
-                'indices_monitor'
+                'indices_monitor',
             ],
             'index_permissions' => [
                 [
                     'index_patterns' => [
-                        'movies*'
+                        'movies*',
                     ],
                     'dls' => '',
                     'fls' => [],
                     'masked_fields' => [],
                     'allowed_actions' => [
-                        'read'
-                    ]
-                ]
+                        'read',
+                    ],
+                ],
             ],
             'tenant_permissions' => [
                 [
                     'tenant_patterns' => [
-                        'human_resources'
+                        'human_resources',
                     ],
                     'allowed_actions' => [
-                        'kibana_all_read'
-                    ]
-                ]
-            ]
+                        'kibana_all_read',
+                    ],
+                ],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -207,9 +207,9 @@ class SecurityNamespaceTest extends TestCase
             'index_permissions' => [
                 [
                     'index_patterns' => [
-                        'test_index*'
+                        'test_index*',
                     ],
-                ]
+                ],
             ],
             'tenant_permissions' => [],
         ]);
@@ -225,7 +225,7 @@ class SecurityNamespaceTest extends TestCase
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->createRoleMapping([
@@ -237,7 +237,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -257,21 +257,21 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PUT', '/_plugins/_security/api/tenants/my_test_tenant', [], [
-                'description' => 'My test tenant'
+                'description' => 'My test tenant',
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->createTenant([
             'tenant' => 'my_test_tenant',
-            'description' => 'My test tenant'
+            'description' => 'My test tenant',
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -281,7 +281,7 @@ class SecurityNamespaceTest extends TestCase
         $this->expectExceptionMessage('tenant is required for create_tenant');
 
         $this->securityNamespace->createTenant([
-            'description' => 'My test tenant'
+            'description' => 'My test tenant',
         ]);
     }
 
@@ -294,12 +294,12 @@ class SecurityNamespaceTest extends TestCase
                 'backend_roles' => ['captains', 'starfleet'],
                 'attributes' => [
                     'attribute1' => 'value1',
-                    'attribute2' => 'value2'
-                ]
+                    'attribute2' => 'value2',
+                ],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->createUser([
@@ -309,13 +309,13 @@ class SecurityNamespaceTest extends TestCase
             'backend_roles' => ['captains', 'starfleet'],
             'attributes' => [
                 'attribute1' => 'value1',
-                'attribute2' => 'value2'
-            ]
+                'attribute2' => 'value2',
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -330,8 +330,8 @@ class SecurityNamespaceTest extends TestCase
             'backend_roles' => ['captains', 'starfleet'],
             'attributes' => [
                 'attribute1' => 'value1',
-                'attribute2' => 'value2'
-            ]
+                'attribute2' => 'value2',
+            ],
         ]);
     }
 
@@ -341,7 +341,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/actiongroups/my_test_action_group', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteActionGroup([
@@ -350,7 +350,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -368,7 +368,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/nodesdn/my_test_cluster', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteDistinguishedNames([
@@ -377,7 +377,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -387,7 +387,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/nodesdn/my_test_cluster', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteDistinguishedName([
@@ -396,7 +396,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -414,7 +414,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/roles/my_test_role', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteRole([
@@ -423,7 +423,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -441,7 +441,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/rolesmapping/my_test_role_mapping', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteRoleMapping([
@@ -450,7 +450,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -468,7 +468,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/tenants/my_test_tenant', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteTenant([
@@ -477,7 +477,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -495,7 +495,7 @@ class SecurityNamespaceTest extends TestCase
             ->with('DELETE', '/_plugins/_security/api/internalusers/my_test_user', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $result = $this->securityNamespace->deleteUser([
@@ -504,7 +504,7 @@ class SecurityNamespaceTest extends TestCase
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $result);
     }
 
@@ -535,7 +535,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getAccount();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -550,7 +550,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getAccountDetails();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -567,7 +567,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -582,7 +582,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getActionGroups();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -599,7 +599,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -661,7 +661,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -676,7 +676,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getDistinguishedNames();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -693,7 +693,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -710,7 +710,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -725,7 +725,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getRoleMappings();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -742,7 +742,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -759,7 +759,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -774,7 +774,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getRoles();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -791,7 +791,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -808,7 +808,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -823,7 +823,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getTenants();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -840,7 +840,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -857,7 +857,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -872,7 +872,7 @@ class SecurityNamespaceTest extends TestCase
         $response = $this->securityNamespace->getUsers();
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -889,7 +889,7 @@ class SecurityNamespaceTest extends TestCase
         ]);
 
         static::assertSame([
-            'resource' => ['test_resource']
+            'resource' => ['test_resource'],
         ], $response);
     }
 
@@ -899,14 +899,14 @@ class SecurityNamespaceTest extends TestCase
             ->with('GET', '/_plugins/_security/health', [], null)
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->health();
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -914,23 +914,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/actiongroups/my_test_action_group', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchActionGroups([
             'action_group' => 'my_test_action_group',
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -938,22 +938,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/actiongroups', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchActionGroups([
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -961,23 +961,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/actiongroups/my_test_action_group', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchActionGroup([
             'action_group' => 'my_test_action_group',
             'body' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -985,22 +985,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/securityconfig', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchConfig([
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1008,22 +1008,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/securityconfig', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchConfiguration([
             'body' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1031,23 +1031,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/rolesmapping/my_test_role_mapping', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchRoleMappings([
             'role' => 'my_test_role_mapping',
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1055,22 +1055,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/rolesmapping', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchRoleMappings([
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1078,23 +1078,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/rolesmapping/my_test_role_mapping', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchRoleMapping([
             'role' => 'my_test_role_mapping',
             'body' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1102,23 +1102,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/roles/my_test_role', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchRoles([
             'role' => 'my_test_role',
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1126,22 +1126,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/roles', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchRoles([
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1149,23 +1149,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/roles/my_test_role', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchRole([
             'role' => 'my_test_role',
             'body' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1173,23 +1173,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/tenants/my_test_tenant', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchTenants([
             'tenant' => 'my_test_tenant',
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1197,22 +1197,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/tenants', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchTenants([
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1220,23 +1220,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/tenants/my_test_tenant', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchTenant([
             'tenant' => 'my_test_tenant',
             'body' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1244,23 +1244,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/internalusers/my_test_user', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchUsers([
             'username' => 'my_test_user',
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1268,22 +1268,22 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/internalusers', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchUsers([
             'ops' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1291,23 +1291,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PATCH', '/_plugins/_security/api/internalusers/my_test_user', [], [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->patchUser([
             'username' => 'my_test_user',
             'body' => [
-                ['op' => 'remove', 'path' => '/index_permissions/0/dls']
-            ]
+                ['op' => 'remove', 'path' => '/index_permissions/0/dls'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1317,22 +1317,22 @@ class SecurityNamespaceTest extends TestCase
             ->with('PUT', '/_plugins/_security/api/securityconfig/config', [], [
                 'dynamic' => [
                     'filtered_alias_mode' => 'warn',
-                ]
+                ],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->updateConfig([
             'dynamic' => [
                 'filtered_alias_mode' => 'warn',
-            ]
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1342,22 +1342,22 @@ class SecurityNamespaceTest extends TestCase
             ->with('PUT', '/_plugins/_security/api/securityconfig/config', [], [
                 'dynamic' => [
                     'filtered_alias_mode' => 'warn',
-                ]
+                ],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->updateConfiguration([
             'body' => [
-                'dynamic' => ['filtered_alias_mode' => 'warn',]
-            ]
+                'dynamic' => ['filtered_alias_mode' => 'warn',],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1365,21 +1365,21 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PUT', '/_plugins/_security/api/nodesdn/my_test_cluster', [], [
-                'nodes_dn' => ['CN=cluster3.example.com']
+                'nodes_dn' => ['CN=cluster3.example.com'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->updateDistinguishedNames([
             'cluster_name' => 'my_test_cluster',
-            'nodes_dn' => ['CN=cluster3.example.com']
+            'nodes_dn' => ['CN=cluster3.example.com'],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 
@@ -1387,23 +1387,23 @@ class SecurityNamespaceTest extends TestCase
     {
         $this->transport->method('sendRequest')
             ->with('PUT', '/_plugins/_security/api/nodesdn/my_test_cluster', [], [
-                'nodes_dn' => ['CN=cluster3.example.com']
+                'nodes_dn' => ['CN=cluster3.example.com'],
             ])
             ->willReturn([
                 'status' => 'OK',
-                'message' => 'Stubbed response'
+                'message' => 'Stubbed response',
             ]);
 
         $response = $this->securityNamespace->updateDistinguishedName([
             'cluster_name' => 'my_test_cluster',
             'body' => [
-                'nodes_dn' => ['CN=cluster3.example.com']
-            ]
+                'nodes_dn' => ['CN=cluster3.example.com'],
+            ],
         ]);
 
         static::assertSame([
             'status' => 'OK',
-            'message' => 'Stubbed response'
+            'message' => 'Stubbed response',
         ], $response);
     }
 }

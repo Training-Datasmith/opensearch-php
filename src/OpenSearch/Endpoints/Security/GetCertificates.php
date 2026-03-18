@@ -24,7 +24,7 @@ class GetCertificates extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/ssl/certs";
+        return '/_plugins/_security/api/ssl/certs';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetCertificates extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -106,14 +106,14 @@ class AbstractEndpointTest extends TestCase
             [
                 'old_without_replacement' => 1,
             ],
-            'The parameter "old_without_replacement" is deprecated and will be removed without replacement in the next major version'
+            'The parameter "old_without_replacement" is deprecated and will be removed without replacement in the next major version',
         ];
 
         yield 'replaced with replacement' => [
             [
                 'old' => 1,
             ],
-            'The parameter "old" is deprecated and will be replaced with parameter "new" in the next major version'
+            'The parameter "old" is deprecated and will be replaced with parameter "new" in the next major version',
         ];
     }
 }
@@ -126,7 +126,7 @@ class TestEndpoint extends AbstractEndpoint
             'old',
             'old_without_replacement',
             'new',
-            'normal_one'
+            'normal_one',
         ];
     }
 

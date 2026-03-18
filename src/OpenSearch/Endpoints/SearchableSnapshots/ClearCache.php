@@ -32,7 +32,7 @@ class ClearCache extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_searchable_snapshots/cache/clear";
         }
-        return "/_searchable_snapshots/cache/clear";
+        return '/_searchable_snapshots/cache/clear';
     }
 
     public function getParamWhitelist(): array
@@ -41,7 +41,7 @@ class ClearCache extends AbstractEndpoint
             'ignore_unavailable',
             'allow_no_indices',
             'expand_wildcards',
-            'index'
+            'index',
         ];
     }
 

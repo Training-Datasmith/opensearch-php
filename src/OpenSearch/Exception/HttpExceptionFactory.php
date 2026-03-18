@@ -54,7 +54,7 @@ class HttpExceptionFactory
         int $code = 0,
         array $headers = []
     ): HttpExceptionInterface {
-        if (str_contains($message, "RoutingMissingException")) {
+        if (str_contains($message, 'RoutingMissingException')) {
             return new RoutingMissingException($message);
         }
         if (preg_match('/ActionRequestValidationException.+ no documents to get/', $message) === 1) {

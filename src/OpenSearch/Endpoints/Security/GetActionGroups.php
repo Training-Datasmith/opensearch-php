@@ -24,7 +24,7 @@ class GetActionGroups extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/actiongroups";
+        return '/_plugins/_security/api/actiongroups';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetActionGroups extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

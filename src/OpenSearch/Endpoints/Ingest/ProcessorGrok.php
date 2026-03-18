@@ -30,7 +30,7 @@ class ProcessorGrok extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_ingest/processor/grok";
+        return '/_ingest/processor/grok';
     }
 
     public function getParamWhitelist(): array
@@ -41,7 +41,7 @@ class ProcessorGrok extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

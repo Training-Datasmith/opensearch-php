@@ -28,7 +28,7 @@ class Get extends AbstractEndpoint
         if (isset($id)) {
             return "/_search/pipeline/$id";
         }
-        return "/_search/pipeline";
+        return '/_search/pipeline';
     }
 
     public function getParamWhitelist(): array
@@ -39,7 +39,7 @@ class Get extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

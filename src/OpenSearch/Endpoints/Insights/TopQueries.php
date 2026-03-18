@@ -24,7 +24,7 @@ class TopQueries extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_insights/top_queries";
+        return '/_insights/top_queries';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class TopQueries extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

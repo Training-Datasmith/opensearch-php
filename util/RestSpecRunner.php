@@ -51,8 +51,8 @@ try {
 }
 
 $version = $serverInfo['version']['number'];
-$artifactFile = sprintf("rest-resources-zip-%s.zip", $version);
-$tempFilePath = sprintf("%s/%s.zip", sys_get_temp_dir(), $serverInfo['version']['build_hash']);
+$artifactFile = sprintf('rest-resources-zip-%s.zip', $version);
+$tempFilePath = sprintf('%s/%s.zip', sys_get_temp_dir(), $serverInfo['version']['build_hash']);
 
 if (!file_exists($tempFilePath)) {
     printf("ERROR: the commit_hash %s has not been found\n", $serverInfo['version']['build_hash']);
@@ -61,7 +61,7 @@ if (!file_exists($tempFilePath)) {
 $zip = new \ZipArchive();
 $zip->open($tempFilePath);
 printf("Extracting %s\ninto %s/rest-spec/%s\n", $tempFilePath, __DIR__, $serverInfo['version']['build_hash']);
-$zip->extractTo(sprintf("%s/rest-spec/%s", __DIR__, $serverInfo['version']['build_hash']));
+$zip->extractTo(sprintf('%s/rest-spec/%s', __DIR__, $serverInfo['version']['build_hash']));
 $zip->close();
 
 printf("Rest-spec API installed successfully!\n\n");

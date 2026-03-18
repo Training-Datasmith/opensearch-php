@@ -36,7 +36,7 @@ class GetRepository extends AbstractEndpoint
         if (isset($repository)) {
             return "/_snapshot/$repository";
         }
-        return "/_snapshot";
+        return '/_snapshot';
     }
 
     public function getParamWhitelist(): array
@@ -49,7 +49,7 @@ class GetRepository extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -64,7 +64,7 @@ class GetRepository extends AbstractEndpoint
             return $this;
         }
         if (is_array($repository) === true) {
-            $repository = implode(",", $repository);
+            $repository = implode(',', $repository);
         }
         $this->repository = rawurlencode((string) $repository);
 

@@ -34,7 +34,7 @@ class Analyze extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_analyze";
         }
-        return "/_analyze";
+        return '/_analyze';
     }
 
     public function getParamWhitelist(): array
@@ -45,7 +45,7 @@ class Analyze extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

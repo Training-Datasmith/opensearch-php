@@ -24,7 +24,7 @@ class GeojsonUploadPost extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/geospatial/geojson/_upload";
+        return '/_plugins/geospatial/geojson/_upload';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GeojsonUploadPost extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

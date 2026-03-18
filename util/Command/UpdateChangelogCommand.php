@@ -19,22 +19,22 @@ class UpdateChangelogCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         try {
-            $gitStatus = shell_exec("git status");
+            $gitStatus = shell_exec('git status');
             if ($gitStatus === null) {
                 throw new \RuntimeException('Failed to execute git command.');
             }
 
             if (
-                str_contains($gitStatus, "Changes to be committed:") ||
-                str_contains($gitStatus, "Changes not staged for commit:") ||
-                str_contains($gitStatus, "Untracked files:")
+                str_contains($gitStatus, 'Changes to be committed:') ||
+                str_contains($gitStatus, 'Changes not staged for commit:') ||
+                str_contains($gitStatus, 'Untracked files:')
             ) {
-                $io->info("Changes detected; updating changelog.");
+                $io->info('Changes detected; updating changelog.');
 
                 $client = new Client();
                 $response = $client->get('https://api.github.com/repos/opensearch-project/opensearch-api-specification/commits', [
                     'query' => ['per_page' => 1],
-                    'headers' => ['User-Agent' => 'PHP']
+                    'headers' => ['User-Agent' => 'PHP'],
                 ]);
 
                 if ($response->getStatusCode() !== 200) {
@@ -44,17 +44,17 @@ class UpdateChangelogCommand extends Command
                 }
 
                 $commitInfo = json_decode($response->getBody()->getContents(), true)[0];
-                $commitUrl = $commitInfo["html_url"];
-                $latestCommitSha = $commitInfo["sha"];
+                $commitUrl = $commitInfo['html_url'];
+                $latestCommitSha = $commitInfo['sha'];
 
-                $changelogPath = "CHANGELOG.md";
+                $changelogPath = 'CHANGELOG.md';
                 $content = file_get_contents($changelogPath);
                 if ($content === false) {
                     throw new \RuntimeException('Failed to read CHANGELOG.md');
                 }
 
                 if (!str_contains($content, $commitUrl)) {
-                    $search = "### Updated APIs";
+                    $search = '### Updated APIs';
                     $pos = strpos($content, $search);
                     if ($pos !== false) {
                         $shortHash = substr($latestCommitSha, 0, 7);
@@ -70,10 +70,10 @@ class UpdateChangelogCommand extends Command
                     }
                 }
             } else {
-                $io->info("No changes detected");
+                $io->info('No changes detected');
             }
         } catch (\Exception $e) {
-            $io->error(sprintf("Error occurred: %s", $e->getMessage()));
+            $io->error(sprintf('Error occurred: %s', $e->getMessage()));
             return Command::FAILURE;
         }
 

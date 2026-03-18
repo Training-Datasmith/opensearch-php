@@ -36,7 +36,7 @@ class ReloadSecureSettings extends AbstractEndpoint
         if (isset($node_id)) {
             return "/_nodes/$node_id/reload_secure_settings";
         }
-        return "/_nodes/reload_secure_settings";
+        return '/_nodes/reload_secure_settings';
     }
 
     public function getParamWhitelist(): array
@@ -47,7 +47,7 @@ class ReloadSecureSettings extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -72,7 +72,7 @@ class ReloadSecureSettings extends AbstractEndpoint
             return $this;
         }
         if (is_array($node_id) === true) {
-            $node_id = implode(",", $node_id);
+            $node_id = implode(',', $node_id);
         }
         $this->node_id = rawurlencode((string) $node_id);
 

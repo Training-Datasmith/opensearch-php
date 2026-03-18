@@ -30,7 +30,7 @@ class GetSearchConfigurations extends AbstractEndpoint
         if (isset($search_configuration_id)) {
             return "/_plugins/_search_relevance/search_configurations/$search_configuration_id";
         }
-        return "/_plugins/_search_relevance/search_configurations";
+        return '/_plugins/_search_relevance/search_configurations';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetSearchConfigurations extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

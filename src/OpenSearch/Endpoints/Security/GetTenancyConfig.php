@@ -24,7 +24,7 @@ class GetTenancyConfig extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/tenancy/config";
+        return '/_plugins/_security/api/tenancy/config';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetTenancyConfig extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

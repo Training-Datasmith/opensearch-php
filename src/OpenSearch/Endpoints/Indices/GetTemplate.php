@@ -36,7 +36,7 @@ class GetTemplate extends AbstractEndpoint
         if (isset($name)) {
             return "/_template/$name";
         }
-        return "/_template";
+        return '/_template';
     }
 
     public function getParamWhitelist(): array
@@ -50,7 +50,7 @@ class GetTemplate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
@@ -65,7 +65,7 @@ class GetTemplate extends AbstractEndpoint
             return $this;
         }
         if (is_array($name) === true) {
-            $name = implode(",", $name);
+            $name = implode(',', $name);
         }
         $this->name = rawurlencode((string) $name);
 

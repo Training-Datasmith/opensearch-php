@@ -30,7 +30,7 @@ class GetProfileModels extends AbstractEndpoint
         if (isset($model_id)) {
             return "/_plugins/_ml/profile/models/$model_id";
         }
-        return "/_plugins/_ml/profile/models";
+        return '/_plugins/_ml/profile/models';
     }
 
     public function getParamWhitelist(): array
@@ -40,7 +40,7 @@ class GetProfileModels extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

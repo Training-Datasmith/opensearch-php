@@ -24,7 +24,7 @@ class GetProfile extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/profile";
+        return '/_plugins/_ml/profile';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class GetProfile extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

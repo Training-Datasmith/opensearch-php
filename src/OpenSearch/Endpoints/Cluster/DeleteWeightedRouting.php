@@ -24,7 +24,7 @@ class DeleteWeightedRouting extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_cluster/routing/awareness/weights";
+        return '/_cluster/routing/awareness/weights';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class DeleteWeightedRouting extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\DataFrameTransformDeprecated;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class UpdateTransform extends AbstractEndpoint
 {
@@ -41,7 +41,7 @@ class UpdateTransform extends AbstractEndpoint
     public function getParamWhitelist(): array
     {
         return [
-            'defer_validation'
+            'defer_validation',
         ];
     }
 

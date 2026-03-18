@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace OpenSearch\Endpoints\DataFrameTransformDeprecated;
 
-use OpenSearch\Exception\RuntimeException;
 use OpenSearch\Endpoints\AbstractEndpoint;
+use OpenSearch\Exception\RuntimeException;
 
 class GetTransformStats extends AbstractEndpoint
 {
@@ -43,7 +43,7 @@ class GetTransformStats extends AbstractEndpoint
         return [
             'from',
             'size',
-            'allow_no_match'
+            'allow_no_match',
         ];
     }
 

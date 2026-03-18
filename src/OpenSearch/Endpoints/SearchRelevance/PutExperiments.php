@@ -24,7 +24,7 @@ class PutExperiments extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_search_relevance/experiments";
+        return '/_plugins/_search_relevance/experiments';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class PutExperiments extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

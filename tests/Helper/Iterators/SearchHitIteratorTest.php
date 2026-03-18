@@ -21,9 +21,9 @@ declare(strict_types=1);
 
 namespace OpenSearch\Tests\Helper\Iterators;
 
+use Mockery;
 use OpenSearch\Helper\Iterators\SearchHitIterator;
 use OpenSearch\Helper\Iterators\SearchResponseIterator;
-use Mockery;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -67,58 +67,58 @@ class SearchHitIteratorTest extends TestCase
                     'hits' => [
                         [ 'foo' => 'bar0' ],
                         [ 'foo' => 'bar1' ],
-                        [ 'foo' => 'bar2' ]
+                        [ 'foo' => 'bar2' ],
                     ],
-                    'total' => 3
-                ]
+                    'total' => 3,
+                ],
                 ],
                 [
                 'hits' => [
                     'hits' => [
                         [ 'foo' => 'bar0' ],
                         [ 'foo' => 'bar1' ],
-                        [ 'foo' => 'bar2' ]
+                        [ 'foo' => 'bar2' ],
                     ],
-                    'total' => 3
-                ]
+                    'total' => 3,
+                ],
                 ],
                 [
                 'hits' => [
                     'hits' => [
                         [ 'foo' => 'bar0' ],
                         [ 'foo' => 'bar1' ],
-                        [ 'foo' => 'bar2' ]
+                        [ 'foo' => 'bar2' ],
                     ],
-                    'total' => 3
-                ]
+                    'total' => 3,
+                ],
                 ],
                 [
                 'hits' => [
                     'hits' => [
                         [ 'foo' => 'bar0' ],
                         [ 'foo' => 'bar1' ],
-                        [ 'foo' => 'bar2' ]
+                        [ 'foo' => 'bar2' ],
                     ],
-                    'total' => 3
-                ]
+                    'total' => 3,
+                ],
                 ],
                 [
                 'hits' => [
                     'hits' => [
                         [ 'foo' => 'bar3' ],
-                        [ 'foo' => 'bar4' ]
+                        [ 'foo' => 'bar4' ],
                     ],
-                    'total' => 2
-                ]
+                    'total' => 2,
+                ],
                 ],
                 [
                 'hits' => [
                     'hits' => [
                         [ 'foo' => 'bar3' ],
-                        [ 'foo' => 'bar4' ]
+                        [ 'foo' => 'bar4' ],
                     ],
-                    'total' => 2
-                ]
+                    'total' => 2,
+                ],
                 ]
             );
 

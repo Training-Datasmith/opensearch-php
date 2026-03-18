@@ -27,7 +27,7 @@ class CreateModelMeta extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_ml/models/meta";
+        return '/_plugins/_ml/models/meta';
     }
 
     public function getParamWhitelist(): array
@@ -37,7 +37,7 @@ class CreateModelMeta extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

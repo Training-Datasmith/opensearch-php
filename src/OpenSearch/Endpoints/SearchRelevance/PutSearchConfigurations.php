@@ -24,7 +24,7 @@ class PutSearchConfigurations extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_search_relevance/search_configurations";
+        return '/_plugins/_search_relevance/search_configurations';
     }
 
     public function getParamWhitelist(): array
@@ -34,7 +34,7 @@ class PutSearchConfigurations extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

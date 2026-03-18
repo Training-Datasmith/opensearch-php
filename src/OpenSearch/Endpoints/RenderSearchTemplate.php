@@ -32,7 +32,7 @@ class RenderSearchTemplate extends AbstractEndpoint
         if (isset($id)) {
             return "/_render/template/$id";
         }
-        return "/_render/template";
+        return '/_render/template';
     }
 
     public function getParamWhitelist(): array
@@ -42,7 +42,7 @@ class RenderSearchTemplate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

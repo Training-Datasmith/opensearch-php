@@ -35,7 +35,7 @@ class Bulk extends AbstractEndpoint
 
     public function getURI(): string
     {
-        return "/_monitoring/bulk";
+        return '/_monitoring/bulk';
     }
 
     public function getParamWhitelist(): array
@@ -43,7 +43,7 @@ class Bulk extends AbstractEndpoint
         return [
             'system_id',
             'system_api_version',
-            'interval'
+            'interval',
         ];
     }
 
@@ -67,7 +67,7 @@ class Bulk extends AbstractEndpoint
                 $this->body .= "\n";
             }
         } else {
-            throw new InvalidArgumentException("Body must be an array, traversable object or string");
+            throw new InvalidArgumentException('Body must be an array, traversable object or string');
         }
         return $this;
     }

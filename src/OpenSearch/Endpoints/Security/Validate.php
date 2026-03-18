@@ -24,7 +24,7 @@ class Validate extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_plugins/_security/api/validate";
+        return '/_plugins/_security/api/validate';
     }
 
     public function getParamWhitelist(): array
@@ -35,7 +35,7 @@ class Validate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

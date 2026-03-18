@@ -34,7 +34,7 @@ class GetUpgrade extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_upgrade";
         }
-        return "/_upgrade";
+        return '/_upgrade';
     }
 
     public function getParamWhitelist(): array
@@ -47,7 +47,7 @@ class GetUpgrade extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

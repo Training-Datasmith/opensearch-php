@@ -30,7 +30,7 @@ class GetStats extends AbstractEndpoint
         if (isset($stat)) {
             return "/_plugins/_search_relevance/stats/$stat";
         }
-        return "/_plugins/_search_relevance/stats";
+        return '/_plugins/_search_relevance/stats';
     }
 
     public function getParamWhitelist(): array
@@ -45,7 +45,7 @@ class GetStats extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

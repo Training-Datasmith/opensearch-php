@@ -22,7 +22,7 @@ class DeleteAllPits extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        return "/_search/point_in_time/_all";
+        return '/_search/point_in_time/_all';
     }
 
     public function getParamWhitelist(): array
@@ -32,7 +32,7 @@ class DeleteAllPits extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

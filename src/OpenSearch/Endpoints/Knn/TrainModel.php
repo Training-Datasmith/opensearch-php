@@ -30,7 +30,7 @@ class TrainModel extends AbstractEndpoint
         if (isset($model_id)) {
             return "/_plugins/_knn/models/$model_id/_train";
         }
-        return "/_plugins/_knn/models/_train";
+        return '/_plugins/_knn/models/_train';
     }
 
     public function getParamWhitelist(): array
@@ -41,7 +41,7 @@ class TrainModel extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 

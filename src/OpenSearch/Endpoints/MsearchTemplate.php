@@ -39,7 +39,7 @@ class MsearchTemplate extends AbstractEndpoint
         if (isset($index)) {
             return "/$index/_msearch/template";
         }
-        return "/_msearch/template";
+        return '/_msearch/template';
     }
 
     public function getParamWhitelist(): array
@@ -54,7 +54,7 @@ class MsearchTemplate extends AbstractEndpoint
             'human',
             'error_trace',
             'source',
-            'filter_path'
+            'filter_path',
         ];
     }
 
