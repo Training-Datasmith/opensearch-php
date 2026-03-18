@@ -68,7 +68,7 @@ abstract class AbstractNamespace
             // @phpstan-ignore new.deprecated
             $endpointFactory = new LegacyEndpointFactory($endpointFactory);
         } else {
-            $endpoints = function ($c) use ($endpointFactory) {
+            $endpoints = function (string $c) use ($endpointFactory): \OpenSearch\Endpoints\AbstractEndpoint {
                 @trigger_error('The $endpoints property is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
                 return $endpointFactory->getEndpoint('OpenSearch\\Endpoints\\' . $c);
             };
@@ -87,9 +87,8 @@ abstract class AbstractNamespace
             $val = $params[$arg];
             unset($params[$arg]);
             return $val;
-        } else {
-            return null;
         }
+        return null;
     }
 
     protected function performRequest(AbstractEndpoint $endpoint)

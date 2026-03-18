@@ -32,7 +32,7 @@ class Stats extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $metric = $this->metric ? rawurlencode($this->metric) : null;
+        $metric = $this->metric ? rawurlencode((string) $this->metric) : null;
         $index = $this->index ? rawurlencode($this->index) : null;
         if (isset($index) && isset($metric)) {
             return "/$index/_stats/$metric";
@@ -79,7 +79,7 @@ class Stats extends AbstractEndpoint
         if (is_array($metric) === true) {
             $metric = implode(",", $metric);
         }
-        $this->metric = rawurlencode($metric);
+        $this->metric = rawurlencode((string) $metric);
 
         return $this;
     }

@@ -28,9 +28,9 @@ class DeleteAgenticMemory extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $id = $this->id ? rawurlencode($this->id) : null;
-        $memory_container_id = $this->memory_container_id ? rawurlencode($this->memory_container_id) : null;
-        $type = $this->type ? rawurlencode($this->type) : null;
+        $id = $this->id ? rawurlencode((string) $this->id) : null;
+        $memory_container_id = $this->memory_container_id ? rawurlencode((string) $this->memory_container_id) : null;
+        $type = $this->type ? rawurlencode((string) $this->type) : null;
         if (isset($memory_container_id) && isset($type) && isset($id)) {
             return "/_plugins/_ml/memory_containers/$memory_container_id/memories/$type/$id";
         }

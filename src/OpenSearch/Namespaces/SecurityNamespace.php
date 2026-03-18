@@ -1809,12 +1809,9 @@ class SecurityNamespace extends AbstractNamespace
      * $params['filter_path'] = (any) Comma-separated list of filters used to reduce the response.
      *
      * @param array $params Associative array of parameters
-     * @return array
      */
     public function getUsers(array $params = []): array
     {
-        $endpointBuilder = $this->endpoints;
-
         if (isset($params['username'])) {
             $endpoint = $this->endpointFactory->getEndpoint(GetUser::class);
             $username = $this->extractArgument($params, 'username');

@@ -25,17 +25,11 @@ class GetConnectors extends AbstractEndpoint
         return [];
     }
 
-    /**
-     * @return string
-     */
     public function getURI(): string
     {
         return '/_plugins/_ml/connectors/_search';
     }
 
-    /**
-     * @return string
-     */
     public function getMethod(): string
     {
         return 'POST';

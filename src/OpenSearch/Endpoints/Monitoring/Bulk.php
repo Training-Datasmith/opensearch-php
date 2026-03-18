@@ -63,7 +63,7 @@ class Bulk extends AbstractEndpoint
             }
         } elseif (is_string($body)) {
             $this->body = $body;
-            if (substr($body, -1) != "\n") {
+            if (!str_ends_with($body, "\n")) {
                 $this->body .= "\n";
             }
         } else {

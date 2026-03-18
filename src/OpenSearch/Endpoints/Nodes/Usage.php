@@ -33,8 +33,8 @@ class Usage extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $node_id = $this->node_id ? rawurlencode($this->node_id) : null;
-        $metric = $this->metric ? rawurlencode($this->metric) : null;
+        $node_id = $this->node_id ? rawurlencode((string) $this->node_id) : null;
+        $metric = $this->metric ? rawurlencode((string) $this->metric) : null;
         if (isset($node_id) && isset($metric)) {
             return "/_nodes/$node_id/usage/$metric";
         }
@@ -72,7 +72,7 @@ class Usage extends AbstractEndpoint
         if (is_array($node_id) === true) {
             $node_id = implode(",", $node_id);
         }
-        $this->node_id = rawurlencode($node_id);
+        $this->node_id = rawurlencode((string) $node_id);
 
         return $this;
     }
@@ -85,7 +85,7 @@ class Usage extends AbstractEndpoint
         if (is_array($metric) === true) {
             $metric = implode(",", $metric);
         }
-        $this->metric = rawurlencode($metric);
+        $this->metric = rawurlencode((string) $metric);
 
         return $this;
     }

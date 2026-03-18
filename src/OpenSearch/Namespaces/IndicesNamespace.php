@@ -461,7 +461,6 @@ class IndicesNamespace extends AbstractNamespace
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function exists(array $params = []): bool
     {
@@ -492,7 +491,6 @@ class IndicesNamespace extends AbstractNamespace
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function existsAlias(array $params = []): bool
     {
@@ -524,7 +522,6 @@ class IndicesNamespace extends AbstractNamespace
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function existsIndexTemplate(array $params = []): bool
     {
@@ -554,7 +551,6 @@ class IndicesNamespace extends AbstractNamespace
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function existsTemplate(array $params = []): bool
     {

@@ -33,7 +33,7 @@ class ExistsTemplate extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $name = $this->name ? rawurlencode($this->name) : null;
+        $name = $this->name ? rawurlencode((string) $this->name) : null;
         if (isset($name)) {
             return "/_template/$name";
         }
@@ -68,7 +68,7 @@ class ExistsTemplate extends AbstractEndpoint
         if (is_array($name) === true) {
             $name = implode(",", $name);
         }
-        $this->name = rawurlencode($name);
+        $this->name = rawurlencode((string) $name);
 
         return $this;
     }

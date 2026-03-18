@@ -32,7 +32,7 @@ class ReloadSecureSettings extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $node_id = $this->node_id ? rawurlencode($this->node_id) : null;
+        $node_id = $this->node_id ? rawurlencode((string) $this->node_id) : null;
         if (isset($node_id)) {
             return "/_nodes/$node_id/reload_secure_settings";
         }
@@ -74,7 +74,7 @@ class ReloadSecureSettings extends AbstractEndpoint
         if (is_array($node_id) === true) {
             $node_id = implode(",", $node_id);
         }
-        $this->node_id = rawurlencode($node_id);
+        $this->node_id = rawurlencode((string) $node_id);
 
         return $this;
     }

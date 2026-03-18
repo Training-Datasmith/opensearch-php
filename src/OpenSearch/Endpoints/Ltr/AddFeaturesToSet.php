@@ -31,8 +31,8 @@ class AddFeaturesToSet extends AbstractEndpoint
         if (!isset($this->name) || $this->name === '') {
             throw new RuntimeException('name is required for add_features_to_set');
         }
-        $name = rawurlencode($this->name);
-        $store = $this->store ? rawurlencode($this->store) : null;
+        $name = rawurlencode((string) $this->name);
+        $store = $this->store ? rawurlencode((string) $this->store) : null;
         if (isset($store)) {
             return "/_ltr/$store/_featureset/$name/_addfeatures";
         }

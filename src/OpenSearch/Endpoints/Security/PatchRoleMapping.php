@@ -30,7 +30,7 @@ class PatchRoleMapping extends AbstractEndpoint
         if (!isset($this->role) || $this->role === '') {
             throw new RuntimeException('role is required for patch_role_mapping');
         }
-        $role = rawurlencode($this->role);
+        $role = rawurlencode((string) $this->role);
 
         return "/_plugins/_security/api/rolesmapping/$role";
     }

@@ -27,7 +27,7 @@ class GetMemoryContainer extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $memory_container_id = $this->memory_container_id ? rawurlencode($this->memory_container_id) : null;
+        $memory_container_id = $this->memory_container_id ? rawurlencode((string) $this->memory_container_id) : null;
         if (isset($memory_container_id)) {
             return "/_plugins/_ml/memory_containers/$memory_container_id";
         }

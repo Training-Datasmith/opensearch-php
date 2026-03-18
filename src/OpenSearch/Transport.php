@@ -41,11 +41,6 @@ class Transport
     public $connectionPool;
 
     /**
-     * @var LoggerInterface
-     */
-    private $log;
-
-    /**
      * @var int
      */
     public $retryAttempts = 0;
@@ -64,14 +59,10 @@ class Transport
      * Transport class is responsible for dispatching requests to the
      * underlying cluster connections
      *
-     * @param int                                   $retries
-     * @param bool                                  $sniffOnStart
-     * @param ConnectionPool\AbstractConnectionPool $connectionPool
      * @param \Psr\Log\LoggerInterface              $log            Monolog logger object
      */
-    public function __construct(int $retries, AbstractConnectionPool $connectionPool, LoggerInterface $log, bool $sniffOnStart = false)
+    public function __construct(int $retries, AbstractConnectionPool $connectionPool, private readonly LoggerInterface $log, bool $sniffOnStart = false)
     {
-        $this->log            = $log;
         $this->connectionPool = $connectionPool;
         $this->retries        = $retries;
 
@@ -97,7 +88,6 @@ class Transport
      * @param string     $uri     HTTP URI to send request to
      * @param array<string, mixed> $params  Optional query parameters
      * @param mixed|null $body    Optional query body
-     * @param array      $options
      *
      * @throws Common\Exceptions\NoNodesAvailableException|\Exception
      */
@@ -111,7 +101,6 @@ class Transport
         }
 
         $response             = [];
-        $caughtException      = null;
         $this->lastConnection = $connection;
 
         $future = $connection->performRequest(
@@ -125,12 +114,12 @@ class Transport
 
         $future->promise()->then(
             //onSuccess
-            function ($response) {
+            function ($response): void {
                 $this->retryAttempts = 0;
                 // Note, this could be a 4xx or 5xx error
             },
             //onFailure
-            function ($response) {
+            function ($response): void {
                 $code = $response->getCode();
                 // Ignore 400 level errors, as that means the server responded just fine
                 if ($code < 400 || $code >= 500) {
@@ -151,8 +140,7 @@ class Transport
      */
     public function resultOrFuture(FutureArrayInterface $result, array $options = [])
     {
-        $response = null;
-        $async = isset($options['client']['future']) ? $options['client']['future'] : null;
+        $async = $options['client']['future'] ?? null;
         if (is_null($async) || $async === false) {
             do {
                 $result = $result->wait();

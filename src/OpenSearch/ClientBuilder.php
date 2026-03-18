@@ -55,37 +55,25 @@ class ClientBuilder
 {
     public const ALLOWED_METHODS_FROM_CONFIG = ['includePortInHostHeader'];
 
-    /**
-     * @var Transport|null
-     */
-    private $transport;
+    private ?\OpenSearch\Transport $transport = null;
 
     private ?EndpointFactoryInterface $endpointFactory = null;
 
     /**
      * @var NamespaceBuilderInterface[]
      */
-    private $registeredNamespacesBuilders = [];
+    private array $registeredNamespacesBuilders = [];
 
-    /**
-     * @var ConnectionFactoryInterface|null
-     */
-    private $connectionFactory;
+    private \OpenSearch\Connections\ConnectionFactoryInterface|\OpenSearch\Connections\ConnectionFactory|null $connectionFactory = null;
 
     /**
      * @var callable|null
      */
     private $handler;
 
-    /**
-     * @var LoggerInterface|null
-     */
-    private $logger;
+    private \Psr\Log\LoggerInterface|\Psr\Log\NullLogger|null $logger = null;
 
-    /**
-     * @var LoggerInterface|null
-     */
-    private $tracer;
+    private \Psr\Log\LoggerInterface|\Psr\Log\NullLogger|null $tracer = null;
 
     /**
      * @var string|AbstractConnectionPool
@@ -102,27 +90,15 @@ class ClientBuilder
      */
     private $selector = RoundRobinSelector::class;
 
-    /**
-     * @var array
-     */
-    private $connectionPoolArgs = [
+    private array $connectionPoolArgs = [
         'randomizeHosts' => true
     ];
 
-    /**
-     * @var array|null
-     */
-    private $hosts;
+    private ?array $hosts = null;
 
-    /**
-     * @var array
-     */
-    private $connectionParams;
+    private ?array $connectionParams = null;
 
-    /**
-     * @var int|null
-     */
-    private $retries;
+    private ?int $retries = null;
 
     /**
      * @var null|callable
@@ -139,35 +115,20 @@ class ClientBuilder
      */
     private $sigV4Service;
 
-    /**
-     * @var bool
-     */
-    private $sniffOnStart = false;
+    private bool $sniffOnStart = false;
 
-    /**
-     * @var null|array
-     */
-    private $sslCert;
+    private ?array $sslCert = null;
 
-    /**
-     * @var null|array
-     */
-    private $sslKey;
+    private ?array $sslKey = null;
 
     /**
      * @var null|bool|string
      */
     private $sslVerification;
 
-    /**
-     * @var bool
-     */
-    private $includePortInHostHeader = false;
+    private bool $includePortInHostHeader = false;
 
-    /**
-     * @var string|null
-     */
-    private $basicAuthentication = null;
+    private ?string $basicAuthentication = null;
 
     /**
      * Create an instance of ClientBuilder
@@ -193,7 +154,7 @@ class ClientBuilder
     public function getEndpoint(): callable
     {
         @trigger_error(__METHOD__ . '() is deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\ClientBuilder::getEndpointFactory() instead.', E_USER_DEPRECATED);
-        return fn ($c) => $this->endpointFactory->getEndpoint('OpenSearch\\Endpoints\\' . $c);
+        return fn ($c): \OpenSearch\Endpoints\AbstractEndpoint => $this->endpointFactory->getEndpoint('OpenSearch\\Endpoints\\' . $c);
     }
 
     /**
@@ -216,7 +177,6 @@ class ClientBuilder
      * Unknown keys will throw an exception by default, but this can be silenced
      * by setting `quiet` to true
      *
-     * @param  array $config
      * @param  bool $quiet False if unknown settings throw exception, true to silently
      *                     ignore unknown settings
      * @throws Common\Exceptions\RuntimeException
@@ -239,7 +199,7 @@ class ClientBuilder
         }
 
         if ($quiet === false && count($config) > 0) {
-            $unknown = implode(array_keys($config));
+            $unknown = implode('', array_keys($config));
             throw new RuntimeException("Unknown parameters provided: $unknown");
         }
         return $builder->build();
@@ -248,8 +208,6 @@ class ClientBuilder
     /**
      * Get the default handler
      *
-     * @param array $multiParams
-     * @param array $singleParams
      * @throws \RuntimeException
      */
     public static function defaultHandler(array $multiParams = [], array $singleParams = []): callable
@@ -300,8 +258,6 @@ class ClientBuilder
 
     /**
      * Set connection Factory
-     *
-     * @param ConnectionFactoryInterface $connectionFactory
      */
     public function setConnectionFactory(ConnectionFactoryInterface $connectionFactory): ClientBuilder
     {
@@ -314,7 +270,6 @@ class ClientBuilder
      * Set the connection pool (default is StaticNoPingConnectionPool)
      *
      * @param  AbstractConnectionPool|string $connectionPool
-     * @param array $args
      * @throws \InvalidArgumentException
      */
     public function setConnectionPool($connectionPool, array $args = []): ClientBuilder
@@ -334,7 +289,6 @@ class ClientBuilder
     /**
      * Set the endpoint
      *
-     * @param callable $endpoint
      *
      * @deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\ClientBuilder::setEndpointFactory() instead.
      */
@@ -354,8 +308,6 @@ class ClientBuilder
 
     /**
      * Register namespace
-     *
-     * @param NamespaceBuilderInterface $namespaceBuilder
      */
     public function registerNamespace(NamespaceBuilderInterface $namespaceBuilder): ClientBuilder
     {
@@ -366,8 +318,6 @@ class ClientBuilder
 
     /**
      * Set the transport
-     *
-     * @param Transport $transport
      */
     public function setTransport(Transport $transport): ClientBuilder
     {
@@ -390,8 +340,6 @@ class ClientBuilder
 
     /**
      * Set the PSR-3 Logger
-     *
-     * @param LoggerInterface $logger
      */
     public function setLogger(LoggerInterface $logger): ClientBuilder
     {
@@ -402,8 +350,6 @@ class ClientBuilder
 
     /**
      * Set the PSR-3 tracer
-     *
-     * @param LoggerInterface $tracer
      */
     public function setTracer(LoggerInterface $tracer): ClientBuilder
     {
@@ -426,8 +372,6 @@ class ClientBuilder
 
     /**
      * Set the hosts (nodes)
-     *
-     * @param array $hosts
      */
     public function setHosts(array $hosts): ClientBuilder
     {
@@ -440,8 +384,6 @@ class ClientBuilder
      * Set Basic access authentication
      *
      * @see https://en.wikipedia.org/wiki/Basic_access_authentication
-     * @param string $username
-     * @param string $password
      *
      * @throws AuthenticationConfigException
      */
@@ -454,8 +396,6 @@ class ClientBuilder
 
     /**
      * Set connection parameters
-     *
-     * @param array $params
      */
     public function setConnectionParams(array $params): ClientBuilder
     {
@@ -466,8 +406,6 @@ class ClientBuilder
 
     /**
      * Set number or retries (default is equal to number of nodes)
-     *
-     * @param int $retries
      */
     public function setRetries(int $retries): ClientBuilder
     {
@@ -625,17 +563,15 @@ class ClientBuilder
         }
 
         if (!is_null($sslOptions)) {
-            $sslHandler = function (callable $handler, array $sslOptions) {
-                return function (array $request) use ($handler, $sslOptions) {
-                    // Add our custom headers
-                    foreach ($sslOptions as $key => $value) {
-                        $request['client'][$key] = $value;
-                    }
+            $sslHandler = (fn(callable $handler, array $sslOptions) => function (array $request) use ($handler, $sslOptions) {
+                // Add our custom headers
+                foreach ($sslOptions as $key => $value) {
+                    $request['client'][$key] = $value;
+                }
 
-                    // Send the request using the handler and return the response.
-                    return $handler($request);
-                };
-            };
+                // Send the request using the handler and return the response.
+                return $handler($request);
+            });
             $this->handler = $sslHandler($this->handler, $sslOptions);
         }
 
@@ -739,7 +675,7 @@ class ClientBuilder
         }
     }
 
-    private function parseStringOrObject($arg, &$destination, $interface): void
+    private function parseStringOrObject($arg, &$destination, string $interface): void
     {
         if (is_string($arg)) {
             $destination = new $arg();
@@ -819,7 +755,7 @@ class ClientBuilder
     private function prependMissingScheme(string $host): string
     {
         if (!preg_match("/^https?:\/\//", $host)) {
-            $host = 'http://' . $host;
+            return 'http://' . $host;
         }
 
         return $host;
@@ -840,16 +776,17 @@ class ClientBuilder
         if ($provider === true) {
             return CredentialProvider::defaultProvider();
         }
-
         if ($provider instanceof CredentialsInterface) {
             return CredentialProvider::fromCredentials($provider);
-        } elseif (is_array($provider) && isset($provider['key']) && isset($provider['secret'])) {
+        }
+
+        if (is_array($provider) && isset($provider['key']) && isset($provider['secret'])) {
             return CredentialProvider::fromCredentials(
                 new Credentials(
                     $provider['key'],
                     $provider['secret'],
-                    isset($provider['token']) ? $provider['token'] : null,
-                    isset($provider['expires']) ? $provider['expires'] : null
+                    $provider['token'] ?? null,
+                    $provider['expires'] ?? null
                 )
             );
         }

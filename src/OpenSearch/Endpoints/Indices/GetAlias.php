@@ -32,7 +32,7 @@ class GetAlias extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $name = $this->name ? rawurlencode($this->name) : null;
+        $name = $this->name ? rawurlencode((string) $this->name) : null;
         $index = $this->index ? rawurlencode($this->index) : null;
         if (isset($index) && isset($name)) {
             return "/$index/_alias/$name";
@@ -74,7 +74,7 @@ class GetAlias extends AbstractEndpoint
         if (is_array($name) === true) {
             $name = implode(",", $name);
         }
-        $this->name = rawurlencode($name);
+        $this->name = rawurlencode((string) $name);
 
         return $this;
     }

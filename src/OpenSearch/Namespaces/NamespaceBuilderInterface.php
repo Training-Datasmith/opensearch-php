@@ -38,8 +38,6 @@ interface NamespaceBuilderInterface
      * and serializer objects are provided so that your namespace may do whatever custom
      * logic is required.
      *
-     * @param Transport|TransportInterface $transport
-     * @param SerializerInterface $serializer
      * @return Object
      *
      * @phpstan-ignore parameter.deprecatedClass

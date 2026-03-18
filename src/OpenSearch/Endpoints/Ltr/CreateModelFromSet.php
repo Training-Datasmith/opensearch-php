@@ -31,8 +31,8 @@ class CreateModelFromSet extends AbstractEndpoint
         if (!isset($this->name) || $this->name === '') {
             throw new RuntimeException('name is required for create_model_from_set');
         }
-        $name = rawurlencode($this->name);
-        $store = $this->store ? rawurlencode($this->store) : null;
+        $name = rawurlencode((string) $this->name);
+        $store = $this->store ? rawurlencode((string) $this->store) : null;
         if (isset($store)) {
             return "/_ltr/$store/_featureset/$name/_createmodel";
         }

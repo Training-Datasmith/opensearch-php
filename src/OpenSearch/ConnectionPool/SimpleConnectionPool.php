@@ -35,15 +35,6 @@ use OpenSearch\Connections\ConnectionInterface;
  */
 class SimpleConnectionPool extends AbstractConnectionPool implements ConnectionPoolInterface
 {
-    /**
-     * @param ConnectionInterface[] $connections
-     * @param array<string, mixed>  $connectionPoolParams
-     */
-    public function __construct($connections, SelectorInterface $selector, ConnectionFactoryInterface $factory, $connectionPoolParams)
-    {
-        parent::__construct($connections, $selector, $factory, $connectionPoolParams);
-    }
-
     public function nextConnection(bool $force = false): ConnectionInterface
     {
         return $this->selector->select($this->connections);

@@ -38,23 +38,21 @@ class SmartSerializer implements SerializerInterface
     {
         if (is_string($data) === true) {
             return $data;
-        } else {
-            $data = json_encode($data, JSON_PRESERVE_ZERO_FRACTION + JSON_INVALID_UTF8_SUBSTITUTE);
-            if ($data === false) {
-                throw new RuntimeException("Failed to JSON encode: ".json_last_error_msg());
-            }
-            if ($data === '[]') {
-                return '{}';
-            } else {
-                return $data;
-            }
         }
+        $data = json_encode($data, JSON_PRESERVE_ZERO_FRACTION + JSON_INVALID_UTF8_SUBSTITUTE);
+        if ($data === false) {
+            throw new RuntimeException("Failed to JSON encode: ".json_last_error_msg());
+        }
+        if ($data === '[]') {
+            return '{}';
+        }
+        return $data;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function deserialize(?string $data, array $headers)
+    public function deserialize(?string $data, array $headers): array|string|null
     {
         if ($this->isJson($headers)) {
             return $this->decode($data);
@@ -89,14 +87,14 @@ class SmartSerializer implements SerializerInterface
     {
         // Legacy support for 'transfer_stats'.
         if (!empty($headers['content_type'])) {
-            return str_contains($headers['content_type'], 'json');
+            return str_contains((string) $headers['content_type'], 'json');
         }
 
         // Check PSR-7 headers.
         $lowercaseHeaders = array_change_key_case($headers, CASE_LOWER);
         if (array_key_exists('content-type', $lowercaseHeaders)) {
             foreach ($lowercaseHeaders['content-type'] as $type) {
-                if (str_contains($type, 'json')) {
+                if (str_contains((string) $type, 'json')) {
                     return true;
                 }
             }

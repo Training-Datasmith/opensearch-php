@@ -33,26 +33,6 @@ use Psr\Log\LoggerInterface;
 class ConnectionFactory implements ConnectionFactoryInterface
 {
     /**
-     * @var array
-     */
-    private $connectionParams;
-
-    /**
-     * @var SerializerInterface
-     */
-    private $serializer;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $tracer;
-
-    /**
      * @var callable
      */
     private $handler;
@@ -60,13 +40,9 @@ class ConnectionFactory implements ConnectionFactoryInterface
     /**
      * @param array{client?: array{headers?: array<string, list<string>>, curl?: array<int, mixed>}} $connectionParams
      */
-    public function __construct(callable $handler, array $connectionParams, SerializerInterface $serializer, LoggerInterface $logger, LoggerInterface $tracer)
+    public function __construct(callable $handler, private readonly array $connectionParams, private readonly SerializerInterface $serializer, private readonly LoggerInterface $logger, private readonly LoggerInterface $tracer)
     {
         $this->handler          = $handler;
-        $this->connectionParams = $connectionParams;
-        $this->logger           = $logger;
-        $this->tracer           = $tracer;
-        $this->serializer       = $serializer;
     }
 
     public function create(array $hostDetails): ConnectionInterface

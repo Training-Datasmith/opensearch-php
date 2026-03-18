@@ -30,7 +30,7 @@ class CreateUserLegacy extends AbstractEndpoint
         if (!isset($this->username) || $this->username === '') {
             throw new RuntimeException('username is required for create_user_legacy');
         }
-        $username = rawurlencode($this->username);
+        $username = rawurlencode((string) $this->username);
 
         return "/_plugins/_security/api/user/$username";
     }

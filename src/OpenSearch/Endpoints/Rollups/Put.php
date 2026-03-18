@@ -28,7 +28,7 @@ class Put extends AbstractEndpoint
         if (!isset($this->id) || $this->id === '') {
             throw new RuntimeException('id is required for put');
         }
-        $id = rawurlencode($this->id);
+        $id = rawurlencode((string) $this->id);
 
         return "/_plugins/_rollup/jobs/$id";
     }

@@ -37,27 +37,24 @@ abstract class AbstractEndpoint implements EndpointInterface
     /**
      * @var string|null
      */
-    protected $index = null;
+    protected $index;
 
     /**
      * @var string|int|null
      */
-    protected $id = null;
+    protected $id;
 
     /**
      * @var string|null
      */
-    protected $method = null;
+    protected $method;
 
     /**
      * @var string|array|null
      */
-    protected $body = null;
+    protected $body;
 
-    /**
-     * @var array
-     */
-    private $options = [];
+    private array $options = [];
 
     /**
      * @var SerializerInterface
@@ -69,14 +66,8 @@ abstract class AbstractEndpoint implements EndpointInterface
      */
     abstract public function getParamWhitelist(): array;
 
-    /**
-     * @return string
-     */
     abstract public function getURI(): string;
 
-    /**
-     * @return string
-     */
     abstract public function getMethod(): string;
 
     /**
@@ -125,7 +116,7 @@ abstract class AbstractEndpoint implements EndpointInterface
 
         if (is_array($index) === true) {
             $index = array_filter($index);
-            $index = array_map('trim', $index);
+            $index = array_map(trim(...), $index);
             $index = implode(",", $index);
         }
 
@@ -175,9 +166,8 @@ abstract class AbstractEndpoint implements EndpointInterface
     {
         if (isset($this->index) === true) {
             return $this->index;
-        } else {
-            return '_all';
         }
+        return '_all';
     }
 
     /**
@@ -185,7 +175,7 @@ abstract class AbstractEndpoint implements EndpointInterface
      *
      * @throws UnexpectedValueException
      */
-    private function checkUserParams(array $params)
+    private function checkUserParams(array $params): void
     {
         if (empty($params)) {
             return; //no params, just return.
@@ -213,7 +203,7 @@ abstract class AbstractEndpoint implements EndpointInterface
     /**
      * @param array<string, mixed> $params Note: this is passed by-reference!
      */
-    private function extractOptions(&$params)
+    private function extractOptions(array &$params): void
     {
         // Extract out client options, then start transforming
         if (isset($params['client']) === true) {
@@ -222,14 +212,14 @@ abstract class AbstractEndpoint implements EndpointInterface
                 if (isset($params['client']['headers']) === false) {
                     $params['client']['headers'] = [];
                 }
-                $params['client']['headers']['x-opaque-id'] = [trim($params['client']['opaqueId'])];
+                $params['client']['headers']['x-opaque-id'] = [trim((string) $params['client']['opaqueId'])];
                 unset($params['client']['opaqueId']);
             }
 
             $this->options['client'] = $params['client'];
             unset($params['client']);
         }
-        $ignore = isset($this->options['client']['ignore']) ? $this->options['client']['ignore'] : null;
+        $ignore = $this->options['client']['ignore'] ?? null;
         if (isset($ignore) === true) {
             if (is_string($ignore)) {
                 $this->options['client']['ignore'] = explode(",", $ignore);
@@ -261,11 +251,19 @@ abstract class AbstractEndpoint implements EndpointInterface
     private function convertArraysToStrings(array $params): array
     {
         foreach ($params as $key => &$value) {
-            if (!($key === 'client' || $key == 'custom') && is_array($value) === true) {
-                if ($this->isNestedArray($value) !== true) {
-                    $value = implode(",", $value);
-                }
+            if ($key === 'client') {
+                continue;
             }
+            if ($key == 'custom') {
+                continue;
+            }
+            if (!(is_array($value) === true)) {
+                continue;
+            }
+            if ($this->isNestedArray($value) === true) {
+                continue;
+            }
+            $value = implode(",", $value);
         }
 
         return $params;

@@ -32,7 +32,7 @@ class State extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $metric = $this->metric ? rawurlencode($this->metric) : null;
+        $metric = $this->metric ? rawurlencode((string) $this->metric) : null;
         $index = $this->index ? rawurlencode($this->index) : null;
         if (isset($metric) && isset($index)) {
             return "/_cluster/state/$metric/$index";
@@ -76,7 +76,7 @@ class State extends AbstractEndpoint
         if (is_array($metric) === true) {
             $metric = implode(",", $metric);
         }
-        $this->metric = rawurlencode($metric);
+        $this->metric = rawurlencode((string) $metric);
 
         return $this;
     }

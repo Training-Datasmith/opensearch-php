@@ -39,45 +39,33 @@ abstract class AbstractConnectionPool implements ConnectionPoolInterface
      *
      * @var ConnectionInterface[]
      */
-    protected $connections;
+    protected array $connections;
 
     /**
      * Array of initial seed connections
      *
      * @var ConnectionInterface[]
      */
-    protected $seedConnections;
-
-    /**
-     * Selector object, used to select a connection on each request
-     *
-     * @var SelectorInterface
-     */
-    protected $selector;
+    protected array $seedConnections;
 
     /**
      * @var array<string, mixed>
      */
-    protected $connectionPoolParams;
-
-    /**
-     * @var ConnectionFactoryInterface
-     */
-    protected $connectionFactory;
+    protected array $connectionPoolParams;
 
     /**
      * Constructor
      *
      * @param ConnectionInterface[]      $connections          The Connections to choose from
      * @param SelectorInterface          $selector             A Selector instance to perform the selection logic for the available connections
-     * @param ConnectionFactoryInterface $factory              ConnectionFactory instance
+     * @param ConnectionFactoryInterface $connectionFactory ConnectionFactory instance
      * @param array<string, mixed>       $connectionPoolParams
      */
-    public function __construct(array $connections, SelectorInterface $selector, ConnectionFactoryInterface $factory, array $connectionPoolParams)
+    public function __construct(array $connections, protected \OpenSearch\ConnectionPool\Selectors\SelectorInterface $selector, protected \OpenSearch\Connections\ConnectionFactoryInterface $connectionFactory, array $connectionPoolParams)
     {
-        $paramList = array('connections', 'selector', 'connectionPoolParams');
+        $paramList = ['connections', 'selector', 'connectionPoolParams'];
         foreach ($paramList as $param) {
-            if (isset($$param) === false) {
+            if (isset(${$param}) === false) {
                 throw new InvalidArgumentException('`' . $param . '` parameter must not be null');
             }
         }
@@ -90,9 +78,7 @@ abstract class AbstractConnectionPool implements ConnectionPoolInterface
 
         $this->connections          = $connections;
         $this->seedConnections      = $connections;
-        $this->selector             = $selector;
         $this->connectionPoolParams = $connectionPoolParams;
-        $this->connectionFactory    = $factory;
     }
 
     abstract public function nextConnection(bool $force = false): ConnectionInterface;

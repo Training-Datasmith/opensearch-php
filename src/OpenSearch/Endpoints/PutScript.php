@@ -35,8 +35,8 @@ class PutScript extends AbstractEndpoint
         if (!isset($this->id) || $this->id === '') {
             throw new RuntimeException('id is required for put_script');
         }
-        $id = rawurlencode($this->id);
-        $context = $this->context ? rawurlencode($this->context) : null;
+        $id = rawurlencode((string) $this->id);
+        $context = $this->context ? rawurlencode((string) $this->context) : null;
         if (isset($context)) {
             return "/_scripts/$id/$context";
         }

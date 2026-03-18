@@ -47,16 +47,15 @@ class EverythingToJSONSerializer implements SerializerInterface
         }
         if ($data === '[]') {
             return '{}';
-        } else {
-            return $data;
         }
+        return $data;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function deserialize(?string $data, array $headers)
+    public function deserialize(?string $data, array $headers): mixed
     {
-        return json_decode($data, true);
+        return json_decode((string) $data, true);
     }
 }

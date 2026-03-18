@@ -26,7 +26,7 @@ class GetJudgments extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $judgment_id = $this->judgment_id ? rawurlencode($this->judgment_id) : null;
+        $judgment_id = $this->judgment_id ? rawurlencode((string) $this->judgment_id) : null;
         if (isset($judgment_id)) {
             return "/_plugins/_search_relevance/judgments/$judgment_id";
         }

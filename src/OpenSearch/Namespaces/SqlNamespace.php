@@ -130,7 +130,6 @@ class SqlNamespace extends AbstractNamespace
      * $params['cursor'] = (string) The cursor given by the server
      *
      * @param array{'cursor': string} $params Associative array of parameters
-     * @return array
      */
     public function closeCursor(array $params): array
     {

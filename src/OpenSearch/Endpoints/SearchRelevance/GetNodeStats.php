@@ -31,8 +31,8 @@ class GetNodeStats extends AbstractEndpoint
         if (!isset($this->node_id) || $this->node_id === '') {
             throw new RuntimeException('node_id is required for get_node_stats');
         }
-        $node_id = rawurlencode($this->node_id);
-        $stat = $this->stat ? rawurlencode($this->stat) : null;
+        $node_id = rawurlencode((string) $this->node_id);
+        $stat = $this->stat ? rawurlencode((string) $this->stat) : null;
         if (isset($stat)) {
             return "/_plugins/_search_relevance/$node_id/stats/$stat";
         }

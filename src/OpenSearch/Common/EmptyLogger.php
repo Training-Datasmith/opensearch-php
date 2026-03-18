@@ -42,6 +42,5 @@ class EmptyLogger extends AbstractLogger implements LoggerInterface
      */
     public function log($level, $message, array $context = []): void
     {
-        return;
     }
 }

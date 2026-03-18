@@ -25,7 +25,7 @@ class Put extends AbstractEndpoint
 {
     public function getURI(): string
     {
-        $id = $this->id ? rawurlencode($this->id) : null;
+        $id = $this->id ? rawurlencode((string) $this->id) : null;
         if (isset($id)) {
             return "/_plugins/_transform/$id";
         }

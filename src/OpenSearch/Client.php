@@ -131,7 +131,7 @@ class Client
      */
     protected $params;
 
-    private EndpointFactoryInterface $endpointFactory;
+    private readonly EndpointFactoryInterface $endpointFactory;
 
     /**
      * @var callable
@@ -141,225 +141,103 @@ class Client
     protected $endpoints;
 
     /**
-     * @var NamespaceBuilderInterface[]
-     */
-    protected $registeredNamespaces = [];
-
-    /**
-     * @var AsyncSearchNamespace
-     *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected $asyncSearch;
+    protected \OpenSearch\Namespaces\AsyncSearchNamespace $asyncSearch;
+
+    protected \OpenSearch\Namespaces\AsynchronousSearchNamespace $asynchronousSearch;
+
+    protected \OpenSearch\Namespaces\CatNamespace $cat;
+
+    protected \OpenSearch\Namespaces\ClusterNamespace $cluster;
+
+    protected \OpenSearch\Namespaces\DanglingIndicesNamespace $danglingIndices;
 
     /**
-     * @var AsynchronousSearchNamespace
-     */
-    protected $asynchronousSearch;
-
-    /**
-     * @var CatNamespace
-     */
-    protected $cat;
-
-    /**
-     * @var ClusterNamespace
-     */
-    protected $cluster;
-
-    /**
-     * @var DanglingIndicesNamespace
-     */
-    protected $danglingIndices;
-
-    /**
-     * @var DataFrameTransformDeprecatedNamespace
-     *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected $dataFrameTransformDeprecated;
+    protected \OpenSearch\Namespaces\DataFrameTransformDeprecatedNamespace $dataFrameTransformDeprecated;
+
+    protected \OpenSearch\Namespaces\FlowFrameworkNamespace $flowFramework;
+
+    protected \OpenSearch\Namespaces\GeospatialNamespace $geospatial;
+
+    protected \OpenSearch\Namespaces\IndicesNamespace $indices;
+
+    protected \OpenSearch\Namespaces\IngestNamespace $ingest;
+
+    protected \OpenSearch\Namespaces\IngestionNamespace $ingestion;
+
+    protected \OpenSearch\Namespaces\InsightsNamespace $insights;
+
+    protected \OpenSearch\Namespaces\IsmNamespace $ism;
+
+    protected \OpenSearch\Namespaces\KnnNamespace $knn;
+
+    protected \OpenSearch\Namespaces\ListNamespace $list;
+
+    protected \OpenSearch\Namespaces\LtrNamespace $ltr;
+
+    protected \OpenSearch\Namespaces\MlNamespace $ml;
 
     /**
-     * @var FlowFrameworkNamespace
-     */
-    protected $flowFramework;
-
-    /**
-     * @var GeospatialNamespace
-     */
-    protected $geospatial;
-
-    /**
-     * @var IndicesNamespace
-     */
-    protected $indices;
-
-    /**
-     * @var IngestNamespace
-     */
-    protected $ingest;
-
-    /**
-     * @var IngestionNamespace
-     */
-    protected $ingestion;
-
-    /**
-     * @var InsightsNamespace
-     */
-    protected $insights;
-
-    /**
-     * @var IsmNamespace
-     */
-    protected $ism;
-
-    /**
-     * @var KnnNamespace
-     */
-    protected $knn;
-
-    /**
-     * @var ListNamespace
-     */
-    protected $list;
-
-    /**
-     * @var LtrNamespace
-     */
-    protected $ltr;
-
-    /**
-     * @var MlNamespace
-     */
-    protected $ml;
-
-    /**
-     * @var MonitoringNamespace
-     *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected $monitoring;
+    protected \OpenSearch\Namespaces\MonitoringNamespace $monitoring;
+
+    protected \OpenSearch\Namespaces\NeuralNamespace $neural;
+
+    protected \OpenSearch\Namespaces\NodesNamespace $nodes;
+
+    protected \OpenSearch\Namespaces\NotificationsNamespace $notifications;
+
+    protected \OpenSearch\Namespaces\ObservabilityNamespace $observability;
+
+    protected \OpenSearch\Namespaces\PplNamespace $ppl;
+
+    protected \OpenSearch\Namespaces\QueryNamespace $query;
+
+    protected \OpenSearch\Namespaces\RemoteStoreNamespace $remoteStore;
+
+    protected \OpenSearch\Namespaces\ReplicationNamespace $replication;
+
+    protected \OpenSearch\Namespaces\RollupsNamespace $rollups;
+
+    protected \OpenSearch\Namespaces\SearchPipelineNamespace $searchPipeline;
+
+    protected \OpenSearch\Namespaces\SearchRelevanceNamespace $searchRelevance;
 
     /**
-     * @var NeuralNamespace
-     */
-    protected $neural;
-
-    /**
-     * @var NodesNamespace
-     */
-    protected $nodes;
-
-    /**
-     * @var NotificationsNamespace
-     */
-    protected $notifications;
-
-    /**
-     * @var ObservabilityNamespace
-     */
-    protected $observability;
-
-    /**
-     * @var PplNamespace
-     */
-    protected $ppl;
-
-    /**
-     * @var QueryNamespace
-     */
-    protected $query;
-
-    /**
-     * @var RemoteStoreNamespace
-     */
-    protected $remoteStore;
-
-    /**
-     * @var ReplicationNamespace
-     */
-    protected $replication;
-
-    /**
-     * @var RollupsNamespace
-     */
-    protected $rollups;
-
-    /**
-     * @var SearchPipelineNamespace
-     */
-    protected $searchPipeline;
-
-    /**
-     * @var SearchRelevanceNamespace
-     */
-    protected $searchRelevance;
-
-    /**
-     * @var SearchableSnapshotsNamespace
-     *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected $searchableSnapshots;
+    protected \OpenSearch\Namespaces\SearchableSnapshotsNamespace $searchableSnapshots;
+
+    protected \OpenSearch\Namespaces\SecurityNamespace $security;
+
+    protected \OpenSearch\Namespaces\SecurityAnalyticsNamespace $securityAnalytics;
+
+    protected \OpenSearch\Namespaces\SmNamespace $sm;
+
+    protected \OpenSearch\Namespaces\SnapshotNamespace $snapshot;
+
+    protected \OpenSearch\Namespaces\SqlNamespace $sql;
 
     /**
-     * @var SecurityNamespace
-     */
-    protected $security;
-
-    /**
-     * @var SecurityAnalyticsNamespace
-     */
-    protected $securityAnalytics;
-
-    /**
-     * @var SmNamespace
-     */
-    protected $sm;
-
-    /**
-     * @var SnapshotNamespace
-     */
-    protected $snapshot;
-
-    /**
-     * @var SqlNamespace
-     */
-    protected $sql;
-
-    /**
-     * @var SslNamespace
-     *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected $ssl;
+    protected \OpenSearch\Namespaces\SslNamespace $ssl;
 
-    /**
-     * @var TasksNamespace
-     */
-    protected $tasks;
+    protected \OpenSearch\Namespaces\TasksNamespace $tasks;
 
-    /**
-     * @var TransformsNamespace
-     */
-    protected $transforms;
+    protected \OpenSearch\Namespaces\TransformsNamespace $transforms;
 
-    /**
-     * @var UbiNamespace
-     */
-    protected $ubi;
+    protected \OpenSearch\Namespaces\UbiNamespace $ubi;
 
-    /**
-     * @var WlmNamespace
-     */
-    protected $wlm;
+    protected \OpenSearch\Namespaces\WlmNamespace $wlm;
 
     /**
      * Client constructor
      *
-     * @param TransportInterface|Transport $transport
-     * @param callable|EndpointFactoryInterface|null $endpointFactory
      * @param NamespaceBuilderInterface[] $registeredNamespaces
      *
      * @phpstan-ignore parameter.deprecatedClass
@@ -367,7 +245,7 @@ class Client
     public function __construct(
         TransportInterface|Transport $transport,
         callable|EndpointFactoryInterface|null $endpointFactory = null,
-        array $registeredNamespaces = [],
+        protected array $registeredNamespaces = [],
     ) {
         if (!$transport instanceof TransportInterface) {
             @trigger_error('Passing an instance of \OpenSearch\Transport to ' . __METHOD__ . '() is deprecated in 2.4.0 and will be removed in 3.0.0. Pass an instance of \OpenSearch\TransportInterface instead.', E_USER_DEPRECATED);
@@ -388,7 +266,7 @@ class Client
             if ($endpointFactory === null) {
                 $endpointFactory = new EndpointFactory();
             }
-            $endpoints = function ($c) use ($endpointFactory) {
+            $endpoints = function (string $c) use ($endpointFactory): \OpenSearch\Endpoints\AbstractEndpoint {
                 @trigger_error('The $endpoints property is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
                 return $endpointFactory->getEndpoint('OpenSearch\\Endpoints\\' . $c);
             };
@@ -442,8 +320,6 @@ class Client
         $this->transforms = new TransformsNamespace($transport, $this->endpointFactory);
         $this->ubi = new UbiNamespace($transport, $this->endpointFactory);
         $this->wlm = new WlmNamespace($transport, $this->endpointFactory);
-
-        $this->registeredNamespaces = $registeredNamespaces;
     }
 
     /**
@@ -468,7 +344,7 @@ class Client
      * - body: The operation definition and data (action-data pairs), separated by newlines (Required)
      * @return array
      */
-    public function bulk(array $params = [])
+    public function bulk(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -505,7 +381,7 @@ class Client
      * - body: The operation definition and data (action-data pairs), separated by newlines (Required)
      * @return array
      */
-    public function bulkStream(array $params = [])
+    public function bulkStream(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -531,7 +407,7 @@ class Client
      * - body: A comma-separated list of scroll IDs to clear if none was specified using the `scroll_id` parameter
      * @return array
      */
-    public function clearScroll(array $params = [])
+    public function clearScroll(array $params = []): iterable|string|null
     {
         $scroll_id = $this->extractArgument($params, 'scroll_id');
         $body = $this->extractArgument($params, 'body');
@@ -571,7 +447,7 @@ class Client
      * - body: Query to restrict the results specified with the Query DSL (optional)
      * @return array
      */
-    public function count(array $params = [])
+    public function count(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -601,7 +477,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function createPit(array $params = [])
+    public function createPit(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
 
@@ -633,7 +509,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function delete(array $params = [])
+    public function delete(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $index = $this->extractArgument($params, 'index');
@@ -657,7 +533,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteAllPits(array $params = [])
+    public function deleteAllPits(array $params = []): iterable|string|null
     {
 
         $endpoint = $this->endpointFactory->getEndpoint(DeleteAllPits::class);
@@ -712,7 +588,7 @@ class Client
      * - body: The search definition using the Query DSL (Required)
      * @return array
      */
-    public function deleteByQuery(array $params = [])
+    public function deleteByQuery(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -738,7 +614,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteByQueryRethrottle(array $params = [])
+    public function deleteByQueryRethrottle(array $params = []): iterable|string|null
     {
         $task_id = $this->extractArgument($params, 'task_id');
 
@@ -761,7 +637,7 @@ class Client
      * - body: The point-in-time ids to be deleted
      * @return array
      */
-    public function deletePit(array $params = [])
+    public function deletePit(array $params = []): iterable|string|null
     {
         $body = $this->extractArgument($params, 'body');
 
@@ -787,7 +663,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteScript(array $params = [])
+    public function deleteScript(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
 
@@ -819,7 +695,6 @@ class Client
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function exists(array $params = []): bool
     {
@@ -857,7 +732,6 @@ class Client
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function existsSource(array $params = []): bool
     {
@@ -901,7 +775,7 @@ class Client
      * - body: The query definition using the Query DSL
      * @return array
      */
-    public function explain(array $params = [])
+    public function explain(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $index = $this->extractArgument($params, 'index');
@@ -934,7 +808,7 @@ class Client
      * - body: An index filter specified with the Query DSL
      * @return array
      */
-    public function fieldCaps(array $params = [])
+    public function fieldCaps(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -970,7 +844,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function get(array $params = [])
+    public function get(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $index = $this->extractArgument($params, 'index');
@@ -994,7 +868,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAllPits(array $params = [])
+    public function getAllPits(array $params = []): iterable|string|null
     {
 
         $endpoint = $this->endpointFactory->getEndpoint(GetAllPits::class);
@@ -1017,7 +891,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getScript(array $params = [])
+    public function getScript(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
 
@@ -1039,7 +913,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getScriptContext(array $params = [])
+    public function getScriptContext(array $params = []): iterable|string|null
     {
 
         $endpoint = $this->endpointFactory->getEndpoint(GetScriptContext::class);
@@ -1059,7 +933,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getScriptLanguages(array $params = [])
+    public function getScriptLanguages(array $params = []): iterable|string|null
     {
 
         $endpoint = $this->endpointFactory->getEndpoint(GetScriptLanguages::class);
@@ -1090,7 +964,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getSource(array $params = [])
+    public function getSource(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $index = $this->extractArgument($params, 'index');
@@ -1128,7 +1002,7 @@ class Client
      * - body: The document (Required)
      * @return array
      */
-    public function index(array $params = [])
+    public function index(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $id = $this->extractArgument($params, 'id');
@@ -1154,7 +1028,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function info(array $params = [])
+    public function info(array $params = []): iterable|string|null
     {
 
         $endpoint = $this->endpointFactory->getEndpoint(Info::class);
@@ -1184,7 +1058,7 @@ class Client
      * - body: Document identifiers; can be either `docs` (containing full document information) or `ids` (when index is provided in the URL. (Required)
      * @return array
      */
-    public function mget(array $params = [])
+    public function mget(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1218,7 +1092,7 @@ class Client
      * - body: The request definitions (metadata-search request definition pairs), separated by newlines (Required)
      * @return array
      */
-    public function msearch(array $params = [])
+    public function msearch(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1249,7 +1123,7 @@ class Client
      * - body: The request definitions (metadata-search request definition pairs), separated by newlines (Required)
      * @return array
      */
-    public function msearchTemplate(array $params = [])
+    public function msearchTemplate(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1287,7 +1161,7 @@ class Client
      * - body: Define ids, documents, parameters or a list of parameters per document here. You must at least provide a list of document ids. See documentation.
      * @return array
      */
-    public function mtermvectors(array $params = [])
+    public function mtermvectors(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1309,7 +1183,6 @@ class Client
      * - error_trace: Whether to include the stack trace of returned errors. (Default: false)
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
-     * @return bool
      */
     public function ping(array $params = []): bool
     {        // Legacy option to manually make this verbose so we can check status code.
@@ -1339,7 +1212,7 @@ class Client
      * - body: The document (Required)
      * @return array
      */
-    public function putScript(array $params = [])
+    public function putScript(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $context = $this->extractArgument($params, 'context');
@@ -1371,7 +1244,7 @@ class Client
      * - body: The ranking evaluation search definition, including search requests, document ratings and ranking metric definition. (Required)
      * @return array
      */
-    public function rankEval(array $params = [])
+    public function rankEval(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1405,7 +1278,7 @@ class Client
      * - body: The search definition using the Query DSL and the prototype for the index request. (Required)
      * @return array
      */
-    public function reindex(array $params = [])
+    public function reindex(array $params = []): iterable|string|null
     {
         $body = $this->extractArgument($params, 'body');
 
@@ -1429,7 +1302,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function reindexRethrottle(array $params = [])
+    public function reindexRethrottle(array $params = []): iterable|string|null
     {
         $task_id = $this->extractArgument($params, 'task_id');
 
@@ -1453,7 +1326,7 @@ class Client
      * - body: The search definition template and its parameters.
      * @return array
      */
-    public function renderSearchTemplate(array $params = [])
+    public function renderSearchTemplate(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $body = $this->extractArgument($params, 'body');
@@ -1478,7 +1351,7 @@ class Client
      * - body: The script to execute
      * @return array
      */
-    public function scriptsPainlessExecute(array $params = [])
+    public function scriptsPainlessExecute(array $params = []): iterable|string|null
     {
         $body = $this->extractArgument($params, 'body');
 
@@ -1504,7 +1377,7 @@ class Client
      * - body:
      * @return array
      */
-    public function scroll(array $params = [])
+    public function scroll(array $params = []): iterable|string|null
     {
         $scroll_id = $this->extractArgument($params, 'scroll_id');
         $body = $this->extractArgument($params, 'body');
@@ -1577,7 +1450,7 @@ class Client
      * - body: The search definition using the Query DSL
      * @return array
      */
-    public function search(array $params = [])
+    public function search(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1609,7 +1482,7 @@ class Client
      * - body:
      * @return array
      */
-    public function searchShards(array $params = [])
+    public function searchShards(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1650,7 +1523,7 @@ class Client
      * - body: The search definition template and its parameters. (Required)
      * @return array
      */
-    public function searchTemplate(array $params = [])
+    public function searchTemplate(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1688,7 +1561,7 @@ class Client
      * - body: Define parameters and or supply a document to get termvectors for. See documentation.
      * @return array
      */
-    public function termvectors(array $params = [])
+    public function termvectors(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $id = $this->extractArgument($params, 'id');
@@ -1729,7 +1602,7 @@ class Client
      * - body: The request definition requires either `script` or partial `doc` (Required)
      * @return array
      */
-    public function update(array $params = [])
+    public function update(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $index = $this->extractArgument($params, 'index');
@@ -1791,7 +1664,7 @@ class Client
      * - body: The search definition using the Query DSL
      * @return array
      */
-    public function updateByQuery(array $params = [])
+    public function updateByQuery(array $params = []): iterable|string|null
     {
         $index = $this->extractArgument($params, 'index');
         $body = $this->extractArgument($params, 'body');
@@ -1817,7 +1690,7 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function updateByQueryRethrottle(array $params = [])
+    public function updateByQueryRethrottle(array $params = []): iterable|string|null
     {
         $task_id = $this->extractArgument($params, 'task_id');
 
@@ -1858,7 +1731,7 @@ class Client
          * @param array $params Associative array of parameters
          * @return array
          */
-    public function create(array $params = [])
+    public function create(array $params = []): iterable|string|null
     {
         $id = $this->extractArgument($params, 'id');
         $index = $this->extractArgument($params, 'index');
@@ -2214,9 +2087,8 @@ class Client
                 $value;
             unset($params[$arg]);
             return $value;
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**

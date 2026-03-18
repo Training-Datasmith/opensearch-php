@@ -26,7 +26,7 @@ class GetScheduledExperiments extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $experiment_id = $this->experiment_id ? rawurlencode($this->experiment_id) : null;
+        $experiment_id = $this->experiment_id ? rawurlencode((string) $this->experiment_id) : null;
         if (isset($experiment_id)) {
             return "/_plugins/_search_relevance/experiments/schedule/$experiment_id";
         }

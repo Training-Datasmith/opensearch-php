@@ -26,7 +26,7 @@ class GetSearchConfigurations extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $search_configuration_id = $this->search_configuration_id ? rawurlencode($this->search_configuration_id) : null;
+        $search_configuration_id = $this->search_configuration_id ? rawurlencode((string) $this->search_configuration_id) : null;
         if (isset($search_configuration_id)) {
             return "/_plugins/_search_relevance/search_configurations/$search_configuration_id";
         }

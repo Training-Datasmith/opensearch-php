@@ -40,7 +40,7 @@ class DeleteAlias extends AbstractEndpoint
         if (!isset($this->name) || $this->name === '') {
             throw new RuntimeException('name is required for delete_alias');
         }
-        $name = rawurlencode($this->name);
+        $name = rawurlencode((string) $this->name);
 
         return "/$index/_alias/$name";
     }
@@ -72,7 +72,7 @@ class DeleteAlias extends AbstractEndpoint
         if (is_array($name) === true) {
             $name = implode(",", $name);
         }
-        $this->name = rawurlencode($name);
+        $this->name = rawurlencode((string) $name);
 
         return $this;
     }

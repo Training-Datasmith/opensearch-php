@@ -36,7 +36,7 @@ class ExistsAlias extends AbstractEndpoint
         if (!isset($this->name) || $this->name === '') {
             throw new RuntimeException('name is required for exists_alias');
         }
-        $name = rawurlencode($this->name);
+        $name = rawurlencode((string) $this->name);
         $index = $this->index ? rawurlencode($this->index) : null;
         if (isset($index)) {
             return "/$index/_alias/$name";
@@ -72,7 +72,7 @@ class ExistsAlias extends AbstractEndpoint
         if (is_array($name) === true) {
             $name = implode(",", $name);
         }
-        $this->name = rawurlencode($name);
+        $this->name = rawurlencode((string) $name);
 
         return $this;
     }

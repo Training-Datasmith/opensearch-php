@@ -31,15 +31,9 @@ use OpenSearch\Connections\ConnectionInterface;
  */
 class StickyRoundRobinSelector implements SelectorInterface
 {
-    /**
-     * @var int
-     */
-    private $current = 0;
+    private int $current = 0;
 
-    /**
-     * @var int
-     */
-    private $currentCounter = 0;
+    private int $currentCounter = 0;
 
     /**
      * Use current connection unless it is dead, otherwise round-robin

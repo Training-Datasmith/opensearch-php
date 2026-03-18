@@ -31,10 +31,7 @@ use OpenSearch\Connections\ConnectionInterface;
  */
 class RoundRobinSelector implements SelectorInterface
 {
-    /**
-     * @var int
-     */
-    private $current = 0;
+    private int $current = 0;
 
     /**
      * Select the next connection in the sequence

@@ -43,24 +43,22 @@ class ArrayToJSONSerializer implements SerializerInterface
     {
         if (is_string($data) === true) {
             return $data;
-        } else {
-            $data = json_encode($data, JSON_PRESERVE_ZERO_FRACTION + JSON_INVALID_UTF8_SUBSTITUTE);
-            if ($data === false) {
-                throw new RuntimeException("Failed to JSON encode: ".json_last_error());
-            }
-            if ($data === '[]') {
-                return '{}';
-            } else {
-                return $data;
-            }
         }
+        $data = json_encode($data, JSON_PRESERVE_ZERO_FRACTION + JSON_INVALID_UTF8_SUBSTITUTE);
+        if ($data === false) {
+            throw new RuntimeException("Failed to JSON encode: ".json_last_error());
+        }
+        if ($data === '[]') {
+            return '{}';
+        }
+        return $data;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function deserialize(?string $data, array $headers)
+    public function deserialize(?string $data, array $headers): mixed
     {
-        return json_decode($data, true);
+        return json_decode((string) $data, true);
     }
 }

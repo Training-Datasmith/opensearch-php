@@ -12,11 +12,8 @@ use ReflectionClass;
  */
 class EndpointFactory implements EndpointFactoryInterface
 {
-    private ?SerializerInterface $serializer;
-
-    public function __construct(?SerializerInterface $serializer = null)
+    public function __construct(private ?SerializerInterface $serializer = null)
     {
-        $this->serializer = $serializer;
     }
 
     /**

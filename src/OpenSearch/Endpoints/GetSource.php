@@ -33,7 +33,7 @@ class GetSource extends AbstractEndpoint
         if (!isset($this->id) || $this->id === '') {
             throw new RuntimeException('id is required for get_source');
         }
-        $id = rawurlencode($this->id);
+        $id = rawurlencode((string) $this->id);
         if (!isset($this->index) || $this->index === '') {
             throw new RuntimeException('index is required for get_source');
         }

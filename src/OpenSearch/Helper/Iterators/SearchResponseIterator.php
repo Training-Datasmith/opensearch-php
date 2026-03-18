@@ -32,20 +32,7 @@ use Iterator;
  */
 class SearchResponseIterator implements Iterator
 {
-    /**
-     * @var Client
-     */
-    private $client;
-
-    /**
-     * @var array
-     */
-    private $params;
-
-    /**
-     * @var int
-     */
-    private $current_key = 0;
+    private int $current_key = 0;
 
     /**
      * @var array
@@ -65,17 +52,13 @@ class SearchResponseIterator implements Iterator
     /**
      * Constructor
      *
-     * @param Client $client
-     * @param array  $search_params Associative array of parameters
+     * @param array $params Associative array of parameters
      * @see   Client::search()
      */
-    public function __construct(Client $client, array $search_params)
+    public function __construct(private readonly Client $client, private array $params)
     {
-        $this->client = $client;
-        $this->params = $search_params;
-
-        if (isset($search_params['scroll'])) {
-            $this->scroll_ttl = $search_params['scroll'];
+        if (isset($this->params['scroll'])) {
+            $this->scroll_ttl = $this->params['scroll'];
         }
     }
 
@@ -89,9 +72,6 @@ class SearchResponseIterator implements Iterator
 
     /**
      * Sets the time to live duration of a scroll window
-     *
-     * @param  string $time_to_live
-     * @return $this
      */
     public function setScrollTimeout(string $time_to_live): SearchResponseIterator
     {
@@ -101,19 +81,17 @@ class SearchResponseIterator implements Iterator
 
     /**
      * Clears the current scroll window if there is a scroll_id stored
-     *
-     * @return void
      */
     private function clearScroll(): void
     {
         if (!empty($this->scroll_id)) {
             $this->client->clearScroll(
-                array(
+                [
                     'scroll_id' => $this->scroll_id,
-                    'client' => array(
+                    'client' => [
                         'ignore' => 404
-                    )
-                )
+                    ]
+                ]
             );
             $this->scroll_id = null;
         }
@@ -122,7 +100,6 @@ class SearchResponseIterator implements Iterator
     /**
      * Rewinds the iterator by performing the initial search.
      *
-     * @return void
      * @see    Iterator::rewind()
      */
     public function rewind(): void
@@ -136,7 +113,6 @@ class SearchResponseIterator implements Iterator
     /**
      * Fetches every "page" after the first one using the lastest "scroll_id"
      *
-     * @return void
      * @see    Iterator::next()
      */
     public function next(): void
@@ -156,7 +132,6 @@ class SearchResponseIterator implements Iterator
     /**
      * Returns a boolean value indicating if the current page is valid or not
      *
-     * @return bool
      * @see    Iterator::valid()
      */
     public function valid(): bool
@@ -167,7 +142,6 @@ class SearchResponseIterator implements Iterator
     /**
      * Returns the current "page"
      *
-     * @return array
      * @see    Iterator::current()
      */
     public function current(): array
@@ -178,7 +152,6 @@ class SearchResponseIterator implements Iterator
     /**
      * Returns the current "page number" of the current "page"
      *
-     * @return int
      * @see    Iterator::key()
      */
     public function key(): int

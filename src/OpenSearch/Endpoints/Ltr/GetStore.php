@@ -27,7 +27,7 @@ class GetStore extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $store = $this->store ? rawurlencode($this->store) : null;
+        $store = $this->store ? rawurlencode((string) $this->store) : null;
         if (isset($store)) {
             return "/_ltr/$store";
         }

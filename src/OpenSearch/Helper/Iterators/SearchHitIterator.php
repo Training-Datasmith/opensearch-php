@@ -32,11 +32,6 @@ use Iterator;
 class SearchHitIterator implements Iterator, \Countable
 {
     /**
-     * @var SearchResponseIterator
-     */
-    private $search_responses;
-
-    /**
      * @var int
      */
     protected $current_key;
@@ -58,18 +53,14 @@ class SearchHitIterator implements Iterator, \Countable
 
     /**
      * Constructor
-     *
-     * @param SearchResponseIterator $search_responses
      */
-    public function __construct(SearchResponseIterator $search_responses)
+    public function __construct(private readonly SearchResponseIterator $search_responses)
     {
-        $this->search_responses = $search_responses;
     }
 
     /**
      * Rewinds the internal SearchResponseIterator and itself
      *
-     * @return void
      * @see    Iterator::rewind()
      */
     public function rewind(): void
@@ -96,7 +87,6 @@ class SearchHitIterator implements Iterator, \Countable
      * isn't a next hit in the current page, then it advances the current page and moves the
      * pointer to the first hit in the page.
      *
-     * @return void
      * @see    Iterator::next()
      */
     public function next(): void
@@ -115,7 +105,6 @@ class SearchHitIterator implements Iterator, \Countable
     /**
      * Returns a boolean indicating whether or not the current pointer has valid data
      *
-     * @return bool
      * @see    Iterator::valid()
      */
     public function valid(): bool
@@ -126,7 +115,6 @@ class SearchHitIterator implements Iterator, \Countable
     /**
      * Returns the current hit
      *
-     * @return array
      * @see    Iterator::current()
      */
     public function current(): array
@@ -137,7 +125,6 @@ class SearchHitIterator implements Iterator, \Countable
     /**
      * Returns the current hit index. The hit index spans all pages.
      *
-     * @return int
      * @see    Iterator::key()
      */
     public function key(): int

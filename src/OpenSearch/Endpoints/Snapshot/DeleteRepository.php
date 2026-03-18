@@ -33,7 +33,7 @@ class DeleteRepository extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $repository = $this->repository ? rawurlencode($this->repository) : null;
+        $repository = $this->repository ? rawurlencode((string) $this->repository) : null;
         if (isset($repository)) {
             return "/_snapshot/$repository";
         }
@@ -67,7 +67,7 @@ class DeleteRepository extends AbstractEndpoint
         if (is_array($repository) === true) {
             $repository = implode(",", $repository);
         }
-        $this->repository = rawurlencode($repository);
+        $this->repository = rawurlencode((string) $repository);
 
         return $this;
     }

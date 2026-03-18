@@ -30,8 +30,8 @@ class DeleteFeatureset extends AbstractEndpoint
         if (!isset($this->id) || $this->id === '') {
             throw new RuntimeException('id is required for delete_featureset');
         }
-        $id = rawurlencode($this->id);
-        $store = $this->store ? rawurlencode($this->store) : null;
+        $id = rawurlencode((string) $this->id);
+        $store = $this->store ? rawurlencode((string) $this->store) : null;
         if (isset($store)) {
             return "/_ltr/$store/_featureset/$id";
         }

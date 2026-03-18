@@ -58,7 +58,6 @@ interface EndpointInterface
     /**
      * Get the document ID.
      *
-     * @param int|string|null $docID
      *
      * @return $this
      */

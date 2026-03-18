@@ -38,25 +38,19 @@ use OpenSearch\Connections\ConnectionInterface;
  */
 class SniffingConnectionPool extends AbstractConnectionPool
 {
-    /**
-     * @var int
-     */
-    private $sniffingInterval;
+    private int $sniffingInterval;
 
-    /**
-     * @var int
-     */
-    private $nextSniff;
+    private float|int $nextSniff;
 
     /**
      * @param ConnectionInterface[] $connections
      * @param array<string, mixed>  $connectionPoolParams
      */
     public function __construct(
-        $connections,
+        array $connections,
         SelectorInterface $selector,
         ConnectionFactoryInterface $factory,
-        $connectionPoolParams
+        array $connectionPoolParams
     ) {
         parent::__construct($connections, $selector, $factory, $connectionPoolParams);
 
@@ -132,7 +126,7 @@ class SniffingConnectionPool extends AbstractConnectionPool
     {
         try {
             $response = $connection->sniff();
-        } catch (OperationTimeoutException $exception) {
+        } catch (OperationTimeoutException) {
             return false;
         }
 
@@ -160,20 +154,25 @@ class SniffingConnectionPool extends AbstractConnectionPool
     /**
      * @return list<array{host: string, port: int}>
      */
-    private function parseClusterState($nodeInfo): array
+    private function parseClusterState(array $nodeInfo): array
     {
         $pattern = '/([^:]*):(\d+)/';
         $hosts = [];
 
         foreach ($nodeInfo['nodes'] as $node) {
-            if (isset($node['http']) === true && isset($node['http']['publish_address']) === true) {
-                if (preg_match($pattern, $node['http']['publish_address'], $match) === 1) {
-                    $hosts[] = [
-                        'host' => $match[1],
-                        'port' => (int)$match[2],
-                    ];
-                }
+            if (!(isset($node['http']) === true)) {
+                continue;
             }
+            if (!(isset($node['http']['publish_address']) === true)) {
+                continue;
+            }
+            if (preg_match($pattern, $node['http']['publish_address'], $match) !== 1) {
+                continue;
+            }
+            $hosts[] = [
+                'host' => $match[1],
+                'port' => (int)$match[2],
+            ];
         }
 
         return $hosts;

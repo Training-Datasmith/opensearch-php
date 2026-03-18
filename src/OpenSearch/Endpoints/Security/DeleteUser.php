@@ -30,7 +30,7 @@ class DeleteUser extends AbstractEndpoint
         if (!isset($this->username) || $this->username === '') {
             throw new RuntimeException('username is required for delete_user');
         }
-        $username = rawurlencode($this->username);
+        $username = rawurlencode((string) $this->username);
 
         return "/_plugins/_security/api/internalusers/$username";
     }

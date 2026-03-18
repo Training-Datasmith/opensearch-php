@@ -32,7 +32,7 @@ class Fielddata extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $fields = $this->fields ? rawurlencode($this->fields) : null;
+        $fields = $this->fields ? rawurlencode((string) $this->fields) : null;
         if (isset($fields)) {
             return "/_cat/fielddata/$fields";
         }
@@ -70,7 +70,7 @@ class Fielddata extends AbstractEndpoint
         if (is_array($fields) === true) {
             $fields = implode(",", $fields);
         }
-        $this->fields = rawurlencode($fields);
+        $this->fields = rawurlencode((string) $fields);
 
         return $this;
     }

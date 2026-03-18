@@ -33,7 +33,7 @@ class CreateDataStream extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $name = $this->name ? rawurlencode($this->name) : null;
+        $name = $this->name ? rawurlencode((string) $this->name) : null;
         if (isset($name)) {
             return "/_data_stream/$name";
         }

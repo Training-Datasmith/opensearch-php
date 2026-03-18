@@ -32,12 +32,12 @@ class AddFeaturesToSetByQuery extends AbstractEndpoint
         if (!isset($this->name) || $this->name === '') {
             throw new RuntimeException('name is required for add_features_to_set_by_query');
         }
-        $name = rawurlencode($this->name);
+        $name = rawurlencode((string) $this->name);
         if (!isset($this->query) || $this->query === '') {
             throw new RuntimeException('query is required for add_features_to_set_by_query');
         }
-        $query = rawurlencode($this->query);
-        $store = $this->store ? rawurlencode($this->store) : null;
+        $query = rawurlencode((string) $this->query);
+        $store = $this->store ? rawurlencode((string) $this->store) : null;
         if (isset($store)) {
             return "/_ltr/$store/_featureset/$name/_addfeatures/$query";
         }

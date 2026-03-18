@@ -37,8 +37,8 @@ class Rollover extends AbstractEndpoint
         if (!isset($this->alias) || $this->alias === '') {
             throw new RuntimeException('alias is required for rollover');
         }
-        $alias = rawurlencode($this->alias);
-        $new_index = $this->new_index ? rawurlencode($this->new_index) : null;
+        $alias = rawurlencode((string) $this->alias);
+        $new_index = $this->new_index ? rawurlencode((string) $this->new_index) : null;
         if (isset($new_index)) {
             return "/$alias/_rollover/$new_index";
         }

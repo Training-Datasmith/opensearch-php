@@ -30,7 +30,7 @@ class PatchTenant extends AbstractEndpoint
         if (!isset($this->tenant) || $this->tenant === '') {
             throw new RuntimeException('tenant is required for patch_tenant');
         }
-        $tenant = rawurlencode($this->tenant);
+        $tenant = rawurlencode((string) $this->tenant);
 
         return "/_plugins/_security/api/tenants/$tenant";
     }

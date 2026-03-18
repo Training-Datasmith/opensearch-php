@@ -25,17 +25,11 @@ class GetModelGroups extends AbstractEndpoint
         return [];
     }
 
-    /**
-     * @return string
-     */
     public function getURI(): string
     {
         return '/_plugins/_ml/model_groups/_search';
     }
 
-    /**
-     * @return string
-     */
     public function getMethod(): string
     {
         return 'POST';

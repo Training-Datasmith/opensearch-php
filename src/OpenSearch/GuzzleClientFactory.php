@@ -39,7 +39,7 @@ class GuzzleClientFactory implements ClientFactoryInterface
         if (isset($awsAuth)) {
             if (!isset($awsAuth['host'])) {
                 // Get the host from the base URI.
-                $awsAuth['host'] = parse_url($options['base_uri'], PHP_URL_HOST);
+                $awsAuth['host'] = parse_url((string) $options['base_uri'], PHP_URL_HOST);
             }
             $httpClient = $this->getSigningClientFactory()->create($httpClient, $awsAuth);
         }

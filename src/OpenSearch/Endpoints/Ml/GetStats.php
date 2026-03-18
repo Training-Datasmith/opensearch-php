@@ -27,8 +27,8 @@ class GetStats extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $node_id = $this->node_id ? rawurlencode($this->node_id) : null;
-        $stat = $this->stat ? rawurlencode($this->stat) : null;
+        $node_id = $this->node_id ? rawurlencode((string) $this->node_id) : null;
+        $stat = $this->stat ? rawurlencode((string) $this->stat) : null;
         if (isset($node_id) && isset($stat)) {
             return "/_plugins/_ml/$node_id/stats/$stat";
         }
@@ -75,7 +75,7 @@ class GetStats extends AbstractEndpoint
         if (is_array($stat) === true) {
             $stat = implode(",", $stat);
         }
-        $this->stat = rawurlencode($stat);
+        $this->stat = rawurlencode((string) $stat);
 
         return $this;
     }

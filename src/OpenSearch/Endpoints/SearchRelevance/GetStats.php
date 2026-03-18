@@ -26,7 +26,7 @@ class GetStats extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $stat = $this->stat ? rawurlencode($this->stat) : null;
+        $stat = $this->stat ? rawurlencode((string) $this->stat) : null;
         if (isset($stat)) {
             return "/_plugins/_search_relevance/stats/$stat";
         }

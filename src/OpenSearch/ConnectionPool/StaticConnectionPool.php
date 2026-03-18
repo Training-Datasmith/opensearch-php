@@ -37,21 +37,15 @@ use OpenSearch\Connections\ConnectionInterface;
  */
 class StaticConnectionPool extends AbstractConnectionPool implements ConnectionPoolInterface
 {
-    /**
-     * @var int
-     */
-    private $pingTimeout    = 60;
+    private int $pingTimeout    = 60;
 
-    /**
-     * @var int
-     */
-    private $maxPingTimeout = 3600;
+    private int $maxPingTimeout = 3600;
 
     /**
      * @param ConnectionInterface[] $connections
      * @param array<string, mixed>  $connectionPoolParams
      */
-    public function __construct($connections, SelectorInterface $selector, ConnectionFactoryInterface $factory, $connectionPoolParams)
+    public function __construct(array $connections, SelectorInterface $selector, ConnectionFactoryInterface $factory, array $connectionPoolParams)
     {
         parent::__construct($connections, $selector, $factory, $connectionPoolParams);
         $this->scheduleCheck();
@@ -100,14 +94,13 @@ class StaticConnectionPool extends AbstractConnectionPool implements ConnectionP
     private function readyToRevive(Connection $connection): bool
     {
         $timeout = min(
-            $this->pingTimeout * pow(2, $connection->getPingFailures()),
+            $this->pingTimeout * 2 ** $connection->getPingFailures(),
             $this->maxPingTimeout
         );
 
         if ($connection->getLastPing() + $timeout < time()) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

@@ -28,8 +28,8 @@ class SearchAgenticMemory extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $memory_container_id = $this->memory_container_id ? rawurlencode($this->memory_container_id) : null;
-        $type = $this->type ? rawurlencode($this->type) : null;
+        $memory_container_id = $this->memory_container_id ? rawurlencode((string) $this->memory_container_id) : null;
+        $type = $this->type ? rawurlencode((string) $this->type) : null;
         if (isset($memory_container_id) && isset($type)) {
             return "/_plugins/_ml/memory_containers/$memory_container_id/memories/$type/_search";
         }

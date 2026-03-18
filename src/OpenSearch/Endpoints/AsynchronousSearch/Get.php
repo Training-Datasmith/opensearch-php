@@ -28,7 +28,7 @@ class Get extends AbstractEndpoint
         if (!isset($this->id) || $this->id === '') {
             throw new RuntimeException('id is required for get');
         }
-        $id = rawurlencode($this->id);
+        $id = rawurlencode((string) $this->id);
 
         return "/_plugins/_asynchronous_search/$id";
     }

@@ -34,9 +34,9 @@ class Stats extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $index_metric = $this->index_metric ? rawurlencode($this->index_metric) : null;
-        $metric = $this->metric ? rawurlencode($this->metric) : null;
-        $node_id = $this->node_id ? rawurlencode($this->node_id) : null;
+        $index_metric = $this->index_metric ? rawurlencode((string) $this->index_metric) : null;
+        $metric = $this->metric ? rawurlencode((string) $this->metric) : null;
+        $node_id = $this->node_id ? rawurlencode((string) $this->node_id) : null;
         if (isset($metric) && isset($index_metric) && isset($node_id)) {
             return "/_cluster/stats/$metric/$index_metric/nodes/$node_id";
         }
@@ -75,7 +75,7 @@ class Stats extends AbstractEndpoint
         if (is_array($index_metric) === true) {
             $index_metric = implode(",", $index_metric);
         }
-        $this->index_metric = rawurlencode($index_metric);
+        $this->index_metric = rawurlencode((string) $index_metric);
 
         return $this;
     }
@@ -88,7 +88,7 @@ class Stats extends AbstractEndpoint
         if (is_array($metric) === true) {
             $metric = implode(",", $metric);
         }
-        $this->metric = rawurlencode($metric);
+        $this->metric = rawurlencode((string) $metric);
 
         return $this;
     }
@@ -101,7 +101,7 @@ class Stats extends AbstractEndpoint
         if (is_array($node_id) === true) {
             $node_id = implode(",", $node_id);
         }
-        $this->node_id = rawurlencode($node_id);
+        $this->node_id = rawurlencode((string) $node_id);
 
         return $this;
     }

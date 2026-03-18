@@ -32,7 +32,7 @@ class DataStreamsStats extends AbstractEndpoint
 
     public function getURI(): string
     {
-        $name = $this->name ? rawurlencode($this->name) : null;
+        $name = $this->name ? rawurlencode((string) $this->name) : null;
         if (isset($name)) {
             return "/_data_stream/$name/_stats";
         }
@@ -63,7 +63,7 @@ class DataStreamsStats extends AbstractEndpoint
         if (is_array($name) === true) {
             $name = implode(",", $name);
         }
-        $this->name = rawurlencode($name);
+        $this->name = rawurlencode((string) $name);
 
         return $this;
     }

@@ -50,7 +50,7 @@ abstract class BooleanRequestWrapper
                 $endpoint->getOptions()
             );
 
-        } catch (NotFoundHttpException|RoutingMissingException $e) {
+        } catch (NotFoundHttpException|RoutingMissingException) {
             // Return false for 404 errors.
             return false;
         }
@@ -80,19 +80,15 @@ abstract class BooleanRequestWrapper
             );
 
             $response = $transport->resultOrFuture($response, $endpoint->getOptions());
-            if (!($response instanceof FutureArrayInterface)) {
-                if ($response['status'] === 200) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
+            if ($response instanceof FutureArrayInterface) {
                 // async mode, can't easily resolve this...punt to user
                 return $response;
             }
-        } catch (Missing404Exception $exception) {
+            if ($response['status'] === 200) {
+                return true;
+            }
             return false;
-        } catch (RoutingMissingException $exception) {
+        } catch (Missing404Exception|RoutingMissingException) {
             return false;
         }
     }

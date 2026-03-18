@@ -66,7 +66,7 @@ class SigV4Handler
     /**
      * @phpstan-param RingPhpRequest $request
      */
-    public function __invoke(array $request)
+    public function __invoke(array $request): mixed
     {
         $creds = call_user_func($this->credentialProvider)->wait();
 
