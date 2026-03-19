@@ -217,7 +217,15 @@ class Connection implements ConnectionInterface
 
     public function getLastRequestInfo(): array
     {
-        return $this->lastRequest;
+        $info = $this->lastRequest;
+
+        // Redact credentials stored by the constructor so that callers logging or
+        // displaying debug info do not inadvertently expose passwords.
+        if (isset($info['request']['client']['curl'][CURLOPT_USERPWD])) {
+            $info['request']['client']['curl'][CURLOPT_USERPWD] = '[REDACTED]';
+        }
+
+        return $info;
     }
 
     private function wrapHandler(callable $handler): callable

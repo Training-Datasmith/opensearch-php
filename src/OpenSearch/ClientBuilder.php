@@ -558,9 +558,10 @@ class ClientBuilder
         if (isset($this->sslCert)) {
             $sslOptions['cert'] = $this->sslCert;
         }
-        if (isset($this->sslVerification)) {
-            $sslOptions['verify'] = $this->sslVerification;
-        }
+        // Always emit a verify value so the underlying cURL handler never falls back to
+        // whatever the system default happens to be. Peer verification is on by default;
+        // callers must explicitly opt out via setSSLVerification(false).
+        $sslOptions['verify'] = $this->sslVerification ?? true;
 
         if (!is_null($sslOptions)) {
             $sslHandler = (fn (callable $handler, array $sslOptions) => function (array $request) use ($handler, $sslOptions) {
