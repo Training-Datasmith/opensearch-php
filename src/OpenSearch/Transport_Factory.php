@@ -1,136 +1,108 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Open_Search;
 
-namespace OpenSearch;
-
-use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
-use OpenSearch\Serializers\SerializerInterface;
-use OpenSearch\Serializers\SmartSerializer;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestFactoryInterface as PsrRequestFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
-
+use Http\Discovery\Psr17factory_Discovery;
+use Http\Discovery\Psr18client_Discovery;
+use Open_Search\Serializers\Serializer_Interface;
+use Open_Search\Serializers\Smart_Serializer;
+use Psr\Http\Client\Client_Interface;
+use Psr\Http\Message\Request_Factory_Interface as PsrRequestFactoryInterface;
+use Psr\Http\Message\Stream_Factory_Interface;
+use Psr\Http\Message\Uri_Factory_Interface;
 /**
  * Creates a PSR transport falling back to a discovery mechanism if properties are not specified.
  */
-class TransportFactory
+class Transport_Factory
 {
-    private ?PsrRequestFactoryInterface $psrRequestFactory = null;
-
-    private ?StreamFactoryInterface $streamFactory = null;
-
-    private ?UriFactoryInterface $uriFactory = null;
-
-    private ?SerializerInterface $serializer = null;
-
-    private ?RequestFactoryInterface $requestFactory = null;
-
-    private ?ClientInterface $httpClient = null;
-
-    protected function getHttpClient(): ?ClientInterface
+    private ?Psr_Request_Factory_Interface $psr_request_factory = null;
+    private ?Stream_Factory_Interface $stream_factory = null;
+    private ?Uri_Factory_Interface $uri_factory = null;
+    private ?Serializer_Interface $serializer = null;
+    private ?Request_Factory_Interface $request_factory = null;
+    private ?Client_Interface $http_client = null;
+    protected function get_http_client(): ?Client_Interface
     {
-        return $this->httpClient;
+        return $this->http_client;
     }
-
-    public function setHttpClient(?ClientInterface $httpClient): static
+    public function set_http_client(?Client_Interface $http_client): static
     {
-        $this->httpClient = $httpClient;
+        $this->http_client = $http_client;
         return $this;
     }
-
-    protected function getRequestFactory(): ?RequestFactoryInterface
+    protected function get_request_factory(): ?Request_Factory_Interface
     {
-        return $this->requestFactory;
+        return $this->request_factory;
     }
-
-    public function setRequestFactory(?RequestFactoryInterface $requestFactory): static
+    public function set_request_factory(?Request_Factory_Interface $request_factory): static
     {
-        $this->requestFactory = $requestFactory;
+        $this->request_factory = $request_factory;
         return $this;
     }
-
-    protected function getPsrRequestFactory(): PsrRequestFactoryInterface
+    protected function get_psr_request_factory(): Psr_Request_Factory_Interface
     {
-        if ($this->psrRequestFactory === null) {
-            $this->psrRequestFactory = Psr17FactoryDiscovery::findRequestFactory();
+        if ($this->psr_request_factory === null) {
+            $this->psr_request_factory = Psr17factory_Discovery::find_request_factory();
         }
-        return $this->psrRequestFactory;
+        return $this->psr_request_factory;
     }
-
-    public function setPsrRequestFactory(PsrRequestFactoryInterface $psrRequestFactory): static
+    public function set_psr_request_factory(Psr_Request_Factory_Interface $psr_request_factory): static
     {
-        $this->psrRequestFactory = $psrRequestFactory;
+        $this->psr_request_factory = $psr_request_factory;
         return $this;
     }
-
-    protected function getStreamFactory(): StreamFactoryInterface
+    protected function get_stream_factory(): Stream_Factory_Interface
     {
-        if ($this->streamFactory === null) {
-            $this->streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+        if ($this->stream_factory === null) {
+            $this->stream_factory = Psr17factory_Discovery::find_stream_factory();
         }
-        return $this->streamFactory;
+        return $this->stream_factory;
     }
-
-    public function setStreamFactory(StreamFactoryInterface $streamFactory): static
+    public function set_stream_factory(Stream_Factory_Interface $stream_factory): static
     {
-        $this->streamFactory = $streamFactory;
+        $this->stream_factory = $stream_factory;
         return $this;
     }
-
-    protected function getUriFactory(): UriFactoryInterface
+    protected function get_uri_factory(): Uri_Factory_Interface
     {
-        if ($this->uriFactory === null) {
-            $this->uriFactory = Psr17FactoryDiscovery::findUriFactory();
+        if ($this->uri_factory === null) {
+            $this->uri_factory = Psr17factory_Discovery::find_uri_factory();
         }
-        return $this->uriFactory;
+        return $this->uri_factory;
     }
-
-    public function setUriFactory(UriFactoryInterface $uriFactory): static
+    public function set_uri_factory(Uri_Factory_Interface $uri_factory): static
     {
-        $this->uriFactory = $uriFactory;
+        $this->uri_factory = $uri_factory;
         return $this;
     }
-
-    protected function getSerializer(): SerializerInterface
+    protected function get_serializer(): Serializer_Interface
     {
         if ($this->serializer === null) {
-            $this->serializer = new SmartSerializer();
+            $this->serializer = new Smart_Serializer();
         }
         return $this->serializer;
     }
-
-    public function setSerializer(SerializerInterface $serializer): static
+    public function set_serializer(Serializer_Interface $serializer): static
     {
         $this->serializer = $serializer;
         return $this;
     }
-
     /**
      * Creates a new transport.
      */
-    public function create(): HttpTransport
+    public function create(): Http_Transport
     {
-        if ($this->requestFactory === null) {
-            $psrRequestFactory = $this->getPsrRequestFactory();
-            $streamFactory = $this->getStreamFactory();
-            $uriFactory = $this->getUriFactory();
-            $serializer = $this->getSerializer();
-
-            $this->requestFactory = new RequestFactory(
-                $psrRequestFactory,
-                $streamFactory,
-                $uriFactory,
-                $serializer
-            );
+        if ($this->request_factory === null) {
+            $psr_request_factory = $this->get_psr_request_factory();
+            $stream_factory = $this->get_stream_factory();
+            $uri_factory = $this->get_uri_factory();
+            $serializer = $this->get_serializer();
+            $this->request_factory = new Request_Factory($psr_request_factory, $stream_factory, $uri_factory, $serializer);
         }
-        if ($this->httpClient === null) {
-            $this->httpClient = Psr18ClientDiscovery::find();
+        if ($this->http_client === null) {
+            $this->http_client = Psr18client_Discovery::find();
         }
-
-        return new HttpTransport($this->httpClient, $this->requestFactory, $this->getSerializer());
+        return new Http_Transport($this->http_client, $this->request_factory, $this->get_serializer());
     }
-
 }

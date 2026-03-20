@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,15 +17,14 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Namespaces;
+namespace Open_Search\Namespaces;
 
 /**
  * Class DataFrameTransformDeprecatedNamespace
  *
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
+class Data_Frame_Transform_Deprecated_Namespace extends Abstract_Namespace
 {
     /**
      * $params['transform_id'] = (string) The id of the transform to delete
@@ -34,21 +32,18 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function deleteTransform(array $params = [])
+    public function delete_transform(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\DeleteTransform');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\DeleteTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['transform_id']   = (string) The id or comma delimited list of id expressions of the transforms to get, '_all' or '*' implies get all transforms
@@ -58,21 +53,18 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function getTransform(array $params = [])
+    public function get_transform(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\GetTransform');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\GetTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['transform_id']   = (string) The id of the transform for which to get stats. '_all' or '*' implies all transforms
@@ -82,32 +74,27 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function getTransformStats(array $params = [])
+    public function get_transform_stats(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\GetTransformStats');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\GetTransformStats');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        return $this->perform_request($endpoint);
     }
-    public function previewTransform(array $params = [])
+    public function preview_transform(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\PreviewTransform');
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\PreviewTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['transform_id']     = (string) The id of the new transform.
@@ -116,23 +103,20 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function putTransform(array $params = [])
+    public function put_transform(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\PutTransform');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\PutTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['transform_id'] = (string) The id of the transform to start
@@ -140,21 +124,18 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function startTransform(array $params = [])
+    public function start_transform(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\StartTransform');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\StartTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['transform_id']        = (string) The id of the transform to stop
@@ -164,21 +145,18 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function stopTransform(array $params = [])
+    public function stop_transform(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\StopTransform');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\StopTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['transform_id']     = (string) The id of the transform.
@@ -187,22 +165,19 @@ class DataFrameTransformDeprecatedNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is BETA and may change in ways that are not backwards compatible
      *
      */
-    public function updateTransform(array $params = [])
+    public function update_transform(array $params = [])
     {
-        $transform_id = $this->extractArgument($params, 'transform_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('DataFrameTransformDeprecated\UpdateTransform');
-        $endpoint->setParams($params);
-        $endpoint->setTransformId($transform_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $transform_id = $this->extract_argument($params, 'transform_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('DataFrameTransformDeprecated\UpdateTransform');
+        $endpoint->set_params($params);
+        $endpoint->set_transform_id($transform_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,10 +17,9 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Serializers;
 
-namespace OpenSearch\Serializers;
-
-interface SerializerInterface
+interface Serializer_Interface
 {
     /**
      * Serialize a complex data-structure into a json encoded string
@@ -29,7 +27,6 @@ interface SerializerInterface
      * @param  mixed $data The data to encode
      */
     public function serialize($data): string;
-
     /**
      * Deserialize json encoded string into an associative array
      *

@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -12,92 +11,90 @@ declare(strict_types=1);
  * Modifications Copyright OpenSearch Contributors. See
  * GitHub history for details.
  */
+namespace Open_Search\Namespaces;
 
-namespace OpenSearch\Namespaces;
-
-use OpenSearch\Endpoints\Ml\AddAgenticMemory;
-use OpenSearch\Endpoints\Ml\ChunkModel;
-use OpenSearch\Endpoints\Ml\CreateConnector;
-use OpenSearch\Endpoints\Ml\CreateController;
-use OpenSearch\Endpoints\Ml\CreateMemory;
-use OpenSearch\Endpoints\Ml\CreateMemoryContainer;
-use OpenSearch\Endpoints\Ml\CreateMemoryContainerSession;
-use OpenSearch\Endpoints\Ml\CreateMessage;
-use OpenSearch\Endpoints\Ml\CreateModelMeta;
-use OpenSearch\Endpoints\Ml\DeleteAgent;
-use OpenSearch\Endpoints\Ml\DeleteAgenticMemory;
-use OpenSearch\Endpoints\Ml\DeleteAgenticMemoryQuery;
-use OpenSearch\Endpoints\Ml\DeleteConnector;
-use OpenSearch\Endpoints\Ml\DeleteController;
-use OpenSearch\Endpoints\Ml\DeleteMemory;
-use OpenSearch\Endpoints\Ml\DeleteMemoryContainer;
-use OpenSearch\Endpoints\Ml\DeleteModel;
-use OpenSearch\Endpoints\Ml\DeleteModelGroup;
-use OpenSearch\Endpoints\Ml\DeleteTask;
-use OpenSearch\Endpoints\Ml\DeployModel;
-use OpenSearch\Endpoints\Ml\ExecuteAgent;
-use OpenSearch\Endpoints\Ml\ExecuteAgentStream;
-use OpenSearch\Endpoints\Ml\ExecuteAlgorithm;
-use OpenSearch\Endpoints\Ml\ExecuteTool;
-use OpenSearch\Endpoints\Ml\GetAgent;
-use OpenSearch\Endpoints\Ml\GetAgenticMemory;
-use OpenSearch\Endpoints\Ml\GetAllMemories;
-use OpenSearch\Endpoints\Ml\GetAllMessages;
-use OpenSearch\Endpoints\Ml\GetAllTools;
-use OpenSearch\Endpoints\Ml\GetConnector;
-use OpenSearch\Endpoints\Ml\GetConnectors;
-use OpenSearch\Endpoints\Ml\GetController;
-use OpenSearch\Endpoints\Ml\GetMemory;
-use OpenSearch\Endpoints\Ml\GetMemoryContainer;
-use OpenSearch\Endpoints\Ml\GetMessage;
-use OpenSearch\Endpoints\Ml\GetMessageTraces;
-use OpenSearch\Endpoints\Ml\GetModel;
-use OpenSearch\Endpoints\Ml\GetModelGroup;
-use OpenSearch\Endpoints\Ml\GetModelGroups;
-use OpenSearch\Endpoints\Ml\GetProfile;
-use OpenSearch\Endpoints\Ml\GetProfileModels;
-use OpenSearch\Endpoints\Ml\GetProfileTasks;
-use OpenSearch\Endpoints\Ml\GetStats;
-use OpenSearch\Endpoints\Ml\GetTask;
-use OpenSearch\Endpoints\Ml\GetTool;
-use OpenSearch\Endpoints\Ml\LoadModel;
-use OpenSearch\Endpoints\Ml\Predict;
-use OpenSearch\Endpoints\Ml\PredictModel;
-use OpenSearch\Endpoints\Ml\PredictModelStream;
-use OpenSearch\Endpoints\Ml\RegisterAgents;
-use OpenSearch\Endpoints\Ml\RegisterModel;
-use OpenSearch\Endpoints\Ml\RegisterModelGroup;
-use OpenSearch\Endpoints\Ml\RegisterModelMeta;
-use OpenSearch\Endpoints\Ml\SearchAgenticMemory;
-use OpenSearch\Endpoints\Ml\SearchAgents;
-use OpenSearch\Endpoints\Ml\SearchConnectors;
-use OpenSearch\Endpoints\Ml\SearchMemory;
-use OpenSearch\Endpoints\Ml\SearchMemoryContainer;
-use OpenSearch\Endpoints\Ml\SearchMessage;
-use OpenSearch\Endpoints\Ml\SearchModelGroup;
-use OpenSearch\Endpoints\Ml\SearchModels;
-use OpenSearch\Endpoints\Ml\SearchTasks;
-use OpenSearch\Endpoints\Ml\Train;
-use OpenSearch\Endpoints\Ml\TrainPredict;
-use OpenSearch\Endpoints\Ml\UndeployModel;
-use OpenSearch\Endpoints\Ml\UnloadModel;
-use OpenSearch\Endpoints\Ml\UpdateAgenticMemory;
-use OpenSearch\Endpoints\Ml\UpdateConnector;
-use OpenSearch\Endpoints\Ml\UpdateController;
-use OpenSearch\Endpoints\Ml\UpdateMemory;
-use OpenSearch\Endpoints\Ml\UpdateMemoryContainer;
-use OpenSearch\Endpoints\Ml\UpdateMessage;
-use OpenSearch\Endpoints\Ml\UpdateModel;
-use OpenSearch\Endpoints\Ml\UpdateModelGroup;
-use OpenSearch\Endpoints\Ml\UploadChunk;
-use OpenSearch\Endpoints\Ml\UploadModel;
-
+use Open_Search\Endpoints\Ml\Add_Agentic_Memory;
+use Open_Search\Endpoints\Ml\Chunk_Model;
+use Open_Search\Endpoints\Ml\Create_Connector;
+use Open_Search\Endpoints\Ml\Create_Controller;
+use Open_Search\Endpoints\Ml\Create_Memory;
+use Open_Search\Endpoints\Ml\Create_Memory_Container;
+use Open_Search\Endpoints\Ml\Create_Memory_Container_Session;
+use Open_Search\Endpoints\Ml\Create_Message;
+use Open_Search\Endpoints\Ml\Create_Model_Meta;
+use Open_Search\Endpoints\Ml\Delete_Agent;
+use Open_Search\Endpoints\Ml\Delete_Agentic_Memory;
+use Open_Search\Endpoints\Ml\Delete_Agentic_Memory_Query;
+use Open_Search\Endpoints\Ml\Delete_Connector;
+use Open_Search\Endpoints\Ml\Delete_Controller;
+use Open_Search\Endpoints\Ml\Delete_Memory;
+use Open_Search\Endpoints\Ml\Delete_Memory_Container;
+use Open_Search\Endpoints\Ml\Delete_Model;
+use Open_Search\Endpoints\Ml\Delete_Model_Group;
+use Open_Search\Endpoints\Ml\Delete_Task;
+use Open_Search\Endpoints\Ml\Deploy_Model;
+use Open_Search\Endpoints\Ml\Execute_Agent;
+use Open_Search\Endpoints\Ml\Execute_Agent_Stream;
+use Open_Search\Endpoints\Ml\Execute_Algorithm;
+use Open_Search\Endpoints\Ml\Execute_Tool;
+use Open_Search\Endpoints\Ml\Get_Agent;
+use Open_Search\Endpoints\Ml\Get_Agentic_Memory;
+use Open_Search\Endpoints\Ml\Get_All_Memories;
+use Open_Search\Endpoints\Ml\Get_All_Messages;
+use Open_Search\Endpoints\Ml\Get_All_Tools;
+use Open_Search\Endpoints\Ml\Get_Connector;
+use Open_Search\Endpoints\Ml\Get_Connectors;
+use Open_Search\Endpoints\Ml\Get_Controller;
+use Open_Search\Endpoints\Ml\Get_Memory;
+use Open_Search\Endpoints\Ml\Get_Memory_Container;
+use Open_Search\Endpoints\Ml\Get_Message;
+use Open_Search\Endpoints\Ml\Get_Message_Traces;
+use Open_Search\Endpoints\Ml\Get_Model;
+use Open_Search\Endpoints\Ml\Get_Model_Group;
+use Open_Search\Endpoints\Ml\Get_Model_Groups;
+use Open_Search\Endpoints\Ml\Get_Profile;
+use Open_Search\Endpoints\Ml\Get_Profile_Models;
+use Open_Search\Endpoints\Ml\Get_Profile_Tasks;
+use Open_Search\Endpoints\Ml\Get_Stats;
+use Open_Search\Endpoints\Ml\Get_Task;
+use Open_Search\Endpoints\Ml\Get_Tool;
+use Open_Search\Endpoints\Ml\Load_Model;
+use Open_Search\Endpoints\Ml\Predict;
+use Open_Search\Endpoints\Ml\Predict_Model;
+use Open_Search\Endpoints\Ml\Predict_Model_Stream;
+use Open_Search\Endpoints\Ml\Register_Agents;
+use Open_Search\Endpoints\Ml\Register_Model;
+use Open_Search\Endpoints\Ml\Register_Model_Group;
+use Open_Search\Endpoints\Ml\Register_Model_Meta;
+use Open_Search\Endpoints\Ml\Search_Agentic_Memory;
+use Open_Search\Endpoints\Ml\Search_Agents;
+use Open_Search\Endpoints\Ml\Search_Connectors;
+use Open_Search\Endpoints\Ml\Search_Memory;
+use Open_Search\Endpoints\Ml\Search_Memory_Container;
+use Open_Search\Endpoints\Ml\Search_Message;
+use Open_Search\Endpoints\Ml\Search_Model_Group;
+use Open_Search\Endpoints\Ml\Search_Models;
+use Open_Search\Endpoints\Ml\Search_Tasks;
+use Open_Search\Endpoints\Ml\Train;
+use Open_Search\Endpoints\Ml\Train_Predict;
+use Open_Search\Endpoints\Ml\Undeploy_Model;
+use Open_Search\Endpoints\Ml\Unload_Model;
+use Open_Search\Endpoints\Ml\Update_Agentic_Memory;
+use Open_Search\Endpoints\Ml\Update_Connector;
+use Open_Search\Endpoints\Ml\Update_Controller;
+use Open_Search\Endpoints\Ml\Update_Memory;
+use Open_Search\Endpoints\Ml\Update_Memory_Container;
+use Open_Search\Endpoints\Ml\Update_Message;
+use Open_Search\Endpoints\Ml\Update_Model;
+use Open_Search\Endpoints\Ml\Update_Model_Group;
+use Open_Search\Endpoints\Ml\Upload_Chunk;
+use Open_Search\Endpoints\Ml\Upload_Model;
 /**
  * Class MlNamespace
  *
  * NOTE: This file is autogenerated using util/GenerateEndpoints.php
  */
-class MlNamespace extends AbstractNamespace
+class Ml_Namespace extends Abstract_Namespace
 {
     /**
      * Add agentic memory to a memory container.
@@ -112,19 +109,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function addAgenticMemory(array $params = [])
+    public function add_agentic_memory(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(AddAgenticMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Add_Agentic_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Uploads model chunk.
      *
@@ -139,21 +133,18 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function chunkModel(array $params = [])
+    public function chunk_model(array $params = [])
     {
-        $chunk_number = $this->extractArgument($params, 'chunk_number');
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ChunkModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setChunkNumber($chunk_number);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $chunk_number = $this->extract_argument($params, 'chunk_number');
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Chunk_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_chunk_number($chunk_number);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates a controller.
      *
@@ -167,19 +158,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function createController(array $params = [])
+    public function create_controller(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateController::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Controller::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Create a memory.
      *
@@ -192,17 +180,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function createMemory(array $params = [])
+    public function create_memory(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Create a memory container.
      *
@@ -215,17 +200,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function createMemoryContainer(array $params = [])
+    public function create_memory_container(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateMemoryContainer::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Memory_Container::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Create session in a memory container.
      *
@@ -239,19 +221,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function createMemoryContainerSession(array $params = [])
+    public function create_memory_container_session(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateMemoryContainerSession::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Memory_Container_Session::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Create a message.
      *
@@ -265,19 +244,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function createMessage(array $params = [])
+    public function create_message(array $params = [])
     {
-        $memory_id = $this->extractArgument($params, 'memory_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateMessage::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryId($memory_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_id = $this->extract_argument($params, 'memory_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Message::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_id($memory_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Registers model metadata.
      *
@@ -290,17 +266,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function createModelMeta(array $params = [])
+    public function create_model_meta(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateModelMeta::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Model_Meta::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Delete an agent.
      *
@@ -313,17 +286,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteAgent(array $params = [])
+    public function delete_agent(array $params = [])
     {
-        $agent_id = $this->extractArgument($params, 'agent_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteAgent::class);
-        $endpoint->setParams($params);
-        $endpoint->setAgentId($agent_id);
-
-        return $this->performRequest($endpoint);
+        $agent_id = $this->extract_argument($params, 'agent_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Agent::class);
+        $endpoint->set_params($params);
+        $endpoint->set_agent_id($agent_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Delete a specific memory by its type and ID.
      *
@@ -338,21 +308,18 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteAgenticMemory(array $params = [])
+    public function delete_agentic_memory(array $params = [])
     {
-        $id = $this->extractArgument($params, 'id');
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $type = $this->extractArgument($params, 'type');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteAgenticMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setType($type);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $type = $this->extract_argument($params, 'type');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Agentic_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_type($type);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Delete multiple memories using a query to match specific criteria.
      *
@@ -367,21 +334,18 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function deleteAgenticMemoryQuery(array $params = [])
+    public function delete_agentic_memory_query(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $type = $this->extractArgument($params, 'type');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteAgenticMemoryQuery::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setType($type);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $type = $this->extract_argument($params, 'type');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Agentic_Memory_Query::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_type($type);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes a controller.
      *
@@ -394,17 +358,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteController(array $params = [])
+    public function delete_controller(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteController::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Controller::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Delete a memory.
      *
@@ -417,17 +378,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteMemory(array $params = [])
+    public function delete_memory(array $params = [])
     {
-        $memory_id = $this->extractArgument($params, 'memory_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryId($memory_id);
-
-        return $this->performRequest($endpoint);
+        $memory_id = $this->extract_argument($params, 'memory_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_id($memory_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Delete a memory container.
      *
@@ -442,17 +400,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteMemoryContainer(array $params = [])
+    public function delete_memory_container(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteMemoryContainer::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Memory_Container::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes a model.
      *
@@ -465,17 +420,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteModel(array $params = [])
+    public function delete_model(array $params = [])
     {
-        $id = $this->extractArgument($params, 'id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes a model group.
      *
@@ -488,17 +440,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteModelGroup(array $params = [])
+    public function delete_model_group(array $params = [])
     {
-        $id = $this->extractArgument($params, 'id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteModelGroup::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Model_Group::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes a task.
      *
@@ -511,17 +460,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteTask(array $params = [])
+    public function delete_task(array $params = [])
     {
-        $task_id = $this->extractArgument($params, 'task_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteTask::class);
-        $endpoint->setParams($params);
-        $endpoint->setTaskId($task_id);
-
-        return $this->performRequest($endpoint);
+        $task_id = $this->extract_argument($params, 'task_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Task::class);
+        $endpoint->set_params($params);
+        $endpoint->set_task_id($task_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Execute an agent.
      *
@@ -535,19 +481,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function executeAgent(array $params = [])
+    public function execute_agent(array $params = [])
     {
-        $agent_id = $this->extractArgument($params, 'agent_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExecuteAgent::class);
-        $endpoint->setParams($params);
-        $endpoint->setAgentId($agent_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $agent_id = $this->extract_argument($params, 'agent_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Execute_Agent::class);
+        $endpoint->set_params($params);
+        $endpoint->set_agent_id($agent_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Execute an agent in streaming mode.
      *
@@ -561,19 +504,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function executeAgentStream(array $params = [])
+    public function execute_agent_stream(array $params = [])
     {
-        $agent_id = $this->extractArgument($params, 'agent_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExecuteAgentStream::class);
-        $endpoint->setParams($params);
-        $endpoint->setAgentId($agent_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $agent_id = $this->extract_argument($params, 'agent_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Execute_Agent_Stream::class);
+        $endpoint->set_params($params);
+        $endpoint->set_agent_id($agent_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Execute an algorithm.
      *
@@ -587,19 +527,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function executeAlgorithm(array $params = [])
+    public function execute_algorithm(array $params = [])
     {
-        $algorithm_name = $this->extractArgument($params, 'algorithm_name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExecuteAlgorithm::class);
-        $endpoint->setParams($params);
-        $endpoint->setAlgorithmName($algorithm_name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $algorithm_name = $this->extract_argument($params, 'algorithm_name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Execute_Algorithm::class);
+        $endpoint->set_params($params);
+        $endpoint->set_algorithm_name($algorithm_name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Execute a tool.
      *
@@ -613,19 +550,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function executeTool(array $params = [])
+    public function execute_tool(array $params = [])
     {
-        $tool_name = $this->extractArgument($params, 'tool_name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExecuteTool::class);
-        $endpoint->setParams($params);
-        $endpoint->setToolName($tool_name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $tool_name = $this->extract_argument($params, 'tool_name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Execute_Tool::class);
+        $endpoint->set_params($params);
+        $endpoint->set_tool_name($tool_name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get an agent.
      *
@@ -638,17 +572,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAgent(array $params = [])
+    public function get_agent(array $params = [])
     {
-        $agent_id = $this->extractArgument($params, 'agent_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAgent::class);
-        $endpoint->setParams($params);
-        $endpoint->setAgentId($agent_id);
-
-        return $this->performRequest($endpoint);
+        $agent_id = $this->extract_argument($params, 'agent_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Agent::class);
+        $endpoint->set_params($params);
+        $endpoint->set_agent_id($agent_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a specific memory by its type and ID.
      *
@@ -663,21 +594,18 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAgenticMemory(array $params = [])
+    public function get_agentic_memory(array $params = [])
     {
-        $id = $this->extractArgument($params, 'id');
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $type = $this->extractArgument($params, 'type');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAgenticMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setType($type);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $type = $this->extract_argument($params, 'type');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Agentic_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_type($type);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get all memories.
      *
@@ -691,15 +619,12 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAllMemories(array $params = [])
+    public function get_all_memories(array $params = [])
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAllMemories::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_All_Memories::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get all messages in a memory.
      *
@@ -714,17 +639,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAllMessages(array $params = [])
+    public function get_all_messages(array $params = [])
     {
-        $memory_id = $this->extractArgument($params, 'memory_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAllMessages::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryId($memory_id);
-
-        return $this->performRequest($endpoint);
+        $memory_id = $this->extract_argument($params, 'memory_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_All_Messages::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_id($memory_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get tools.
      *
@@ -736,15 +658,12 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAllTools(array $params = [])
+    public function get_all_tools(array $params = [])
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAllTools::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_All_Tools::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Retrieves a controller.
      *
@@ -757,17 +676,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getController(array $params = [])
+    public function get_controller(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetController::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Controller::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a memory.
      *
@@ -780,17 +696,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getMemory(array $params = [])
+    public function get_memory(array $params = [])
     {
-        $memory_id = $this->extractArgument($params, 'memory_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryId($memory_id);
-
-        return $this->performRequest($endpoint);
+        $memory_id = $this->extract_argument($params, 'memory_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_id($memory_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a memory container.
      *
@@ -803,17 +716,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getMemoryContainer(array $params = [])
+    public function get_memory_container(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetMemoryContainer::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Memory_Container::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a message.
      *
@@ -826,17 +736,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getMessage(array $params = [])
+    public function get_message(array $params = [])
     {
-        $message_id = $this->extractArgument($params, 'message_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetMessage::class);
-        $endpoint->setParams($params);
-        $endpoint->setMessageId($message_id);
-
-        return $this->performRequest($endpoint);
+        $message_id = $this->extract_argument($params, 'message_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Message::class);
+        $endpoint->set_params($params);
+        $endpoint->set_message_id($message_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a message traces.
      *
@@ -851,17 +758,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getMessageTraces(array $params = [])
+    public function get_message_traces(array $params = [])
     {
-        $message_id = $this->extractArgument($params, 'message_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetMessageTraces::class);
-        $endpoint->setParams($params);
-        $endpoint->setMessageId($message_id);
-
-        return $this->performRequest($endpoint);
+        $message_id = $this->extract_argument($params, 'message_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Message_Traces::class);
+        $endpoint->set_params($params);
+        $endpoint->set_message_id($message_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Retrieves a model group.
      *
@@ -874,17 +778,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getModelGroup(array $params = [])
+    public function get_model_group(array $params = [])
     {
-        $model_group_id = $this->extractArgument($params, 'model_group_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetModelGroup::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelGroupId($model_group_id);
-
-        return $this->performRequest($endpoint);
+        $model_group_id = $this->extract_argument($params, 'model_group_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Model_Group::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_group_id($model_group_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a profile.
      *
@@ -897,17 +798,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function getProfile(array $params = [])
+    public function get_profile(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetProfile::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Profile::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a profile models.
      *
@@ -921,19 +819,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function getProfileModels(array $params = [])
+    public function get_profile_models(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetProfileModels::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Profile_Models::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get a profile tasks.
      *
@@ -947,19 +842,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function getProfileTasks(array $params = [])
+    public function get_profile_tasks(array $params = [])
     {
-        $task_id = $this->extractArgument($params, 'task_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetProfileTasks::class);
-        $endpoint->setParams($params);
-        $endpoint->setTaskId($task_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $task_id = $this->extract_argument($params, 'task_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Profile_Tasks::class);
+        $endpoint->set_params($params);
+        $endpoint->set_task_id($task_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get stats.
      *
@@ -973,19 +865,16 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getStats(array $params = [])
+    public function get_stats(array $params = [])
     {
-        $node_id = $this->extractArgument($params, 'node_id');
-        $stat = $this->extractArgument($params, 'stat');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetStats::class);
-        $endpoint->setParams($params);
-        $endpoint->setNodeId($node_id);
-        $endpoint->setStat($stat);
-
-        return $this->performRequest($endpoint);
+        $node_id = $this->extract_argument($params, 'node_id');
+        $stat = $this->extract_argument($params, 'stat');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Stats::class);
+        $endpoint->set_params($params);
+        $endpoint->set_node_id($node_id);
+        $endpoint->set_stat($stat);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Retrieves a task.
      *
@@ -998,17 +887,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getTask(array $params = [])
+    public function get_task(array $params = [])
     {
-        $id = $this->extractArgument($params, 'id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetTask::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Task::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Get tools.
      *
@@ -1021,17 +907,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getTool(array $params = [])
+    public function get_tool(array $params = [])
     {
-        $tool_name = $this->extractArgument($params, 'tool_name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetTool::class);
-        $endpoint->setParams($params);
-        $endpoint->setToolName($tool_name);
-
-        return $this->performRequest($endpoint);
+        $tool_name = $this->extract_argument($params, 'tool_name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Tool::class);
+        $endpoint->set_params($params);
+        $endpoint->set_tool_name($tool_name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deploys a model.
      *
@@ -1044,17 +927,14 @@ class MlNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function loadModel(array $params = [])
+    public function load_model(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(LoadModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Load_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Predicts a model.
      *
@@ -1068,19 +948,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function predictModel(array $params = [])
+    public function predict_model(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PredictModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Predict_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Predicts a model in streaming mode.
      *
@@ -1094,19 +971,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function predictModelStream(array $params = [])
+    public function predict_model_stream(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PredictModelStream::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Predict_Model_Stream::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Register an agent.
      *
@@ -1119,17 +993,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function registerAgents(array $params = [])
+    public function register_agents(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RegisterAgents::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Register_Agents::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Registers a model.
      *
@@ -1142,17 +1013,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function registerModel(array $params = [])
+    public function register_model(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RegisterModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Register_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Registers a model group.
      *
@@ -1165,17 +1033,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function registerModelGroup(array $params = [])
+    public function register_model_group(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RegisterModelGroup::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Register_Model_Group::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Registers model metadata.
      *
@@ -1188,17 +1053,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function registerModelMeta(array $params = [])
+    public function register_model_meta(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RegisterModelMeta::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Register_Model_Meta::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Search for memories of a specific type within a memory container.
      *
@@ -1213,21 +1075,18 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchAgenticMemory(array $params = [])
+    public function search_agentic_memory(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $type = $this->extractArgument($params, 'type');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchAgenticMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setType($type);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $type = $this->extract_argument($params, 'type');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Agentic_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_type($type);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Search agents.
      *
@@ -1240,17 +1099,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchAgents(array $params = [])
+    public function search_agents(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchAgents::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Agents::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Searches for standalone connectors.
      *
@@ -1263,17 +1119,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchConnectors(array $params = [])
+    public function search_connectors(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchConnectors::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Connectors::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Search memory.
      *
@@ -1286,17 +1139,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchMemory(array $params = [])
+    public function search_memory(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Search memory containers.
      *
@@ -1309,17 +1159,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchMemoryContainer(array $params = [])
+    public function search_memory_container(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchMemoryContainer::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Memory_Container::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Search messages.
      *
@@ -1333,19 +1180,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchMessage(array $params = [])
+    public function search_message(array $params = [])
     {
-        $memory_id = $this->extractArgument($params, 'memory_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchMessage::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryId($memory_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_id = $this->extract_argument($params, 'memory_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Message::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_id($memory_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Searches for model groups.
      *
@@ -1358,17 +1202,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchModelGroup(array $params = [])
+    public function search_model_group(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchModelGroup::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Model_Group::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Searches for models.
      *
@@ -1381,17 +1222,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchModels(array $params = [])
+    public function search_models(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchModels::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Models::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Searches for tasks.
      *
@@ -1404,17 +1242,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function searchTasks(array $params = [])
+    public function search_tasks(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchTasks::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Tasks::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Trains a model synchronously.
      *
@@ -1430,17 +1265,14 @@ class MlNamespace extends AbstractNamespace
      */
     public function train(array $params = [])
     {
-        $algorithm_name = $this->extractArgument($params, 'algorithm_name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Train::class);
-        $endpoint->setParams($params);
-        $endpoint->setAlgorithmName($algorithm_name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $algorithm_name = $this->extract_argument($params, 'algorithm_name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Train::class);
+        $endpoint->set_params($params);
+        $endpoint->set_algorithm_name($algorithm_name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Trains a model and predicts against the same training dataset.
      *
@@ -1454,19 +1286,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function trainPredict(array $params = [])
+    public function train_predict(array $params = [])
     {
-        $algorithm_name = $this->extractArgument($params, 'algorithm_name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(TrainPredict::class);
-        $endpoint->setParams($params);
-        $endpoint->setAlgorithmName($algorithm_name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $algorithm_name = $this->extract_argument($params, 'algorithm_name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Train_Predict::class);
+        $endpoint->set_params($params);
+        $endpoint->set_algorithm_name($algorithm_name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Unloads a model.
      *
@@ -1480,19 +1309,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function unloadModel(array $params = [])
+    public function unload_model(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UnloadModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Unload_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Update a specific memory by its type and ID.
      *
@@ -1508,23 +1334,20 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateAgenticMemory(array $params = [])
+    public function update_agentic_memory(array $params = [])
     {
-        $id = $this->extractArgument($params, 'id');
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $type = $this->extractArgument($params, 'type');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateAgenticMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setType($type);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $type = $this->extract_argument($params, 'type');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Agentic_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_type($type);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates a standalone connector.
      *
@@ -1538,19 +1361,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateConnector(array $params = [])
+    public function update_connector(array $params = [])
     {
-        $connector_id = $this->extractArgument($params, 'connector_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateConnector::class);
-        $endpoint->setParams($params);
-        $endpoint->setConnectorId($connector_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $connector_id = $this->extract_argument($params, 'connector_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Connector::class);
+        $endpoint->set_params($params);
+        $endpoint->set_connector_id($connector_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates a controller.
      *
@@ -1564,19 +1384,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateController(array $params = [])
+    public function update_controller(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateController::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Controller::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Update a memory.
      *
@@ -1590,19 +1407,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateMemory(array $params = [])
+    public function update_memory(array $params = [])
     {
-        $memory_id = $this->extractArgument($params, 'memory_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateMemory::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryId($memory_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_id = $this->extract_argument($params, 'memory_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Memory::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_id($memory_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Update a memory container.
      *
@@ -1616,19 +1430,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateMemoryContainer(array $params = [])
+    public function update_memory_container(array $params = [])
     {
-        $memory_container_id = $this->extractArgument($params, 'memory_container_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateMemoryContainer::class);
-        $endpoint->setParams($params);
-        $endpoint->setMemoryContainerId($memory_container_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $memory_container_id = $this->extract_argument($params, 'memory_container_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Memory_Container::class);
+        $endpoint->set_params($params);
+        $endpoint->set_memory_container_id($memory_container_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Update a message.
      *
@@ -1642,19 +1453,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateMessage(array $params = [])
+    public function update_message(array $params = [])
     {
-        $message_id = $this->extractArgument($params, 'message_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateMessage::class);
-        $endpoint->setParams($params);
-        $endpoint->setMessageId($message_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $message_id = $this->extract_argument($params, 'message_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Message::class);
+        $endpoint->set_params($params);
+        $endpoint->set_message_id($message_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates a model.
      *
@@ -1668,19 +1476,16 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function updateModel(array $params = [])
+    public function update_model(array $params = [])
     {
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Uploads model chunk.
      *
@@ -1695,21 +1500,18 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function uploadChunk(array $params = [])
+    public function upload_chunk(array $params = [])
     {
-        $chunk_number = $this->extractArgument($params, 'chunk_number');
-        $model_id = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UploadChunk::class);
-        $endpoint->setParams($params);
-        $endpoint->setChunkNumber($chunk_number);
-        $endpoint->setModelId($model_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $chunk_number = $this->extract_argument($params, 'chunk_number');
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Upload_Chunk::class);
+        $endpoint->set_params($params);
+        $endpoint->set_chunk_number($chunk_number);
+        $endpoint->set_model_id($model_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Registers a model.
      *
@@ -1722,17 +1524,14 @@ class MlNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function uploadModel(array $params = [])
+    public function upload_model(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UploadModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Upload_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * $params['body']             = (string) The body of the request (Required)
      *
@@ -1741,14 +1540,13 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function createConnector(array $params = []): array
+    public function create_connector(array $params = []): array
     {
-        $body = $this->extractArgument($params, 'body');
-        $endpoint = $this->endpointFactory->getEndpoint(CreateConnector::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Connector::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['connector_id'] = (string) The id of the connector (Required)
@@ -1758,14 +1556,13 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function deleteConnector(array $params = []): array
+    public function delete_connector(array $params = []): array
     {
-        $connectorId = $this->extractArgument($params, 'connector_id');
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteConnector::class);
-        $endpoint->setParams($params);
-        $endpoint->setConnectorId($connectorId);
-
-        return $this->performRequest($endpoint);
+        $connector_id = $this->extract_argument($params, 'connector_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Connector::class);
+        $endpoint->set_params($params);
+        $endpoint->set_connector_id($connector_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['model_id']       = (string) The id of the model (Required)
@@ -1776,18 +1573,17 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function deployModel(array $params = []): array
+    public function deploy_model(array $params = []): array
     {
-        $modelId = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-        $endpoint = $this->endpointFactory->getEndpoint(DeployModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($modelId);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Deploy_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
         if ($body) {
-            $endpoint->setBody($body);
+            $endpoint->set_body($body);
         }
-
-        return $this->performRequest($endpoint);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['id']             = (string) The id of the connector (Required)
@@ -1797,16 +1593,15 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function getConnector(array $params = []): array
+    public function get_connector(array $params = []): array
     {
-        $id = $this->extractArgument($params, 'id');
-        $connector_id = $this->extractArgument($params, 'connector_id');
-        $endpoint = $this->endpointFactory->getEndpoint(GetConnector::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setConnectorId($connector_id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $connector_id = $this->extract_argument($params, 'connector_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Connector::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_connector_id($connector_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['body']             = (string) The body of the request
@@ -1816,21 +1611,15 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function getConnectors(array $params = []): array
+    public function get_connectors(array $params = []): array
     {
         if (!isset($params['body'])) {
-            $params['body'] = [
-              'query' => [
-                'match_all' => new \StdClass(),
-              ],
-              'size' => 1000,
-            ];
+            $params['body'] = ['query' => ['match_all' => new \Std_Class()], 'size' => 1000];
         }
-        $body = $this->extractArgument($params, 'body');
-        $endpoint = $this->endpointFactory->getEndpoint(GetConnectors::class);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Connectors::class);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['body']             = (string) The body of the request
@@ -1840,21 +1629,15 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function getModelGroups(array $params = []): array
+    public function get_model_groups(array $params = []): array
     {
         if (!isset($params['body'])) {
-            $params['body'] = [
-              'query' => [
-                'match_all' => new \StdClass(),
-              ],
-              'size' => 1000,
-            ];
+            $params['body'] = ['query' => ['match_all' => new \Std_Class()], 'size' => 1000];
         }
-        $body = $this->extractArgument($params, 'body');
-        $endpoint = $this->endpointFactory->getEndpoint(GetModelGroups::class);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Model_Groups::class);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['id']             = (string) The id of the model (Required)
@@ -1864,33 +1647,26 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function getModel(array $params = []): array
+    public function get_model(array $params = []): array
     {
-        $id = $this->extractArgument($params, 'id');
-        $model_id = $this->extractArgument($params, 'model_id');
-        $endpoint = $this->endpointFactory->getEndpoint(GetModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setModelId($model_id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $model_id = $this->extract_argument($params, 'model_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_model_id($model_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * Proxy function to getModels() to prevent BC break.
      * This API will be removed in a future version. Use 'searchModels' API instead.
      */
-    public function getModels(array $params = [])
+    public function get_models(array $params = [])
     {
         if (!isset($params['body'])) {
-            $params['body'] = [
-                'query' => [
-                    'match_all' => new \StdClass(),
-                ],
-                'size' => 1000,
-            ];
+            $params['body'] = ['query' => ['match_all' => new \Std_Class()], 'size' => 1000];
         }
-
-        return $this->searchModels($params);
+        return $this->search_models($params);
     }
     /**
      * $params['id']             = (string) The id of the model (Required)
@@ -1903,19 +1679,13 @@ class MlNamespace extends AbstractNamespace
      */
     public function predict(array $params = []): array
     {
-        $id = $this->extractArgument($params, 'id');
-        $body = $this->extractArgument($params, 'body');
-        $algorithm_name = $this->extractArgument($params, 'algorithm_name');
-        $model_id = $this->extractArgument($params, 'model_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Predict::class);
-        $endpoint->setParams($params)
-            ->setId($id)
-            ->setBody($body)
-            ->setAlgorithmName($algorithm_name)
-            ->setModelId($model_id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $body = $this->extract_argument($params, 'body');
+        $algorithm_name = $this->extract_argument($params, 'algorithm_name');
+        $model_id = $this->extract_argument($params, 'model_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Predict::class);
+        $endpoint->set_params($params)->set_id($id)->set_body($body)->set_algorithm_name($algorithm_name)->set_model_id($model_id);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['model_id']       = (string) The id of the model (Required)
@@ -1926,18 +1696,17 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function undeployModel(array $params = []): array
+    public function undeploy_model(array $params = []): array
     {
-        $modelId = $this->extractArgument($params, 'model_id');
-        $body = $this->extractArgument($params, 'body');
-        $endpoint = $this->endpointFactory->getEndpoint(UndeployModel::class);
-        $endpoint->setParams($params);
-        $endpoint->setModelId($modelId);
+        $model_id = $this->extract_argument($params, 'model_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Undeploy_Model::class);
+        $endpoint->set_params($params);
+        $endpoint->set_model_id($model_id);
         if ($body) {
-            $endpoint->setBody($body);
+            $endpoint->set_body($body);
         }
-
-        return $this->performRequest($endpoint);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['id']             = (string) The id of the model group (Required)
@@ -1948,17 +1717,16 @@ class MlNamespace extends AbstractNamespace
      * @return array
      *   The response.
      */
-    public function updateModelGroup(array $params = []): array
+    public function update_model_group(array $params = []): array
     {
-        $id = $this->extractArgument($params, 'id');
-        $model_group_id = $this->extractArgument($params, 'model_group_id');
-        $body = $this->extractArgument($params, 'body');
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateModelGroup::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-        $endpoint->setId($id);
-        $endpoint->setModelGroupId($model_group_id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $model_group_id = $this->extract_argument($params, 'model_group_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Model_Group::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        $endpoint->set_id($id);
+        $endpoint->set_model_group_id($model_group_id);
+        return $this->perform_request($endpoint);
     }
 }

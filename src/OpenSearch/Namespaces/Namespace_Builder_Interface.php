@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,21 +17,18 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Namespaces;
 
-namespace OpenSearch\Namespaces;
-
-use OpenSearch\Serializers\SerializerInterface;
-use OpenSearch\Transport;
-use OpenSearch\TransportInterface;
-
-interface NamespaceBuilderInterface
+use Open_Search\Serializers\Serializer_Interface;
+use Open_Search\Transport;
+use Open_Search\Transport_Interface;
+interface Namespace_Builder_Interface
 {
     /**
      * Returns the name of the namespace.  This is what users will call, e.g. the name
      * "foo" will be invoked by the user as `$client->foo()`
      */
-    public function getName(): string;
-
+    public function get_name(): string;
     /**
      * Returns the actual namespace object which contains your custom methods. The transport
      * and serializer objects are provided so that your namespace may do whatever custom
@@ -42,5 +38,5 @@ interface NamespaceBuilderInterface
      *
      * @phpstan-ignore parameter.deprecatedClass
      */
-    public function getObject(Transport|TransportInterface $transport, SerializerInterface $serializer);
+    public function get_object(Transport|Transport_Interface $transport, Serializer_Interface $serializer);
 }

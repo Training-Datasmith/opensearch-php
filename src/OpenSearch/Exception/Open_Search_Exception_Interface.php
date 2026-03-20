@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
-namespace OpenSearch\Exception;
+declare (strict_types=1);
+namespace Open_Search\Exception;
 
 /**
  * Interface for OpenSearch exceptions.
  */
-interface OpenSearchExceptionInterface extends \Throwable
+interface Open_Search_Exception_Interface extends \Throwable
 {
 }

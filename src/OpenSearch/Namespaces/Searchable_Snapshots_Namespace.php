@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,15 +17,14 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Namespaces;
+namespace Open_Search\Namespaces;
 
 /**
  * Class SearchableSnapshotsNamespace
  *
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class SearchableSnapshotsNamespace extends AbstractNamespace
+class Searchable_Snapshots_Namespace extends Abstract_Namespace
 {
     /**
      * $params['index']              = (list) A comma-separated list of index names
@@ -36,21 +34,18 @@ class SearchableSnapshotsNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is EXPERIMENTAL and may be changed or removed completely in a future release
      *
      */
-    public function clearCache(array $params = [])
+    public function clear_cache(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('SearchableSnapshots\ClearCache');
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('SearchableSnapshots\ClearCache');
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['repository']          = (string) The name of the repository containing the snapshot of the index to mount
@@ -61,66 +56,57 @@ class SearchableSnapshotsNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is EXPERIMENTAL and may be changed or removed completely in a future release
      *
      */
     public function mount(array $params = [])
     {
-        $repository = $this->extractArgument($params, 'repository');
-        $snapshot = $this->extractArgument($params, 'snapshot');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('SearchableSnapshots\Mount');
-        $endpoint->setParams($params);
-        $endpoint->setRepository($repository);
-        $endpoint->setSnapshot($snapshot);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $repository = $this->extract_argument($params, 'repository');
+        $snapshot = $this->extract_argument($params, 'snapshot');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('SearchableSnapshots\Mount');
+        $endpoint->set_params($params);
+        $endpoint->set_repository($repository);
+        $endpoint->set_snapshot($snapshot);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['repository'] = (string) The repository for which to get the stats for
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is EXPERIMENTAL and may be changed or removed completely in a future release
      *
      */
-    public function repositoryStats(array $params = [])
+    public function repository_stats(array $params = [])
     {
-        $repository = $this->extractArgument($params, 'repository');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('SearchableSnapshots\RepositoryStats');
-        $endpoint->setParams($params);
-        $endpoint->setRepository($repository);
-
-        return $this->performRequest($endpoint);
+        $repository = $this->extract_argument($params, 'repository');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('SearchableSnapshots\RepositoryStats');
+        $endpoint->set_params($params);
+        $endpoint->set_repository($repository);
+        return $this->perform_request($endpoint);
     }
     /**
      * $params['index'] = (list) A comma-separated list of index names
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is EXPERIMENTAL and may be changed or removed completely in a future release
      *
      */
     public function stats(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('SearchableSnapshots\Stats');
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('SearchableSnapshots\Stats');
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
 }

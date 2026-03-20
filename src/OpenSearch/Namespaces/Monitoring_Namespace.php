@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,15 +17,14 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Namespaces;
+namespace Open_Search\Namespaces;
 
 /**
  * Class MonitoringNamespace
  *
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class MonitoringNamespace extends AbstractNamespace
+class Monitoring_Namespace extends Abstract_Namespace
 {
     /**
      * $params['type']               = DEPRECATED (string) Default document type for items which don't provide one
@@ -37,22 +35,19 @@ class MonitoringNamespace extends AbstractNamespace
      *
      * @param array $params Associative array of parameters
      * @return array
-
      *
      * @note This API is EXPERIMENTAL and may be changed or removed completely in a future release
      *
      */
     public function bulk(array $params = [])
     {
-        $type = $this->extractArgument($params, 'type');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpointBuilder = $this->endpoints;
-        $endpoint = $endpointBuilder('Monitoring\Bulk');
-        $endpoint->setParams($params);
-        $endpoint->setType($type);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $type = $this->extract_argument($params, 'type');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint_builder = $this->endpoints;
+        $endpoint = $endpoint_builder('Monitoring\Bulk');
+        $endpoint->set_params($params);
+        $endpoint->set_type($type);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
 }

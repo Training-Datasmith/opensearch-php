@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,72 +17,56 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Searchable_Snapshots;
 
-namespace OpenSearch\Endpoints\SearchableSnapshots;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Exception\RuntimeException;
-
-class Mount extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Exception\RuntimeException;
+class Mount extends Abstract_Endpoint
 {
     protected $repository;
     protected $snapshot;
-
-    public function getURI(): string
+    public function get_uri(): string
     {
         $repository = $this->repository ?? null;
         $snapshot = $this->snapshot ?? null;
-
         if (isset($repository) && isset($snapshot)) {
-            return "/_snapshot/$repository/$snapshot/_mount";
+            return "/_snapshot/{$repository}/{$snapshot}/_mount";
         }
         throw new RuntimeException('Missing parameter for the endpoint searchable_snapshots.mount');
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
-        return [
-            'master_timeout',
-            'wait_for_completion',
-            'cluster_manager_timeout',
-        ];
+        return ['master_timeout', 'wait_for_completion', 'cluster_manager_timeout'];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'POST';
     }
-
-    public function setBody($body): static
+    public function set_body($body): static
     {
         if (isset($body) !== true) {
             return $this;
         }
         $this->body = $body;
-
         return $this;
     }
-
-    public function setRepository($repository): static
+    public function set_repository($repository): static
     {
         if (isset($repository) !== true) {
             return $this;
         }
         $this->repository = $repository;
-
         return $this;
     }
-
-    public function setSnapshot($snapshot): static
+    public function set_snapshot($snapshot): static
     {
         if (isset($snapshot) !== true) {
             return $this;
         }
         $this->snapshot = $snapshot;
-
         return $this;
     }
-    protected function getParamDeprecation(): array
+    protected function get_param_deprecation(): array
     {
         return ['master_timeout' => 'cluster_manager_timeout'];
     }

@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,18 +17,15 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search;
 
-namespace OpenSearch;
-
-use GuzzleHttp\Ring\Future\FutureArrayInterface;
-use OpenSearch\Common\Exceptions;
-use OpenSearch\ConnectionPool\AbstractConnectionPool;
-use OpenSearch\Connections\ConnectionInterface;
-use Psr\Log\LoggerInterface;
-
+use Guzzle_Http\Ring\Future\Future_Array_Interface;
+use Open_Search\Common\Exceptions;
+use Open_Search\Connection_Pool\Abstract_Connection_Pool;
+use Open_Search\Connections\Connection_Interface;
+use Psr\Log\Logger_Interface;
 // @phpstan-ignore classConstant.deprecatedClass
 @trigger_error(Transport::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
@@ -38,49 +34,42 @@ class Transport
     /**
      * @var AbstractConnectionPool
      */
-    public $connectionPool;
-
+    public $connection_pool;
     /**
      * @var int
      */
-    public $retryAttempts = 0;
-
+    public $retry_attempts = 0;
     /**
      * @var ConnectionInterface
      */
-    public $lastConnection;
-
+    public $last_connection;
     /**
      * @var int
      */
     public $retries;
-
     /**
      * Transport class is responsible for dispatching requests to the
      * underlying cluster connections
      *
      * @param \Psr\Log\LoggerInterface              $log            Monolog logger object
      */
-    public function __construct(int $retries, AbstractConnectionPool $connectionPool, private readonly LoggerInterface $log, bool $sniffOnStart = false)
+    public function __construct(int $retries, Abstract_Connection_Pool $connection_pool, private readonly Logger_Interface $log, bool $sniff_on_start = false)
     {
-        $this->connectionPool = $connectionPool;
-        $this->retries        = $retries;
-
-        if ($sniffOnStart === true) {
+        $this->connection_pool = $connection_pool;
+        $this->retries = $retries;
+        if ($sniff_on_start === true) {
             $this->log->notice('Sniff on Start.');
-            $this->connectionPool->scheduleCheck();
+            $this->connection_pool->schedule_check();
         }
     }
-
     /**
      * Returns a single connection from the connection pool
      * Potentially performs a sniffing step before returning
      */
-    public function getConnection(): ConnectionInterface
+    public function get_connection(): Connection_Interface
     {
-        return $this->connectionPool->nextConnection();
+        return $this->connection_pool->next_connection();
     }
-
     /**
      * Perform a request to the Cluster
      *
@@ -91,81 +80,65 @@ class Transport
      *
      * @throws Common\Exceptions\NoNodesAvailableException|\Exception
      */
-    public function performRequest(string $method, string $uri, array $params = [], $body = null, array $options = []): FutureArrayInterface
+    public function perform_request(string $method, string $uri, array $params = [], $body = null, array $options = []): Future_Array_Interface
     {
         try {
-            $connection  = $this->getConnection();
-        } catch (Exceptions\NoNodesAvailableException $exception) {
+            $connection = $this->get_connection();
+        } catch (Exceptions\No_Nodes_Available_Exception $exception) {
             $this->log->critical('No alive nodes found in cluster');
             throw $exception;
         }
-
-        $response             = [];
-        $this->lastConnection = $connection;
-
-        $future = $connection->performRequest(
-            $method,
-            $uri,
-            $params,
-            $body,
-            $options,
-            $this
-        );
-
+        $response = [];
+        $this->last_connection = $connection;
+        $future = $connection->perform_request($method, $uri, $params, $body, $options, $this);
         $future->promise()->then(
             //onSuccess
             function ($response): void {
-                $this->retryAttempts = 0;
+                $this->retry_attempts = 0;
                 // Note, this could be a 4xx or 5xx error
             },
             //onFailure
             function ($response): void {
-                $code = $response->getCode();
+                $code = $response->get_code();
                 // Ignore 400 level errors, as that means the server responded just fine
                 if ($code < 400 || $code >= 500) {
                     // Otherwise schedule a check
-                    $this->connectionPool->scheduleCheck();
+                    $this->connection_pool->schedule_check();
                 }
             }
         );
-
         return $future;
     }
-
     /**
      * @param FutureArrayInterface $result  Response of a request (promise)
      * @param array                $options Options for transport
      *
      * @return callable|array
      */
-    public function resultOrFuture(FutureArrayInterface $result, array $options = [])
+    public function result_or_future(Future_Array_Interface $result, array $options = [])
     {
         $async = $options['client']['future'] ?? null;
         if (is_null($async) || $async === false) {
             do {
                 $result = $result->wait();
-            } while ($result instanceof FutureArrayInterface);
+            } while ($result instanceof Future_Array_Interface);
         }
         return $result;
     }
-
-    public function shouldRetry(array $request): bool
+    public function should_retry(array $request): bool
     {
-        if ($this->retryAttempts < $this->retries) {
-            $this->retryAttempts += 1;
-
+        if ($this->retry_attempts < $this->retries) {
+            $this->retry_attempts += 1;
             return true;
         }
-
         return false;
     }
-
     /**
      * Returns the last used connection so that it may be inspected.  Mainly
      * for debugging/testing purposes.
      */
-    public function getLastConnection(): ConnectionInterface
+    public function get_last_connection(): Connection_Interface
     {
-        return $this->lastConnection;
+        return $this->last_connection;
     }
 }

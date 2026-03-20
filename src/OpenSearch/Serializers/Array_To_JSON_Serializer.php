@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,23 +17,19 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Serializers;
 
-namespace OpenSearch\Serializers;
-
-use OpenSearch\Common\Exceptions\RuntimeException;
-
+use Open_Search\Common\Exceptions\RuntimeException;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(ArrayToJSONSerializer::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Array_To_Json_Serializer::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 if (!defined('JSON_INVALID_UTF8_SUBSTITUTE')) {
     //PHP < 7.2 Define it as 0 so it does nothing
     define('JSON_INVALID_UTF8_SUBSTITUTE', 0);
 }
-
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class ArrayToJSONSerializer implements SerializerInterface
+class Array_To_Json_Serializer implements Serializer_Interface
 {
     /**
      * {@inheritdoc}
@@ -46,14 +41,13 @@ class ArrayToJSONSerializer implements SerializerInterface
         }
         $data = json_encode($data, JSON_PRESERVE_ZERO_FRACTION + JSON_INVALID_UTF8_SUBSTITUTE);
         if ($data === false) {
-            throw new RuntimeException('Failed to JSON encode: '.json_last_error());
+            throw new RuntimeException('Failed to JSON encode: ' . json_last_error());
         }
         if ($data === '[]') {
             return '{}';
         }
         return $data;
     }
-
     /**
      * {@inheritdoc}
      */

@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,46 +17,38 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Helper\Iterators;
+namespace Open_Search\Helper\Iterators;
 
 use Iterator;
-
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(SearchHitIterator::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Search_Hit_Iterator::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class SearchHitIterator implements Iterator, \Countable
+class Search_Hit_Iterator implements Iterator, \Countable
 {
     /**
      * @var int
      */
     protected $current_key;
-
     /**
      * @var int
      */
     protected $current_hit_index;
-
     /**
      * @var array|null
      */
     protected $current_hit_data;
-
     /**
      * @var int
      */
     protected $count = 0;
-
     /**
      * Constructor
      */
-    public function __construct(private readonly SearchResponseIterator $search_responses)
+    public function __construct(private readonly Search_Response_Iterator $search_responses)
     {
     }
-
     /**
      * Rewinds the internal SearchResponseIterator and itself
      *
@@ -67,21 +58,17 @@ class SearchHitIterator implements Iterator, \Countable
     {
         $this->current_key = 0;
         $this->search_responses->rewind();
-
         // The first page may be empty. In that case, the next page is fetched.
         $current_page = $this->search_responses->current();
         if ($this->search_responses->valid() && empty($current_page['hits']['hits'])) {
             $this->search_responses->next();
         }
-
         $this->count = 0;
         if (isset($current_page['hits']) && isset($current_page['hits']['total'])) {
             $this->count = $current_page['hits']['total'];
         }
-
-        $this->readPageData();
+        $this->read_page_data();
     }
-
     /**
      * Advances pointer of the current hit to the next one in the current page. If there
      * isn't a next hit in the current page, then it advances the current page and moves the
@@ -98,10 +85,9 @@ class SearchHitIterator implements Iterator, \Countable
             $this->current_hit_data = $current_page['hits']['hits'][$this->current_hit_index];
         } else {
             $this->search_responses->next();
-            $this->readPageData();
+            $this->read_page_data();
         }
     }
-
     /**
      * Returns a boolean indicating whether or not the current pointer has valid data
      *
@@ -111,7 +97,6 @@ class SearchHitIterator implements Iterator, \Countable
     {
         return is_array($this->current_hit_data);
     }
-
     /**
      * Returns the current hit
      *
@@ -121,7 +106,6 @@ class SearchHitIterator implements Iterator, \Countable
     {
         return $this->current_hit_data;
     }
-
     /**
      * Returns the current hit index. The hit index spans all pages.
      *
@@ -131,13 +115,12 @@ class SearchHitIterator implements Iterator, \Countable
     {
         return $this->current_key;
     }
-
     /**
      * Advances the internal SearchResponseIterator and resets the current_hit_index to 0
      *
      * @internal
      */
-    private function readPageData(): void
+    private function read_page_data(): void
     {
         if ($this->search_responses->valid()) {
             $current_page = $this->search_responses->current();
@@ -147,7 +130,6 @@ class SearchHitIterator implements Iterator, \Countable
             $this->current_hit_data = null;
         }
     }
-
     /**
      * {@inheritDoc}
      */

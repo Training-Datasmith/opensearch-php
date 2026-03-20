@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,29 +17,24 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Searchable_Snapshots;
 
-namespace OpenSearch\Endpoints\SearchableSnapshots;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-
-class Stats extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+class Stats extends Abstract_Endpoint
 {
-    public function getURI(): string
+    public function get_uri(): string
     {
         $index = $this->index ?? null;
-
         if (isset($index)) {
-            return "/$index/_searchable_snapshots/stats";
+            return "/{$index}/_searchable_snapshots/stats";
         }
         return '/_searchable_snapshots/stats';
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
         return [];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'GET';
     }

@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-namespace OpenSearch;
+declare (strict_types=1);
+namespace Open_Search;
 
 /**
  * Provides an interface for sending OpenSearch requests.
  */
-interface TransportInterface
+interface Transport_Interface
 {
     /**
      * Create a new request.
@@ -19,12 +18,5 @@ interface TransportInterface
      * @throws \Psr\Http\Client\ClientExceptionInterface
      * @throws \OpenSearch\Exception\HttpExceptionInterface
      */
-    public function sendRequest(
-        string $method,
-        string $uri,
-        array $params = [],
-        string|array|null $body = null,
-        array $headers = [],
-    ): iterable|string|null;
-
+    public function send_request(string $method, string $uri, array $params = [], string|array|null $body = null, array $headers = []): iterable|string|null;
 }

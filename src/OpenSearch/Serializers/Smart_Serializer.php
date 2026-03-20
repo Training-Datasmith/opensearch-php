@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,18 +17,15 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Serializers;
 
-namespace OpenSearch\Serializers;
-
-use OpenSearch\Exception\JsonException;
-use OpenSearch\Exception\RuntimeException;
-
+use Open_Search\Exception\Json_Exception;
+use Open_Search\Exception\RuntimeException;
 if (!defined('JSON_INVALID_UTF8_SUBSTITUTE')) {
     //PHP < 7.2 Define it as 0 so it does nothing
     define('JSON_INVALID_UTF8_SUBSTITUTE', 0);
 }
-
-class SmartSerializer implements SerializerInterface
+class Smart_Serializer implements Serializer_Interface
 {
     /**
      * {@inheritdoc}
@@ -41,25 +37,23 @@ class SmartSerializer implements SerializerInterface
         }
         $data = json_encode($data, JSON_PRESERVE_ZERO_FRACTION + JSON_INVALID_UTF8_SUBSTITUTE);
         if ($data === false) {
-            throw new RuntimeException('Failed to JSON encode: '.json_last_error_msg());
+            throw new RuntimeException('Failed to JSON encode: ' . json_last_error_msg());
         }
         if ($data === '[]') {
             return '{}';
         }
         return $data;
     }
-
     /**
      * {@inheritdoc}
      */
     public function deserialize(?string $data, array $headers): array|string|null
     {
-        if ($this->isJson($headers)) {
+        if ($this->is_json($headers)) {
             return $this->decode($data);
         }
         return $data;
     }
-
     /**
      * Decode JSON data.
      *
@@ -70,37 +64,33 @@ class SmartSerializer implements SerializerInterface
         if ($data === null || strlen($data) === 0) {
             return [];
         }
-
         try {
             return json_decode($data, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
-            throw new JsonException($e->getCode(), $data, $e);
+        } catch (\Json_Exception $e) {
+            throw new Json_Exception($e->get_code(), $data, $e);
         }
     }
-
     /**
      * Check the response content type to see if it is JSON.
      *
      * @param array<string,mixed> $headers
      */
-    private function isJson(array $headers): bool
+    private function is_json(array $headers): bool
     {
         // Legacy support for 'transfer_stats'.
         if (!empty($headers['content_type'])) {
             return str_contains((string) $headers['content_type'], 'json');
         }
-
         // Check PSR-7 headers.
-        $lowercaseHeaders = array_change_key_case($headers, CASE_LOWER);
-        if (array_key_exists('content-type', $lowercaseHeaders)) {
-            foreach ($lowercaseHeaders['content-type'] as $type) {
+        $lowercase_headers = array_change_key_case($headers, CASE_LOWER);
+        if (array_key_exists('content-type', $lowercase_headers)) {
+            foreach ($lowercase_headers['content-type'] as $type) {
                 if (str_contains((string) $type, 'json')) {
                     return true;
                 }
             }
             return false;
         }
-
         // No content type header, so assume it is JSON.
         return true;
     }

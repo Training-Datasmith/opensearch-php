@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Open_Search;
 
-namespace OpenSearch;
-
-use Psr\Http\Message\RequestInterface;
-
-interface RequestFactoryInterface
+use Psr\Http\Message\Request_Interface;
+interface Request_Factory_Interface
 {
     /**
      * Create a new request.
@@ -15,11 +13,5 @@ interface RequestFactoryInterface
      * @param string|array<string, mixed>|null $body
      * @param array<string, string> $headers
      */
-    public function createRequest(
-        string $method,
-        string $uri,
-        array $params = [],
-        string|array|null $body = null,
-        array $headers = [],
-    ): RequestInterface;
+    public function create_request(string $method, string $uri, array $params = [], string|array|null $body = null, array $headers = []): Request_Interface;
 }

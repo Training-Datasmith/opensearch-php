@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,41 +17,31 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Monitoring;
 
-namespace OpenSearch\Endpoints\Monitoring;
-
-use OpenSearch\Common\Exceptions\InvalidArgumentException;
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Serializers\SerializerInterface;
+use Open_Search\Common\Exceptions\InvalidArgumentException;
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Serializers\Serializer_Interface;
 use Traversable;
-
-class Bulk extends AbstractEndpoint
+class Bulk extends Abstract_Endpoint
 {
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(Serializer_Interface $serializer)
     {
         $this->serializer = $serializer;
     }
-
-    public function getURI(): string
+    public function get_uri(): string
     {
         return '/_monitoring/bulk';
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
-        return [
-            'system_id',
-            'system_api_version',
-            'interval',
-        ];
+        return ['system_id', 'system_api_version', 'interval'];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'POST';
     }
-
-    public function setBody($body): static
+    public function set_body($body): static
     {
         if (isset($body) !== true) {
             return $this;

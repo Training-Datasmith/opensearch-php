@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -12,24 +11,20 @@ declare(strict_types=1);
  * Modifications Copyright OpenSearch Contributors. See
  * GitHub history for details.
  */
+namespace Open_Search\Endpoints\Sql;
 
-namespace OpenSearch\Endpoints\Sql;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-
-class CursorClose extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+class Cursor_Close extends Abstract_Endpoint
 {
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
         return [];
     }
-
-    public function getURI(): string
+    public function get_uri(): string
     {
         return '/_plugins/_sql/close';
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'POST';
     }

@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,37 +17,30 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Helper\Iterators;
+namespace Open_Search\Helper\Iterators;
 
 use Iterator;
-use OpenSearch\Client;
-
+use Open_Search\Client;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(SearchResponseIterator::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Search_Response_Iterator::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class SearchResponseIterator implements Iterator
+class Search_Response_Iterator implements Iterator
 {
     private int $current_key = 0;
-
     /**
      * @var array
      */
     private $current_scrolled_response;
-
     /**
      * @var string|null
      */
     private $scroll_id;
-
     /**
      * @var string duration
      */
     private $scroll_ttl;
-
     /**
      * Constructor
      *
@@ -61,42 +53,31 @@ class SearchResponseIterator implements Iterator
             $this->scroll_ttl = $this->params['scroll'];
         }
     }
-
     /**
      * Destructor
      */
     public function __destruct()
     {
-        $this->clearScroll();
+        $this->clear_scroll();
     }
-
     /**
      * Sets the time to live duration of a scroll window
      */
-    public function setScrollTimeout(string $time_to_live): SearchResponseIterator
+    public function set_scroll_timeout(string $time_to_live): Search_Response_Iterator
     {
         $this->scroll_ttl = $time_to_live;
         return $this;
     }
-
     /**
      * Clears the current scroll window if there is a scroll_id stored
      */
-    private function clearScroll(): void
+    private function clear_scroll(): void
     {
         if (!empty($this->scroll_id)) {
-            $this->client->clearScroll(
-                [
-                    'scroll_id' => $this->scroll_id,
-                    'client' => [
-                        'ignore' => 404,
-                    ],
-                ]
-            );
+            $this->client->clear_scroll(['scroll_id' => $this->scroll_id, 'client' => ['ignore' => 404]]);
             $this->scroll_id = null;
         }
     }
-
     /**
      * Rewinds the iterator by performing the initial search.
      *
@@ -104,12 +85,11 @@ class SearchResponseIterator implements Iterator
      */
     public function rewind(): void
     {
-        $this->clearScroll();
+        $this->clear_scroll();
         $this->current_key = 0;
         $this->current_scrolled_response = $this->client->search($this->params);
         $this->scroll_id = $this->current_scrolled_response['_scroll_id'];
     }
-
     /**
      * Fetches every "page" after the first one using the lastest "scroll_id"
      *
@@ -117,18 +97,10 @@ class SearchResponseIterator implements Iterator
      */
     public function next(): void
     {
-        $this->current_scrolled_response = $this->client->scroll(
-            [
-                'scroll' => $this->scroll_ttl,
-                'body'   => [
-                    'scroll_id' => $this->scroll_id,
-                ],
-            ]
-        );
+        $this->current_scrolled_response = $this->client->scroll(['scroll' => $this->scroll_ttl, 'body' => ['scroll_id' => $this->scroll_id]]);
         $this->scroll_id = $this->current_scrolled_response['_scroll_id'];
         $this->current_key++;
     }
-
     /**
      * Returns a boolean value indicating if the current page is valid or not
      *
@@ -138,7 +110,6 @@ class SearchResponseIterator implements Iterator
     {
         return isset($this->current_scrolled_response['hits']['hits'][0]);
     }
-
     /**
      * Returns the current "page"
      *
@@ -148,7 +119,6 @@ class SearchResponseIterator implements Iterator
     {
         return $this->current_scrolled_response;
     }
-
     /**
      * Returns the current "page number" of the current "page"
      *

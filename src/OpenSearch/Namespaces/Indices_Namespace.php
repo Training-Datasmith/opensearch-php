@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,65 +17,63 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Namespaces;
 
-namespace OpenSearch\Namespaces;
-
-use OpenSearch\Endpoints\Indices\AddBlock;
-use OpenSearch\Endpoints\Indices\Analyze;
-use OpenSearch\Endpoints\Indices\ClearCache;
-use OpenSearch\Endpoints\Indices\CloneIndices;
-use OpenSearch\Endpoints\Indices\Close;
-use OpenSearch\Endpoints\Indices\Create;
-use OpenSearch\Endpoints\Indices\CreateDataStream;
-use OpenSearch\Endpoints\Indices\DataStreamsStats;
-use OpenSearch\Endpoints\Indices\Delete;
-use OpenSearch\Endpoints\Indices\DeleteAlias;
-use OpenSearch\Endpoints\Indices\DeleteDataStream;
-use OpenSearch\Endpoints\Indices\DeleteIndexTemplate;
-use OpenSearch\Endpoints\Indices\DeleteTemplate;
-use OpenSearch\Endpoints\Indices\Exists;
-use OpenSearch\Endpoints\Indices\ExistsAlias;
-use OpenSearch\Endpoints\Indices\ExistsIndexTemplate;
-use OpenSearch\Endpoints\Indices\ExistsTemplate;
-use OpenSearch\Endpoints\Indices\Flush;
-use OpenSearch\Endpoints\Indices\ForceMerge;
-use OpenSearch\Endpoints\Indices\Get;
-use OpenSearch\Endpoints\Indices\GetAlias;
-use OpenSearch\Endpoints\Indices\GetDataStream;
-use OpenSearch\Endpoints\Indices\GetFieldMapping;
-use OpenSearch\Endpoints\Indices\GetIndexTemplate;
-use OpenSearch\Endpoints\Indices\GetMapping;
-use OpenSearch\Endpoints\Indices\GetSettings;
-use OpenSearch\Endpoints\Indices\GetTemplate;
-use OpenSearch\Endpoints\Indices\GetUpgrade;
-use OpenSearch\Endpoints\Indices\Open;
-use OpenSearch\Endpoints\Indices\PutAlias;
-use OpenSearch\Endpoints\Indices\PutIndexTemplate;
-use OpenSearch\Endpoints\Indices\PutMapping;
-use OpenSearch\Endpoints\Indices\PutSettings;
-use OpenSearch\Endpoints\Indices\PutTemplate;
-use OpenSearch\Endpoints\Indices\Recovery;
-use OpenSearch\Endpoints\Indices\Refresh;
-use OpenSearch\Endpoints\Indices\RefreshSearchAnalyzers;
-use OpenSearch\Endpoints\Indices\ResolveIndex;
-use OpenSearch\Endpoints\Indices\Rollover;
-use OpenSearch\Endpoints\Indices\Segments;
-use OpenSearch\Endpoints\Indices\ShardStores;
-use OpenSearch\Endpoints\Indices\Shrink;
-use OpenSearch\Endpoints\Indices\SimulateIndexTemplate;
-use OpenSearch\Endpoints\Indices\SimulateTemplate;
-use OpenSearch\Endpoints\Indices\Split;
-use OpenSearch\Endpoints\Indices\Stats;
-use OpenSearch\Endpoints\Indices\UpdateAliases;
-use OpenSearch\Endpoints\Indices\Upgrade;
-use OpenSearch\Endpoints\Indices\ValidateQuery;
-
+use Open_Search\Endpoints\Indices\Add_Block;
+use Open_Search\Endpoints\Indices\Analyze;
+use Open_Search\Endpoints\Indices\Clear_Cache;
+use Open_Search\Endpoints\Indices\Clone_Indices;
+use Open_Search\Endpoints\Indices\Close;
+use Open_Search\Endpoints\Indices\Create;
+use Open_Search\Endpoints\Indices\Create_Data_Stream;
+use Open_Search\Endpoints\Indices\Data_Streams_Stats;
+use Open_Search\Endpoints\Indices\Delete;
+use Open_Search\Endpoints\Indices\Delete_Alias;
+use Open_Search\Endpoints\Indices\Delete_Data_Stream;
+use Open_Search\Endpoints\Indices\Delete_Index_Template;
+use Open_Search\Endpoints\Indices\Delete_Template;
+use Open_Search\Endpoints\Indices\Exists;
+use Open_Search\Endpoints\Indices\Exists_Alias;
+use Open_Search\Endpoints\Indices\Exists_Index_Template;
+use Open_Search\Endpoints\Indices\Exists_Template;
+use Open_Search\Endpoints\Indices\Flush;
+use Open_Search\Endpoints\Indices\Force_Merge;
+use Open_Search\Endpoints\Indices\Get;
+use Open_Search\Endpoints\Indices\Get_Alias;
+use Open_Search\Endpoints\Indices\Get_Data_Stream;
+use Open_Search\Endpoints\Indices\Get_Field_Mapping;
+use Open_Search\Endpoints\Indices\Get_Index_Template;
+use Open_Search\Endpoints\Indices\Get_Mapping;
+use Open_Search\Endpoints\Indices\Get_Settings;
+use Open_Search\Endpoints\Indices\Get_Template;
+use Open_Search\Endpoints\Indices\Get_Upgrade;
+use Open_Search\Endpoints\Indices\Open;
+use Open_Search\Endpoints\Indices\Put_Alias;
+use Open_Search\Endpoints\Indices\Put_Index_Template;
+use Open_Search\Endpoints\Indices\Put_Mapping;
+use Open_Search\Endpoints\Indices\Put_Settings;
+use Open_Search\Endpoints\Indices\Put_Template;
+use Open_Search\Endpoints\Indices\Recovery;
+use Open_Search\Endpoints\Indices\Refresh;
+use Open_Search\Endpoints\Indices\Refresh_Search_Analyzers;
+use Open_Search\Endpoints\Indices\Resolve_Index;
+use Open_Search\Endpoints\Indices\Rollover;
+use Open_Search\Endpoints\Indices\Segments;
+use Open_Search\Endpoints\Indices\Shard_Stores;
+use Open_Search\Endpoints\Indices\Shrink;
+use Open_Search\Endpoints\Indices\Simulate_Index_Template;
+use Open_Search\Endpoints\Indices\Simulate_Template;
+use Open_Search\Endpoints\Indices\Split;
+use Open_Search\Endpoints\Indices\Stats;
+use Open_Search\Endpoints\Indices\Update_Aliases;
+use Open_Search\Endpoints\Indices\Upgrade;
+use Open_Search\Endpoints\Indices\Validate_Query;
 /**
  * Class IndicesNamespace
  *
  * NOTE: This file is autogenerated using util/GenerateEndpoints.php
  */
-class IndicesNamespace extends AbstractNamespace
+class Indices_Namespace extends Abstract_Namespace
 {
     /**
      * Adds a block to an index.
@@ -97,19 +94,16 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function addBlock(array $params = [])
+    public function add_block(array $params = [])
     {
-        $block = $this->extractArgument($params, 'block');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(AddBlock::class);
-        $endpoint->setParams($params);
-        $endpoint->setBlock($block);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $block = $this->extract_argument($params, 'block');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Add_Block::class);
+        $endpoint->set_params($params);
+        $endpoint->set_block($block);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Performs the analysis process on a text and return the tokens breakdown of the text.
      *
@@ -125,17 +119,14 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function analyze(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Analyze::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Analyze::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Clears all or specific caches for one or more indexes.
      *
@@ -156,17 +147,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function clearCache(array $params = [])
+    public function clear_cache(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ClearCache::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Clear_Cache::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Clones an index.
      *
@@ -189,19 +177,16 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function clone(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $target = $this->extractArgument($params, 'target');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CloneIndices::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setTarget($target);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $target = $this->extract_argument($params, 'target');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Clone_Indices::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_target($target);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Closes an index.
      *
@@ -223,15 +208,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function close(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Close::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Close::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates an index with optional settings and mappings.
      *
@@ -251,17 +233,14 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function create(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Create::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates or updates a data stream.
      *
@@ -275,19 +254,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The data stream definition
      * @return array
      */
-    public function createDataStream(array $params = [])
+    public function create_data_stream(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreateDataStream::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Data_Stream::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Provides statistics on operations happening in a data stream.
      *
@@ -300,17 +276,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function dataStreamsStats(array $params = [])
+    public function data_streams_stats(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DataStreamsStats::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Data_Streams_Stats::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes an index.
      *
@@ -331,15 +304,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function delete(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Delete::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes an alias.
      *
@@ -356,19 +326,16 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteAlias(array $params = [])
+    public function delete_alias(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteAlias::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Alias::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes a data stream.
      *
@@ -381,17 +348,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteDataStream(array $params = [])
+    public function delete_data_stream(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteDataStream::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Data_Stream::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes an index template.
      *
@@ -407,17 +371,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteIndexTemplate(array $params = [])
+    public function delete_index_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteIndexTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Index_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes an index template.
      *
@@ -433,17 +394,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteTemplate(array $params = [])
+    public function delete_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information about whether a particular index exists.
      *
@@ -464,18 +422,15 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function exists(array $params = []): bool
     {
-        $index = $this->extractArgument($params, 'index');
+        $index = $this->extract_argument($params, 'index');
         // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(Exists::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Exists::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Returns information about whether a particular alias exists.
      *
@@ -492,22 +447,19 @@ class IndicesNamespace extends AbstractNamespace
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      */
-    public function existsAlias(array $params = []): bool
+    public function exists_alias(array $params = []): bool
     {
-        $name = $this->extractArgument($params, 'name');
-        $index = $this->extractArgument($params, 'index');
+        $name = $this->extract_argument($params, 'name');
+        $index = $this->extract_argument($params, 'index');
         // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExistsAlias::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setIndex($index);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Exists_Alias::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_index($index);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Returns information about whether a particular index template exists.
      *
@@ -523,20 +475,17 @@ class IndicesNamespace extends AbstractNamespace
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      */
-    public function existsIndexTemplate(array $params = []): bool
+    public function exists_index_template(array $params = []): bool
     {
-        $name = $this->extractArgument($params, 'name');
+        $name = $this->extract_argument($params, 'name');
         // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExistsIndexTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Exists_Index_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Returns information about whether a particular index template exists.
      *
@@ -552,20 +501,17 @@ class IndicesNamespace extends AbstractNamespace
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      */
-    public function existsTemplate(array $params = []): bool
+    public function exists_template(array $params = []): bool
     {
-        $name = $this->extractArgument($params, 'name');
+        $name = $this->extract_argument($params, 'name');
         // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExistsTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Exists_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Performs the flush operation on one or more indexes.
      *
@@ -585,15 +531,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function flush(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Flush::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Flush::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Performs the force merge operation on one or more indexes.
      *
@@ -616,15 +559,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function forcemerge(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ForceMerge::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Force_Merge::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information about one or more indexes.
      *
@@ -647,15 +587,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function get(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Get::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns an alias.
      *
@@ -673,19 +610,16 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAlias(array $params = [])
+    public function get_alias(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAlias::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Alias::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns data streams.
      *
@@ -698,17 +632,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getDataStream(array $params = [])
+    public function get_data_stream(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetDataStream::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Data_Stream::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns mapping for one or more fields.
      *
@@ -727,19 +658,16 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getFieldMapping(array $params = [])
+    public function get_field_mapping(array $params = [])
     {
-        $fields = $this->extractArgument($params, 'fields');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetFieldMapping::class);
-        $endpoint->setParams($params);
-        $endpoint->setFields($fields);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $fields = $this->extract_argument($params, 'fields');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Field_Mapping::class);
+        $endpoint->set_params($params);
+        $endpoint->set_fields($fields);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns an index template.
      *
@@ -756,17 +684,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getIndexTemplate(array $params = [])
+    public function get_index_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetIndexTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Index_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns mappings for one or more indexes.
      *
@@ -785,17 +710,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getMapping(array $params = [])
+    public function get_mapping(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetMapping::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Mapping::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns settings for one or more indexes.
      *
@@ -817,19 +739,16 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getSettings(array $params = [])
+    public function get_settings(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetSettings::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Settings::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns an index template.
      *
@@ -846,17 +765,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getTemplate(array $params = [])
+    public function get_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * The `_upgrade` API is no longer useful and will be removed.
      *
@@ -872,17 +788,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getUpgrade(array $params = [])
+    public function get_upgrade(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetUpgrade::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Upgrade::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Opens an index.
      *
@@ -906,15 +819,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function open(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Open::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Open::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates or updates an alias.
      *
@@ -932,21 +842,18 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The settings for the alias, such as `routing` or `filter`
      * @return array
      */
-    public function putAlias(array $params = [])
+    public function put_alias(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PutAlias::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Put_Alias::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates or updates an index template.
      *
@@ -964,19 +871,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The template definition (Required)
      * @return array
      */
-    public function putIndexTemplate(array $params = [])
+    public function put_index_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PutIndexTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Put_Index_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates the index mappings.
      *
@@ -997,19 +901,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The mapping definition (Required)
      * @return array
      */
-    public function putMapping(array $params = [])
+    public function put_mapping(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PutMapping::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Put_Mapping::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates the index settings.
      *
@@ -1031,19 +932,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body: (Required)
      * @return array
      */
-    public function putSettings(array $params = [])
+    public function put_settings(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PutSettings::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Put_Settings::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates or updates an index template.
      *
@@ -1061,19 +959,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The template definition (Required)
      * @return array
      */
-    public function putTemplate(array $params = [])
+    public function put_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PutTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Put_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information about ongoing index shard recoveries.
      *
@@ -1090,15 +985,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function recovery(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Recovery::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Recovery::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Performs the refresh operation in one or more indexes.
      *
@@ -1116,15 +1008,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function refresh(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Refresh::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Refresh::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information about any matching indexes, aliases, and data streams.
      *
@@ -1138,17 +1027,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function resolveIndex(array $params = [])
+    public function resolve_index(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ResolveIndex::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $endpoint = $this->endpoint_factory->get_endpoint(Resolve_Index::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates an alias to point to a new index when the existing indexis considered to be too large or too old.
      *
@@ -1170,19 +1056,16 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function rollover(array $params = [])
     {
-        $alias = $this->extractArgument($params, 'alias');
-        $new_index = $this->extractArgument($params, 'new_index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Rollover::class);
-        $endpoint->setParams($params);
-        $endpoint->setAlias($alias);
-        $endpoint->setNewIndex($new_index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $alias = $this->extract_argument($params, 'alias');
+        $new_index = $this->extract_argument($params, 'new_index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Rollover::class);
+        $endpoint->set_params($params);
+        $endpoint->set_alias($alias);
+        $endpoint->set_new_index($new_index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Provides low-level information about segments in a Lucene index.
      *
@@ -1201,15 +1084,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function segments(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Segments::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Segments::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Provides store information for shard copies of indexes.
      *
@@ -1226,17 +1106,14 @@ class IndicesNamespace extends AbstractNamespace
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function shardStores(array $params = [])
+    public function shard_stores(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ShardStores::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Shard_Stores::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allow to shrink an existing index into a new index with fewer primary shards.
      *
@@ -1260,19 +1137,16 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function shrink(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $target = $this->extractArgument($params, 'target');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Shrink::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setTarget($target);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $target = $this->extract_argument($params, 'target');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Shrink::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_target($target);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Simulate matching the given index name against the index templates in the system.
      *
@@ -1288,19 +1162,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body: New index template definition, which will be included in the simulation, as if it already exists in the system
      * @return array
      */
-    public function simulateIndexTemplate(array $params = [])
+    public function simulate_index_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SimulateIndexTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Simulate_Index_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Simulate resolving the given template name or body.
      *
@@ -1318,19 +1189,16 @@ class IndicesNamespace extends AbstractNamespace
      * - body:
      * @return array
      */
-    public function simulateTemplate(array $params = [])
+    public function simulate_template(array $params = [])
     {
-        $name = $this->extractArgument($params, 'name');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SimulateTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setName($name);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $name = $this->extract_argument($params, 'name');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Simulate_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_name($name);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows you to split an existing index into a new index with more primary shards.
      *
@@ -1354,19 +1222,16 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function split(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $target = $this->extractArgument($params, 'target');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Split::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setTarget($target);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $target = $this->extract_argument($params, 'target');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Split::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_target($target);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Provides statistics on operations happening in an index.
      *
@@ -1391,17 +1256,14 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function stats(array $params = [])
     {
-        $metric = $this->extractArgument($params, 'metric');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Stats::class);
-        $endpoint->setParams($params);
-        $endpoint->setMetric($metric);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $metric = $this->extract_argument($params, 'metric');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Stats::class);
+        $endpoint->set_params($params);
+        $endpoint->set_metric($metric);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates index aliases.
      *
@@ -1417,17 +1279,14 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The definition of `actions` to perform (Required)
      * @return array
      */
-    public function updateAliases(array $params = [])
+    public function update_aliases(array $params = [])
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateAliases::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_Aliases::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * The `_upgrade` API is no longer useful and will be removed.
      *
@@ -1447,15 +1306,12 @@ class IndicesNamespace extends AbstractNamespace
      */
     public function upgrade(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Upgrade::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Upgrade::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows a user to validate a potentially expensive query without executing it.
      *
@@ -1481,28 +1337,25 @@ class IndicesNamespace extends AbstractNamespace
      * - body: The query definition specified with the Query DSL
      * @return array
      */
-    public function validateQuery(array $params = [])
+    public function validate_query(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ValidateQuery::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Validate_Query::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Alias function to getAlias()
      *
      * @deprecated added to prevent BC break introduced in 7.2.0
      * @see https://github.com/elastic/elasticsearch-php/issues/940
      */
-    public function getAliases(array $params = [])
+    public function get_aliases(array $params = [])
     {
-        return $this->getAlias($params);
+        return $this->get_alias($params);
     }
     /**
      * $params['index']              = (list) A comma-separated list of index names to refresh analyzers for
@@ -1510,14 +1363,12 @@ class IndicesNamespace extends AbstractNamespace
      * @param array $params Associative array of parameters
      * @return array
      */
-    public function refreshSearchAnalyzers(array $params = [])
+    public function refresh_search_analyzers(array $params = [])
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RefreshSearchAnalyzers::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Refresh_Search_Analyzers::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
 }

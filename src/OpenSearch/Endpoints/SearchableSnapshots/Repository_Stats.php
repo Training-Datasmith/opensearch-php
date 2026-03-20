@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,43 +17,35 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Searchable_Snapshots;
 
-namespace OpenSearch\Endpoints\SearchableSnapshots;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Exception\RuntimeException;
-
-class RepositoryStats extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Exception\RuntimeException;
+class Repository_Stats extends Abstract_Endpoint
 {
     protected $repository;
-
-    public function getURI(): string
+    public function get_uri(): string
     {
         $repository = $this->repository ?? null;
-
         if (isset($repository)) {
-            return "/_snapshot/$repository/_stats";
+            return "/_snapshot/{$repository}/_stats";
         }
         throw new RuntimeException('Missing parameter for the endpoint searchable_snapshots.repository_stats');
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
         return [];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'GET';
     }
-
-    public function setRepository($repository): RepositoryStats
+    public function set_repository($repository): Repository_Stats
     {
         if (isset($repository) !== true) {
             return $this;
         }
         $this->repository = $repository;
-
         return $this;
     }
 }

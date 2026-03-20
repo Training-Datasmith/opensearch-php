@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,17 +17,15 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Namespaces;
 
-namespace OpenSearch\Namespaces;
-
-use OpenSearch\EndpointFactoryInterface;
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\LegacyEndpointFactory;
-use OpenSearch\LegacyTransportWrapper;
-use OpenSearch\Transport;
-use OpenSearch\TransportInterface;
-
-abstract class AbstractNamespace
+use Open_Search\Endpoint_Factory_Interface;
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Legacy_Endpoint_Factory;
+use Open_Search\Legacy_Transport_Wrapper;
+use Open_Search\Transport;
+use Open_Search\Transport_Interface;
+abstract class Abstract_Namespace
 {
     /**
      * @var \OpenSearch\Transport
@@ -36,52 +33,47 @@ abstract class AbstractNamespace
      * @deprecated in 2.4.0 and will be removed in 3.0.0. Use $httpTransport property instead.
      */
     protected $transport;
-
-    protected TransportInterface $httpTransport;
-
-    protected EndpointFactoryInterface $endpointFactory;
-
+    protected Transport_Interface $http_transport;
+    protected Endpoint_Factory_Interface $endpoint_factory;
     /**
      * @var callable
      *
      * @deprecated in 2.4.0 and will be removed in 3.0.0. Use $endpointFactory property instead.
      */
     protected $endpoints;
-
     /**
      * @phpstan-ignore parameter.deprecatedClass
      */
-    public function __construct(TransportInterface|Transport $transport, callable|EndpointFactoryInterface $endpointFactory)
+    public function __construct(Transport_Interface|Transport $transport, callable|Endpoint_Factory_Interface $endpoint_factory)
     {
-        if (!$transport instanceof TransportInterface) {
+        if (!$transport instanceof Transport_Interface) {
             @trigger_error('Passing an instance of \OpenSearch\Transport to ' . __METHOD__ . '() is deprecated in 2.4.0 and will be removed in 3.0.0. Pass an instance of \OpenSearch\TransportInterface instead.', E_USER_DEPRECATED);
             // @phpstan-ignore property.deprecated
             $this->transport = $transport;
             // @phpstan-ignore new.deprecated
-            $this->httpTransport = new LegacyTransportWrapper($transport);
+            $this->http_transport = new Legacy_Transport_Wrapper($transport);
         } else {
-            $this->httpTransport = $transport;
+            $this->http_transport = $transport;
         }
-        if (is_callable($endpointFactory)) {
+        if (is_callable($endpoint_factory)) {
             @trigger_error('Passing a callable as $endpointFactory param to ' . __METHOD__ . '() is deprecated in 2.4.0 and will be removed in 3.0.0. Pass an instance of \OpenSearch\EndpointFactoryInterface instead.', E_USER_DEPRECATED);
-            $endpoints = $endpointFactory;
+            $endpoints = $endpoint_factory;
             // @phpstan-ignore new.deprecated
-            $endpointFactory = new LegacyEndpointFactory($endpointFactory);
+            $endpoint_factory = new Legacy_Endpoint_Factory($endpoint_factory);
         } else {
-            $endpoints = function (string $c) use ($endpointFactory): \OpenSearch\Endpoints\AbstractEndpoint {
+            $endpoints = function (string $c) use ($endpoint_factory): \Open_Search\Endpoints\Abstract_Endpoint {
                 @trigger_error('The $endpoints property is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-                return $endpointFactory->getEndpoint('OpenSearch\\Endpoints\\' . $c);
+                return $endpoint_factory->get_endpoint('OpenSearch\Endpoints\\' . $c);
             };
         }
         // @phpstan-ignore property.deprecated
         $this->endpoints = $endpoints;
-        $this->endpointFactory = $endpointFactory;
+        $this->endpoint_factory = $endpoint_factory;
     }
-
     /**
      * @return null|mixed
      */
-    public function extractArgument(array &$params, string $arg)
+    public function extract_argument(array &$params, string $arg)
     {
         if (array_key_exists($arg, $params) === true) {
             $val = $params[$arg];
@@ -90,16 +82,8 @@ abstract class AbstractNamespace
         }
         return null;
     }
-
-    protected function performRequest(AbstractEndpoint $endpoint)
+    protected function perform_request(Abstract_Endpoint $endpoint)
     {
-        return $this->httpTransport->sendRequest(
-            $endpoint->getMethod(),
-            $endpoint->getURI(),
-            $endpoint->getParams(),
-            $endpoint->getBody(),
-            $endpoint->getOptions()
-        );
-
+        return $this->http_transport->send_request($endpoint->get_method(), $endpoint->get_uri(), $endpoint->get_params(), $endpoint->get_body(), $endpoint->get_options());
     }
 }
