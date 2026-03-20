@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Open_Search;
 
-namespace OpenSearch;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-
+use Open_Search\Endpoints\Abstract_Endpoint;
 /**
  * A factory for creating endpoints.
  */
-interface EndpointFactoryInterface
+interface Endpoint_Factory_Interface
 {
     /**
      * Gets an endpoint.
@@ -18,6 +16,5 @@ interface EndpointFactoryInterface
      * @phpstan-param class-string<T> $class
      * @phpstan-return T
      */
-    public function getEndpoint(string $class): AbstractEndpoint;
-
+    public function get_endpoint(string $class): Abstract_Endpoint;
 }

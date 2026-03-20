@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,20 +17,18 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Common\Exceptions;
+namespace Open_Search\Common\Exceptions;
 
 @trigger_error(
     // @phpstan-ignore classConstant.deprecatedClass
-    NoDocumentsToGetException::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\NoDocumentsToGetException instead.',
+    No_Documents_To_Get_Exception::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\NoDocumentsToGetException instead.',
     E_USER_DEPRECATED
 );
-
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\NoDocumentsToGetException instead.
  *
  * @see \OpenSearch\Exception\ScriptLangNotSupportedException
  */
-class NoDocumentsToGetException extends \OpenSearch\Exception\NoDocumentsToGetException
+class No_Documents_To_Get_Exception extends \Open_Search\Exception\No_Documents_To_Get_Exception
 {
 }

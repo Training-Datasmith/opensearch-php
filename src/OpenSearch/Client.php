@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,96 +17,94 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search;
 
-namespace OpenSearch;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Endpoints\Bulk;
-use OpenSearch\Endpoints\BulkStream;
-use OpenSearch\Endpoints\ClearScroll;
-use OpenSearch\Endpoints\Count;
-use OpenSearch\Endpoints\Create;
-use OpenSearch\Endpoints\CreatePit;
-use OpenSearch\Endpoints\Delete;
-use OpenSearch\Endpoints\DeleteAllPits;
-use OpenSearch\Endpoints\DeleteByQuery;
-use OpenSearch\Endpoints\DeleteByQueryRethrottle;
-use OpenSearch\Endpoints\DeletePit;
-use OpenSearch\Endpoints\DeleteScript;
-use OpenSearch\Endpoints\Exists;
-use OpenSearch\Endpoints\ExistsSource;
-use OpenSearch\Endpoints\Explain;
-use OpenSearch\Endpoints\FieldCaps;
-use OpenSearch\Endpoints\Get;
-use OpenSearch\Endpoints\GetAllPits;
-use OpenSearch\Endpoints\GetScript;
-use OpenSearch\Endpoints\GetScriptContext;
-use OpenSearch\Endpoints\GetScriptLanguages;
-use OpenSearch\Endpoints\GetSource;
-use OpenSearch\Endpoints\Index;
-use OpenSearch\Endpoints\Info;
-use OpenSearch\Endpoints\Mget;
-use OpenSearch\Endpoints\Msearch;
-use OpenSearch\Endpoints\MsearchTemplate;
-use OpenSearch\Endpoints\MTermVectors;
-use OpenSearch\Endpoints\Ping;
-use OpenSearch\Endpoints\PutScript;
-use OpenSearch\Endpoints\RankEval;
-use OpenSearch\Endpoints\Reindex;
-use OpenSearch\Endpoints\ReindexRethrottle;
-use OpenSearch\Endpoints\RenderSearchTemplate;
-use OpenSearch\Endpoints\ScriptsPainlessExecute;
-use OpenSearch\Endpoints\Scroll;
-use OpenSearch\Endpoints\Search;
-use OpenSearch\Endpoints\SearchShards;
-use OpenSearch\Endpoints\SearchTemplate;
-use OpenSearch\Endpoints\TermVectors;
-use OpenSearch\Endpoints\Update;
-use OpenSearch\Endpoints\UpdateByQuery;
-use OpenSearch\Endpoints\UpdateByQueryRethrottle;
-use OpenSearch\Namespaces\AsynchronousSearchNamespace;
-use OpenSearch\Namespaces\AsyncSearchNamespace;
-use OpenSearch\Namespaces\BooleanRequestWrapper;
-use OpenSearch\Namespaces\CatNamespace;
-use OpenSearch\Namespaces\ClusterNamespace;
-use OpenSearch\Namespaces\DanglingIndicesNamespace;
-use OpenSearch\Namespaces\DataFrameTransformDeprecatedNamespace;
-use OpenSearch\Namespaces\FlowFrameworkNamespace;
-use OpenSearch\Namespaces\GeospatialNamespace;
-use OpenSearch\Namespaces\IndicesNamespace;
-use OpenSearch\Namespaces\IngestionNamespace;
-use OpenSearch\Namespaces\IngestNamespace;
-use OpenSearch\Namespaces\InsightsNamespace;
-use OpenSearch\Namespaces\IsmNamespace;
-use OpenSearch\Namespaces\KnnNamespace;
-use OpenSearch\Namespaces\ListNamespace;
-use OpenSearch\Namespaces\LtrNamespace;
-use OpenSearch\Namespaces\MlNamespace;
-use OpenSearch\Namespaces\MonitoringNamespace;
-use OpenSearch\Namespaces\NamespaceBuilderInterface;
-use OpenSearch\Namespaces\NeuralNamespace;
-use OpenSearch\Namespaces\NodesNamespace;
-use OpenSearch\Namespaces\NotificationsNamespace;
-use OpenSearch\Namespaces\ObservabilityNamespace;
-use OpenSearch\Namespaces\PplNamespace;
-use OpenSearch\Namespaces\QueryNamespace;
-use OpenSearch\Namespaces\RemoteStoreNamespace;
-use OpenSearch\Namespaces\ReplicationNamespace;
-use OpenSearch\Namespaces\RollupsNamespace;
-use OpenSearch\Namespaces\SearchableSnapshotsNamespace;
-use OpenSearch\Namespaces\SearchPipelineNamespace;
-use OpenSearch\Namespaces\SearchRelevanceNamespace;
-use OpenSearch\Namespaces\SecurityAnalyticsNamespace;
-use OpenSearch\Namespaces\SecurityNamespace;
-use OpenSearch\Namespaces\SmNamespace;
-use OpenSearch\Namespaces\SnapshotNamespace;
-use OpenSearch\Namespaces\SqlNamespace;
-use OpenSearch\Namespaces\SslNamespace;
-use OpenSearch\Namespaces\TasksNamespace;
-use OpenSearch\Namespaces\TransformsNamespace;
-use OpenSearch\Namespaces\UbiNamespace;
-use OpenSearch\Namespaces\WlmNamespace;
-
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Endpoints\Bulk;
+use Open_Search\Endpoints\Bulk_Stream;
+use Open_Search\Endpoints\Clear_Scroll;
+use Open_Search\Endpoints\Count;
+use Open_Search\Endpoints\Create;
+use Open_Search\Endpoints\Create_Pit;
+use Open_Search\Endpoints\Delete;
+use Open_Search\Endpoints\Delete_All_Pits;
+use Open_Search\Endpoints\Delete_By_Query;
+use Open_Search\Endpoints\Delete_By_Query_Rethrottle;
+use Open_Search\Endpoints\Delete_Pit;
+use Open_Search\Endpoints\Delete_Script;
+use Open_Search\Endpoints\Exists;
+use Open_Search\Endpoints\Exists_Source;
+use Open_Search\Endpoints\Explain;
+use Open_Search\Endpoints\Field_Caps;
+use Open_Search\Endpoints\Get;
+use Open_Search\Endpoints\Get_All_Pits;
+use Open_Search\Endpoints\Get_Script;
+use Open_Search\Endpoints\Get_Script_Context;
+use Open_Search\Endpoints\Get_Script_Languages;
+use Open_Search\Endpoints\Get_Source;
+use Open_Search\Endpoints\Index;
+use Open_Search\Endpoints\Info;
+use Open_Search\Endpoints\Mget;
+use Open_Search\Endpoints\Msearch;
+use Open_Search\Endpoints\Msearch_Template;
+use Open_Search\Endpoints\M_Term_Vectors;
+use Open_Search\Endpoints\Ping;
+use Open_Search\Endpoints\Put_Script;
+use Open_Search\Endpoints\Rank_Eval;
+use Open_Search\Endpoints\Reindex;
+use Open_Search\Endpoints\Reindex_Rethrottle;
+use Open_Search\Endpoints\Render_Search_Template;
+use Open_Search\Endpoints\Scripts_Painless_Execute;
+use Open_Search\Endpoints\Scroll;
+use Open_Search\Endpoints\Search;
+use Open_Search\Endpoints\Search_Shards;
+use Open_Search\Endpoints\Search_Template;
+use Open_Search\Endpoints\Term_Vectors;
+use Open_Search\Endpoints\Update;
+use Open_Search\Endpoints\Update_By_Query;
+use Open_Search\Endpoints\Update_By_Query_Rethrottle;
+use Open_Search\Namespaces\Asynchronous_Search_Namespace;
+use Open_Search\Namespaces\Async_Search_Namespace;
+use Open_Search\Namespaces\Boolean_Request_Wrapper;
+use Open_Search\Namespaces\Cat_Namespace;
+use Open_Search\Namespaces\Cluster_Namespace;
+use Open_Search\Namespaces\Dangling_Indices_Namespace;
+use Open_Search\Namespaces\Data_Frame_Transform_Deprecated_Namespace;
+use Open_Search\Namespaces\Flow_Framework_Namespace;
+use Open_Search\Namespaces\Geospatial_Namespace;
+use Open_Search\Namespaces\Indices_Namespace;
+use Open_Search\Namespaces\Ingestion_Namespace;
+use Open_Search\Namespaces\Ingest_Namespace;
+use Open_Search\Namespaces\Insights_Namespace;
+use Open_Search\Namespaces\Ism_Namespace;
+use Open_Search\Namespaces\Knn_Namespace;
+use Open_Search\Namespaces\List_Namespace;
+use Open_Search\Namespaces\Ltr_Namespace;
+use Open_Search\Namespaces\Ml_Namespace;
+use Open_Search\Namespaces\Monitoring_Namespace;
+use Open_Search\Namespaces\Namespace_Builder_Interface;
+use Open_Search\Namespaces\Neural_Namespace;
+use Open_Search\Namespaces\Nodes_Namespace;
+use Open_Search\Namespaces\Notifications_Namespace;
+use Open_Search\Namespaces\Observability_Namespace;
+use Open_Search\Namespaces\Ppl_Namespace;
+use Open_Search\Namespaces\Query_Namespace;
+use Open_Search\Namespaces\Remote_Store_Namespace;
+use Open_Search\Namespaces\Replication_Namespace;
+use Open_Search\Namespaces\Rollups_Namespace;
+use Open_Search\Namespaces\Searchable_Snapshots_Namespace;
+use Open_Search\Namespaces\Search_Pipeline_Namespace;
+use Open_Search\Namespaces\Search_Relevance_Namespace;
+use Open_Search\Namespaces\Security_Analytics_Namespace;
+use Open_Search\Namespaces\Security_Namespace;
+use Open_Search\Namespaces\Sm_Namespace;
+use Open_Search\Namespaces\Snapshot_Namespace;
+use Open_Search\Namespaces\Sql_Namespace;
+use Open_Search\Namespaces\Ssl_Namespace;
+use Open_Search\Namespaces\Tasks_Namespace;
+use Open_Search\Namespaces\Transforms_Namespace;
+use Open_Search\Namespaces\Ubi_Namespace;
+use Open_Search\Namespaces\Wlm_Namespace;
 /**
  * Class Client
  *
@@ -116,125 +113,79 @@ use OpenSearch\Namespaces\WlmNamespace;
 class Client
 {
     public const VERSION = '2.5.1';
-
     /**
      * @var Transport
      *
      * @deprecated in 2.4.0 and will be removed in 3.0.0.
      */
     public $transport;
-
-    private TransportInterface $httpTransport;
-
+    private Transport_Interface $http_transport;
     /**
      * @var array
      */
     protected $params;
-
-    private readonly EndpointFactoryInterface $endpointFactory;
-
+    private readonly Endpoint_Factory_Interface $endpoint_factory;
     /**
      * @var callable
      *
      * @deprecated in 2.4.0 and will be removed in 3.0.0.
      */
     protected $endpoints;
-
     /**
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected \OpenSearch\Namespaces\AsyncSearchNamespace $asyncSearch;
-
-    protected \OpenSearch\Namespaces\AsynchronousSearchNamespace $asynchronousSearch;
-
-    protected \OpenSearch\Namespaces\CatNamespace $cat;
-
-    protected \OpenSearch\Namespaces\ClusterNamespace $cluster;
-
-    protected \OpenSearch\Namespaces\DanglingIndicesNamespace $danglingIndices;
-
+    protected \Open_Search\Namespaces\Async_Search_Namespace $async_search;
+    protected \Open_Search\Namespaces\Asynchronous_Search_Namespace $asynchronous_search;
+    protected \Open_Search\Namespaces\Cat_Namespace $cat;
+    protected \Open_Search\Namespaces\Cluster_Namespace $cluster;
+    protected \Open_Search\Namespaces\Dangling_Indices_Namespace $dangling_indices;
     /**
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected \OpenSearch\Namespaces\DataFrameTransformDeprecatedNamespace $dataFrameTransformDeprecated;
-
-    protected \OpenSearch\Namespaces\FlowFrameworkNamespace $flowFramework;
-
-    protected \OpenSearch\Namespaces\GeospatialNamespace $geospatial;
-
-    protected \OpenSearch\Namespaces\IndicesNamespace $indices;
-
-    protected \OpenSearch\Namespaces\IngestNamespace $ingest;
-
-    protected \OpenSearch\Namespaces\IngestionNamespace $ingestion;
-
-    protected \OpenSearch\Namespaces\InsightsNamespace $insights;
-
-    protected \OpenSearch\Namespaces\IsmNamespace $ism;
-
-    protected \OpenSearch\Namespaces\KnnNamespace $knn;
-
-    protected \OpenSearch\Namespaces\ListNamespace $list;
-
-    protected \OpenSearch\Namespaces\LtrNamespace $ltr;
-
-    protected \OpenSearch\Namespaces\MlNamespace $ml;
-
+    protected \Open_Search\Namespaces\Data_Frame_Transform_Deprecated_Namespace $data_frame_transform_deprecated;
+    protected \Open_Search\Namespaces\Flow_Framework_Namespace $flow_framework;
+    protected \Open_Search\Namespaces\Geospatial_Namespace $geospatial;
+    protected \Open_Search\Namespaces\Indices_Namespace $indices;
+    protected \Open_Search\Namespaces\Ingest_Namespace $ingest;
+    protected \Open_Search\Namespaces\Ingestion_Namespace $ingestion;
+    protected \Open_Search\Namespaces\Insights_Namespace $insights;
+    protected \Open_Search\Namespaces\Ism_Namespace $ism;
+    protected \Open_Search\Namespaces\Knn_Namespace $knn;
+    protected \Open_Search\Namespaces\List_Namespace $list;
+    protected \Open_Search\Namespaces\Ltr_Namespace $ltr;
+    protected \Open_Search\Namespaces\Ml_Namespace $ml;
     /**
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected \OpenSearch\Namespaces\MonitoringNamespace $monitoring;
-
-    protected \OpenSearch\Namespaces\NeuralNamespace $neural;
-
-    protected \OpenSearch\Namespaces\NodesNamespace $nodes;
-
-    protected \OpenSearch\Namespaces\NotificationsNamespace $notifications;
-
-    protected \OpenSearch\Namespaces\ObservabilityNamespace $observability;
-
-    protected \OpenSearch\Namespaces\PplNamespace $ppl;
-
-    protected \OpenSearch\Namespaces\QueryNamespace $query;
-
-    protected \OpenSearch\Namespaces\RemoteStoreNamespace $remoteStore;
-
-    protected \OpenSearch\Namespaces\ReplicationNamespace $replication;
-
-    protected \OpenSearch\Namespaces\RollupsNamespace $rollups;
-
-    protected \OpenSearch\Namespaces\SearchPipelineNamespace $searchPipeline;
-
-    protected \OpenSearch\Namespaces\SearchRelevanceNamespace $searchRelevance;
-
+    protected \Open_Search\Namespaces\Monitoring_Namespace $monitoring;
+    protected \Open_Search\Namespaces\Neural_Namespace $neural;
+    protected \Open_Search\Namespaces\Nodes_Namespace $nodes;
+    protected \Open_Search\Namespaces\Notifications_Namespace $notifications;
+    protected \Open_Search\Namespaces\Observability_Namespace $observability;
+    protected \Open_Search\Namespaces\Ppl_Namespace $ppl;
+    protected \Open_Search\Namespaces\Query_Namespace $query;
+    protected \Open_Search\Namespaces\Remote_Store_Namespace $remote_store;
+    protected \Open_Search\Namespaces\Replication_Namespace $replication;
+    protected \Open_Search\Namespaces\Rollups_Namespace $rollups;
+    protected \Open_Search\Namespaces\Search_Pipeline_Namespace $search_pipeline;
+    protected \Open_Search\Namespaces\Search_Relevance_Namespace $search_relevance;
     /**
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected \OpenSearch\Namespaces\SearchableSnapshotsNamespace $searchableSnapshots;
-
-    protected \OpenSearch\Namespaces\SecurityNamespace $security;
-
-    protected \OpenSearch\Namespaces\SecurityAnalyticsNamespace $securityAnalytics;
-
-    protected \OpenSearch\Namespaces\SmNamespace $sm;
-
-    protected \OpenSearch\Namespaces\SnapshotNamespace $snapshot;
-
-    protected \OpenSearch\Namespaces\SqlNamespace $sql;
-
+    protected \Open_Search\Namespaces\Searchable_Snapshots_Namespace $searchable_snapshots;
+    protected \Open_Search\Namespaces\Security_Namespace $security;
+    protected \Open_Search\Namespaces\Security_Analytics_Namespace $security_analytics;
+    protected \Open_Search\Namespaces\Sm_Namespace $sm;
+    protected \Open_Search\Namespaces\Snapshot_Namespace $snapshot;
+    protected \Open_Search\Namespaces\Sql_Namespace $sql;
     /**
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    protected \OpenSearch\Namespaces\SslNamespace $ssl;
-
-    protected \OpenSearch\Namespaces\TasksNamespace $tasks;
-
-    protected \OpenSearch\Namespaces\TransformsNamespace $transforms;
-
-    protected \OpenSearch\Namespaces\UbiNamespace $ubi;
-
-    protected \OpenSearch\Namespaces\WlmNamespace $wlm;
-
+    protected \Open_Search\Namespaces\Ssl_Namespace $ssl;
+    protected \Open_Search\Namespaces\Tasks_Namespace $tasks;
+    protected \Open_Search\Namespaces\Transforms_Namespace $transforms;
+    protected \Open_Search\Namespaces\Ubi_Namespace $ubi;
+    protected \Open_Search\Namespaces\Wlm_Namespace $wlm;
     /**
      * Client constructor
      *
@@ -242,86 +193,80 @@ class Client
      *
      * @phpstan-ignore parameter.deprecatedClass
      */
-    public function __construct(
-        TransportInterface|Transport $transport,
-        callable|EndpointFactoryInterface|null $endpointFactory = null,
-        protected array $registeredNamespaces = [],
-    ) {
-        if (!$transport instanceof TransportInterface) {
+    public function __construct(Transport_Interface|Transport $transport, callable|Endpoint_Factory_Interface|null $endpoint_factory = null, protected array $registered_namespaces = [])
+    {
+        if (!$transport instanceof Transport_Interface) {
             @trigger_error('Passing an instance of \OpenSearch\Transport to ' . __METHOD__ . '() is deprecated in 2.4.0 and will be removed in 3.0.0. Pass an instance of \OpenSearch\TransportInterface instead.', E_USER_DEPRECATED);
             // @phpstan-ignore property.deprecated
             $this->transport = $transport;
             // @phpstan-ignore new.deprecated
-            $this->httpTransport = new LegacyTransportWrapper($transport);
+            $this->http_transport = new Legacy_Transport_Wrapper($transport);
         } else {
-            $this->httpTransport = $transport;
+            $this->http_transport = $transport;
         }
-
-        if (is_callable($endpointFactory)) {
+        if (is_callable($endpoint_factory)) {
             @trigger_error('Passing a callable as the $endpointFactory param in ' . __METHOD__ . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Pass an instance of \OpenSearch\EndpointFactoryInterface instead.', E_USER_DEPRECATED);
-            $endpoints = $endpointFactory;
+            $endpoints = $endpoint_factory;
             // @phpstan-ignore new.deprecated
-            $endpointFactory = new LegacyEndpointFactory($endpointFactory);
+            $endpoint_factory = new Legacy_Endpoint_Factory($endpoint_factory);
         } else {
-            if ($endpointFactory === null) {
-                $endpointFactory = new EndpointFactory();
+            if ($endpoint_factory === null) {
+                $endpoint_factory = new Endpoint_Factory();
             }
-            $endpoints = function (string $c) use ($endpointFactory): \OpenSearch\Endpoints\AbstractEndpoint {
+            $endpoints = function (string $c) use ($endpoint_factory): \Open_Search\Endpoints\Abstract_Endpoint {
                 @trigger_error('The $endpoints property is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-                return $endpointFactory->getEndpoint('OpenSearch\\Endpoints\\' . $c);
+                return $endpoint_factory->get_endpoint('OpenSearch\Endpoints\\' . $c);
             };
         }
-
         // @phpstan-ignore property.deprecated
         $this->endpoints = $endpoints;
-        $this->endpointFactory = $endpointFactory;
+        $this->endpoint_factory = $endpoint_factory;
         // @phpstan-ignore new.deprecated, property.deprecated
-        $this->asyncSearch = new AsyncSearchNamespace($transport, $this->endpointFactory);
-        $this->asynchronousSearch = new AsynchronousSearchNamespace($transport, $this->endpointFactory);
-        $this->cat = new CatNamespace($transport, $this->endpointFactory);
-        $this->cluster = new ClusterNamespace($transport, $this->endpointFactory);
-        $this->danglingIndices = new DanglingIndicesNamespace($transport, $this->endpointFactory);
+        $this->async_search = new Async_Search_Namespace($transport, $this->endpoint_factory);
+        $this->asynchronous_search = new Asynchronous_Search_Namespace($transport, $this->endpoint_factory);
+        $this->cat = new Cat_Namespace($transport, $this->endpoint_factory);
+        $this->cluster = new Cluster_Namespace($transport, $this->endpoint_factory);
+        $this->dangling_indices = new Dangling_Indices_Namespace($transport, $this->endpoint_factory);
         // @phpstan-ignore new.deprecated, property.deprecated
-        $this->dataFrameTransformDeprecated = new DataFrameTransformDeprecatedNamespace($transport, $this->endpointFactory);
-        $this->flowFramework = new FlowFrameworkNamespace($transport, $this->endpointFactory);
-        $this->geospatial = new GeospatialNamespace($transport, $this->endpointFactory);
-        $this->indices = new IndicesNamespace($transport, $this->endpointFactory);
-        $this->ingest = new IngestNamespace($transport, $this->endpointFactory);
-        $this->ingestion = new IngestionNamespace($transport, $this->endpointFactory);
-        $this->insights = new InsightsNamespace($transport, $this->endpointFactory);
-        $this->ism = new IsmNamespace($transport, $this->endpointFactory);
-        $this->knn = new KnnNamespace($transport, $this->endpointFactory);
-        $this->list = new ListNamespace($transport, $this->endpointFactory);
-        $this->ltr = new LtrNamespace($transport, $this->endpointFactory);
-        $this->ml = new MlNamespace($transport, $this->endpointFactory);
+        $this->data_frame_transform_deprecated = new Data_Frame_Transform_Deprecated_Namespace($transport, $this->endpoint_factory);
+        $this->flow_framework = new Flow_Framework_Namespace($transport, $this->endpoint_factory);
+        $this->geospatial = new Geospatial_Namespace($transport, $this->endpoint_factory);
+        $this->indices = new Indices_Namespace($transport, $this->endpoint_factory);
+        $this->ingest = new Ingest_Namespace($transport, $this->endpoint_factory);
+        $this->ingestion = new Ingestion_Namespace($transport, $this->endpoint_factory);
+        $this->insights = new Insights_Namespace($transport, $this->endpoint_factory);
+        $this->ism = new Ism_Namespace($transport, $this->endpoint_factory);
+        $this->knn = new Knn_Namespace($transport, $this->endpoint_factory);
+        $this->list = new List_Namespace($transport, $this->endpoint_factory);
+        $this->ltr = new Ltr_Namespace($transport, $this->endpoint_factory);
+        $this->ml = new Ml_Namespace($transport, $this->endpoint_factory);
         // @phpstan-ignore new.deprecated, property.deprecated
-        $this->monitoring = new MonitoringNamespace($transport, $this->endpointFactory);
-        $this->neural = new NeuralNamespace($transport, $this->endpointFactory);
-        $this->nodes = new NodesNamespace($transport, $this->endpointFactory);
-        $this->notifications = new NotificationsNamespace($transport, $this->endpointFactory);
-        $this->observability = new ObservabilityNamespace($transport, $this->endpointFactory);
-        $this->ppl = new PplNamespace($transport, $this->endpointFactory);
-        $this->query = new QueryNamespace($transport, $this->endpointFactory);
-        $this->remoteStore = new RemoteStoreNamespace($transport, $this->endpointFactory);
-        $this->replication = new ReplicationNamespace($transport, $this->endpointFactory);
-        $this->rollups = new RollupsNamespace($transport, $this->endpointFactory);
-        $this->searchPipeline = new SearchPipelineNamespace($transport, $this->endpointFactory);
-        $this->searchRelevance = new SearchRelevanceNamespace($transport, $this->endpointFactory);
+        $this->monitoring = new Monitoring_Namespace($transport, $this->endpoint_factory);
+        $this->neural = new Neural_Namespace($transport, $this->endpoint_factory);
+        $this->nodes = new Nodes_Namespace($transport, $this->endpoint_factory);
+        $this->notifications = new Notifications_Namespace($transport, $this->endpoint_factory);
+        $this->observability = new Observability_Namespace($transport, $this->endpoint_factory);
+        $this->ppl = new Ppl_Namespace($transport, $this->endpoint_factory);
+        $this->query = new Query_Namespace($transport, $this->endpoint_factory);
+        $this->remote_store = new Remote_Store_Namespace($transport, $this->endpoint_factory);
+        $this->replication = new Replication_Namespace($transport, $this->endpoint_factory);
+        $this->rollups = new Rollups_Namespace($transport, $this->endpoint_factory);
+        $this->search_pipeline = new Search_Pipeline_Namespace($transport, $this->endpoint_factory);
+        $this->search_relevance = new Search_Relevance_Namespace($transport, $this->endpoint_factory);
         // @phpstan-ignore new.deprecated, property.deprecated
-        $this->searchableSnapshots = new SearchableSnapshotsNamespace($transport, $this->endpointFactory);
-        $this->security = new SecurityNamespace($transport, $this->endpointFactory);
-        $this->securityAnalytics = new SecurityAnalyticsNamespace($transport, $this->endpointFactory);
-        $this->sm = new SmNamespace($transport, $this->endpointFactory);
-        $this->snapshot = new SnapshotNamespace($transport, $this->endpointFactory);
-        $this->sql = new SqlNamespace($transport, $this->endpointFactory);
+        $this->searchable_snapshots = new Searchable_Snapshots_Namespace($transport, $this->endpoint_factory);
+        $this->security = new Security_Namespace($transport, $this->endpoint_factory);
+        $this->security_analytics = new Security_Analytics_Namespace($transport, $this->endpoint_factory);
+        $this->sm = new Sm_Namespace($transport, $this->endpoint_factory);
+        $this->snapshot = new Snapshot_Namespace($transport, $this->endpoint_factory);
+        $this->sql = new Sql_Namespace($transport, $this->endpoint_factory);
         // @phpstan-ignore new.deprecated, property.deprecated
-        $this->ssl = new SslNamespace($transport, $this->endpointFactory);
-        $this->tasks = new TasksNamespace($transport, $this->endpointFactory);
-        $this->transforms = new TransformsNamespace($transport, $this->endpointFactory);
-        $this->ubi = new UbiNamespace($transport, $this->endpointFactory);
-        $this->wlm = new WlmNamespace($transport, $this->endpointFactory);
+        $this->ssl = new Ssl_Namespace($transport, $this->endpoint_factory);
+        $this->tasks = new Tasks_Namespace($transport, $this->endpoint_factory);
+        $this->transforms = new Transforms_Namespace($transport, $this->endpoint_factory);
+        $this->ubi = new Ubi_Namespace($transport, $this->endpoint_factory);
+        $this->wlm = new Wlm_Namespace($transport, $this->endpoint_factory);
     }
-
     /**
      * Allows to perform multiple index/update/delete operations in a single request.
      *
@@ -346,17 +291,14 @@ class Client
      */
     public function bulk(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Bulk::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Bulk::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to perform multiple index/update/delete operations using request response streaming.
      *
@@ -381,19 +323,16 @@ class Client
      * - body: The operation definition and data (action-data pairs), separated by newlines (Required)
      * @return array
      */
-    public function bulkStream(array $params = []): iterable|string|null
+    public function bulk_stream(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(BulkStream::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Bulk_Stream::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Explicitly clears the search context for a scroll.
      *
@@ -407,19 +346,16 @@ class Client
      * - body: A comma-separated list of scroll IDs to clear if none was specified using the `scroll_id` parameter
      * @return array
      */
-    public function clearScroll(array $params = []): iterable|string|null
+    public function clear_scroll(array $params = []): iterable|string|null
     {
-        $scroll_id = $this->extractArgument($params, 'scroll_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ClearScroll::class);
-        $endpoint->setParams($params);
-        $endpoint->setScrollId($scroll_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $scroll_id = $this->extract_argument($params, 'scroll_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Clear_Scroll::class);
+        $endpoint->set_params($params);
+        $endpoint->set_scroll_id($scroll_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns number of documents matching a query.
      *
@@ -449,17 +385,14 @@ class Client
      */
     public function count(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Count::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Count::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates point in time context.
      *
@@ -477,17 +410,14 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function createPit(array $params = []): iterable|string|null
+    public function create_pit(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(CreatePit::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Create_Pit::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Removes a document from the index.
      *
@@ -511,17 +441,14 @@ class Client
      */
     public function delete(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Delete::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes all active point in time searches.
      *
@@ -533,15 +460,12 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteAllPits(array $params = []): iterable|string|null
+    public function delete_all_pits(array $params = []): iterable|string|null
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteAllPits::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_All_Pits::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes documents matching the provided query.
      *
@@ -588,19 +512,16 @@ class Client
      * - body: The search definition using the Query DSL (Required)
      * @return array
      */
-    public function deleteByQuery(array $params = []): iterable|string|null
+    public function delete_by_query(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteByQuery::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_By_Query::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Changes the number of requests per second for a particular Delete By Query operation.
      *
@@ -614,17 +535,14 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteByQueryRethrottle(array $params = []): iterable|string|null
+    public function delete_by_query_rethrottle(array $params = []): iterable|string|null
     {
-        $task_id = $this->extractArgument($params, 'task_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteByQueryRethrottle::class);
-        $endpoint->setParams($params);
-        $endpoint->setTaskId($task_id);
-
-        return $this->performRequest($endpoint);
+        $task_id = $this->extract_argument($params, 'task_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_By_Query_Rethrottle::class);
+        $endpoint->set_params($params);
+        $endpoint->set_task_id($task_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes one or more point in time searches based on the IDs passed.
      *
@@ -637,17 +555,14 @@ class Client
      * - body: The point-in-time ids to be deleted
      * @return array
      */
-    public function deletePit(array $params = []): iterable|string|null
+    public function delete_pit(array $params = []): iterable|string|null
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeletePit::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Pit::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Deletes a script.
      *
@@ -663,17 +578,14 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function deleteScript(array $params = []): iterable|string|null
+    public function delete_script(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(DeleteScript::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Delete_Script::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information about whether a document exists in an index.
      *
@@ -698,20 +610,17 @@ class Client
      */
     public function exists(array $params = []): bool
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
         // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(Exists::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Exists::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Returns information about whether a document source exists in an index.
      *
@@ -733,22 +642,19 @@ class Client
      * - source: The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      */
-    public function existsSource(array $params = []): bool
+    public function exists_source(array $params = []): bool
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
         // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(ExistsSource::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Exists_Source::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Returns information about why a specific document matches (or doesn't match) a query.
      *
@@ -777,19 +683,16 @@ class Client
      */
     public function explain(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Explain::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Explain::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns the information about the capabilities of fields among multiple indexes.
      *
@@ -808,19 +711,16 @@ class Client
      * - body: An index filter specified with the Query DSL
      * @return array
      */
-    public function fieldCaps(array $params = []): iterable|string|null
+    public function field_caps(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(FieldCaps::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Field_Caps::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns a document.
      *
@@ -846,17 +746,14 @@ class Client
      */
     public function get(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Get::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Lists all active point in time searches.
      *
@@ -868,15 +765,12 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getAllPits(array $params = []): iterable|string|null
+    public function get_all_pits(array $params = []): iterable|string|null
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetAllPits::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_All_Pits::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns a script.
      *
@@ -891,17 +785,14 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getScript(array $params = []): iterable|string|null
+    public function get_script(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetScript::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Script::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns all script contexts.
      *
@@ -913,15 +804,12 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getScriptContext(array $params = []): iterable|string|null
+    public function get_script_context(array $params = []): iterable|string|null
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetScriptContext::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Script_Context::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns available script types, languages and contexts.
      *
@@ -933,15 +821,12 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getScriptLanguages(array $params = []): iterable|string|null
+    public function get_script_languages(array $params = []): iterable|string|null
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetScriptLanguages::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Script_Languages::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns the source of a document.
      *
@@ -964,19 +849,16 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function getSource(array $params = []): iterable|string|null
+    public function get_source(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
-
-        $endpoint = $this->endpointFactory->getEndpoint(GetSource::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
+        $endpoint = $this->endpoint_factory->get_endpoint(Get_Source::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Creates or updates a document in an index.
      *
@@ -1004,19 +886,16 @@ class Client
      */
     public function index(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $id = $this->extractArgument($params, 'id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Index::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setId($id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $id = $this->extract_argument($params, 'id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Index::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_id($id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns basic information about the cluster.
      *
@@ -1030,13 +909,10 @@ class Client
      */
     public function info(array $params = []): iterable|string|null
     {
-
-        $endpoint = $this->endpointFactory->getEndpoint(Info::class);
-        $endpoint->setParams($params);
-
-        return $this->performRequest($endpoint);
+        $endpoint = $this->endpoint_factory->get_endpoint(Info::class);
+        $endpoint->set_params($params);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to get multiple documents in one request.
      *
@@ -1060,17 +936,14 @@ class Client
      */
     public function mget(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Mget::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Mget::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to execute several search operations in one request.
      *
@@ -1094,17 +967,14 @@ class Client
      */
     public function msearch(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Msearch::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Msearch::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to execute several search template operations in one request.
      *
@@ -1123,19 +993,16 @@ class Client
      * - body: The request definitions (metadata-search request definition pairs), separated by newlines (Required)
      * @return array
      */
-    public function msearchTemplate(array $params = []): iterable|string|null
+    public function msearch_template(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(MsearchTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Msearch_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns multiple termvectors in one request.
      *
@@ -1163,17 +1030,14 @@ class Client
      */
     public function mtermvectors(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(MTermVectors::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(M_Term_Vectors::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns whether the cluster is running.
      *
@@ -1185,16 +1049,14 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      */
     public function ping(array $params = []): bool
-    {        // Legacy option to manually make this verbose so we can check status code.
+    {
+        // Legacy option to manually make this verbose so we can check status code.
         // @todo remove in 3.0.0
         $params['client']['verbose'] = true;
-
-        $endpoint = $this->endpointFactory->getEndpoint(Ping::class);
-        $endpoint->setParams($params);
-
-        return BooleanRequestWrapper::sendRequest($endpoint, $this->httpTransport);
+        $endpoint = $this->endpoint_factory->get_endpoint(Ping::class);
+        $endpoint->set_params($params);
+        return Boolean_Request_Wrapper::send_request($endpoint, $this->http_transport);
     }
-
     /**
      * Creates or updates a script.
      *
@@ -1212,21 +1074,18 @@ class Client
      * - body: The document (Required)
      * @return array
      */
-    public function putScript(array $params = []): iterable|string|null
+    public function put_script(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $context = $this->extractArgument($params, 'context');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(PutScript::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setContext($context);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $context = $this->extract_argument($params, 'context');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Put_Script::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_context($context);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to evaluate the quality of ranked search results over a set of typical search queries.
      *
@@ -1244,19 +1103,16 @@ class Client
      * - body: The ranking evaluation search definition, including search requests, document ratings and ranking metric definition. (Required)
      * @return array
      */
-    public function rankEval(array $params = []): iterable|string|null
+    public function rank_eval(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RankEval::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Rank_Eval::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to copy documents from one index to another, optionally filtering the sourcedocuments by a query, changing the destination index settings, or fetching thedocuments from a remote cluster.
      *
@@ -1280,15 +1136,12 @@ class Client
      */
     public function reindex(array $params = []): iterable|string|null
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Reindex::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Reindex::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Changes the number of requests per second for a particular reindex operation.
      *
@@ -1302,17 +1155,14 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function reindexRethrottle(array $params = []): iterable|string|null
+    public function reindex_rethrottle(array $params = []): iterable|string|null
     {
-        $task_id = $this->extractArgument($params, 'task_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ReindexRethrottle::class);
-        $endpoint->setParams($params);
-        $endpoint->setTaskId($task_id);
-
-        return $this->performRequest($endpoint);
+        $task_id = $this->extract_argument($params, 'task_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Reindex_Rethrottle::class);
+        $endpoint->set_params($params);
+        $endpoint->set_task_id($task_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to use the Mustache language to pre-render a search definition.
      *
@@ -1326,19 +1176,16 @@ class Client
      * - body: The search definition template and its parameters.
      * @return array
      */
-    public function renderSearchTemplate(array $params = []): iterable|string|null
+    public function render_search_template(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(RenderSearchTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Render_Search_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows an arbitrary script to be executed and a result to be returned.
      *
@@ -1351,17 +1198,14 @@ class Client
      * - body: The script to execute
      * @return array
      */
-    public function scriptsPainlessExecute(array $params = []): iterable|string|null
+    public function scripts_painless_execute(array $params = []): iterable|string|null
     {
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(ScriptsPainlessExecute::class);
-        $endpoint->setParams($params);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Scripts_Painless_Execute::class);
+        $endpoint->set_params($params);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to retrieve a large numbers of results from a single search request.
      *
@@ -1379,17 +1223,14 @@ class Client
      */
     public function scroll(array $params = []): iterable|string|null
     {
-        $scroll_id = $this->extractArgument($params, 'scroll_id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Scroll::class);
-        $endpoint->setParams($params);
-        $endpoint->setScrollId($scroll_id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $scroll_id = $this->extract_argument($params, 'scroll_id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Scroll::class);
+        $endpoint->set_params($params);
+        $endpoint->set_scroll_id($scroll_id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns results matching a query.
      *
@@ -1452,17 +1293,14 @@ class Client
      */
     public function search(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Search::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information about the indexes and shards that a search request would be executed against.
      *
@@ -1482,19 +1320,16 @@ class Client
      * - body:
      * @return array
      */
-    public function searchShards(array $params = []): iterable|string|null
+    public function search_shards(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchShards::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Shards::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Allows to use the Mustache language to pre-render a search definition.
      *
@@ -1523,19 +1358,16 @@ class Client
      * - body: The search definition template and its parameters. (Required)
      * @return array
      */
-    public function searchTemplate(array $params = []): iterable|string|null
+    public function search_template(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(SearchTemplate::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Search_Template::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Returns information and statistics about terms in the fields of a particular document.
      *
@@ -1563,19 +1395,16 @@ class Client
      */
     public function termvectors(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $id = $this->extractArgument($params, 'id');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(TermVectors::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setId($id);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $id = $this->extract_argument($params, 'id');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Term_Vectors::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_id($id);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Updates a document with a script or partial document.
      *
@@ -1604,19 +1433,16 @@ class Client
      */
     public function update(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(Update::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Performs an update on every document in the index without changing the source,for example to pick up a mapping change.
      *
@@ -1664,19 +1490,16 @@ class Client
      * - body: The search definition using the Query DSL
      * @return array
      */
-    public function updateByQuery(array $params = []): iterable|string|null
+    public function update_by_query(array $params = []): iterable|string|null
     {
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateByQuery::class);
-        $endpoint->setParams($params);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_By_Query::class);
+        $endpoint->set_params($params);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Changes the number of requests per second for a particular Update By Query operation.
      *
@@ -1690,193 +1513,186 @@ class Client
      * - filter_path: A comma-separated list of filters used to filter the response. Use wildcards to match any field or part of a field's name. To exclude fields, use `-`.
      * @return array
      */
-    public function updateByQueryRethrottle(array $params = []): iterable|string|null
+    public function update_by_query_rethrottle(array $params = []): iterable|string|null
     {
-        $task_id = $this->extractArgument($params, 'task_id');
-
-        $endpoint = $this->endpointFactory->getEndpoint(UpdateByQueryRethrottle::class);
-        $endpoint->setParams($params);
-        $endpoint->setTaskId($task_id);
-
-        return $this->performRequest($endpoint);
+        $task_id = $this->extract_argument($params, 'task_id');
+        $endpoint = $this->endpoint_factory->get_endpoint(Update_By_Query_Rethrottle::class);
+        $endpoint->set_params($params);
+        $endpoint->set_task_id($task_id);
+        return $this->perform_request($endpoint);
     }
-
     /**
      * Proxy function to createPointInTime() to prevent BC break.
      * This API will be removed in a future version. Use 'createPit' API instead.
      */
-    public function createPointInTime(array $params = [])
+    public function create_point_in_time(array $params = [])
     {
-        return $this->createPit($params);
+        return $this->create_pit($params);
     }
     /**
-         * Creates a new document in the index.Returns a 409 response when a document with a same ID already exists in the index.
-         *
-         * $params['id']                     = (string) Unique identifier for the document. (Required)
-         * $params['index']                  = (string) Name of the data stream or index to target. If the target doesn’t exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn’t exist and doesn’t match a data stream template, this request creates the index. (Required)
-         * $params['pipeline']               = (string) ID of the pipeline to use to preprocess incoming documents.If the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.If a final pipeline is configured it will always run, regardless of the value of this parameter.
-         * $params['refresh']                = (enum) If `true`, OpenSearch refreshes the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` do nothing with refreshes.Valid values: `true`, `false`, `wait_for`. (Options = true,false,wait_for)
-         * $params['routing']                = (string) Custom value used to route operations to a specific shard.
-         * $params['timeout']                = (string) Period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.
-         * $params['version']                = (number) Explicit version number for concurrency control.The specified version must match the current version of the document for the request to succeed.
-         * $params['version_type']           = (enum) Specific version type: `external`, `external_gte`. (Options = internal,external,external_gte,force)
-         * $params['wait_for_active_shards'] = (any) The number of shard copies that must be active before proceeding with the operation.Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
-         * $params['pretty']                 = (boolean) Whether to pretty format the returned JSON response.
-         * $params['human']                  = (boolean) Whether to return human readable values for statistics.
-         * $params['error_trace']            = (boolean) Whether to include the stack trace of returned errors.
-         * $params['source']                 = (string) The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
-         * $params['filter_path']            = (any) Comma-separated list of filters used to reduce the response.
-         * $params['body']                   = (array) The document (Required)
-         *
-         * @param array $params Associative array of parameters
-         * @return array
-         */
+     * Creates a new document in the index.Returns a 409 response when a document with a same ID already exists in the index.
+     *
+     * $params['id']                     = (string) Unique identifier for the document. (Required)
+     * $params['index']                  = (string) Name of the data stream or index to target. If the target doesn’t exist and matches the name or wildcard (`*`) pattern of an index template with a `data_stream` definition, this request creates the data stream. If the target doesn’t exist and doesn’t match a data stream template, this request creates the index. (Required)
+     * $params['pipeline']               = (string) ID of the pipeline to use to preprocess incoming documents.If the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.If a final pipeline is configured it will always run, regardless of the value of this parameter.
+     * $params['refresh']                = (enum) If `true`, OpenSearch refreshes the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` do nothing with refreshes.Valid values: `true`, `false`, `wait_for`. (Options = true,false,wait_for)
+     * $params['routing']                = (string) Custom value used to route operations to a specific shard.
+     * $params['timeout']                = (string) Period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.
+     * $params['version']                = (number) Explicit version number for concurrency control.The specified version must match the current version of the document for the request to succeed.
+     * $params['version_type']           = (enum) Specific version type: `external`, `external_gte`. (Options = internal,external,external_gte,force)
+     * $params['wait_for_active_shards'] = (any) The number of shard copies that must be active before proceeding with the operation.Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * $params['pretty']                 = (boolean) Whether to pretty format the returned JSON response.
+     * $params['human']                  = (boolean) Whether to return human readable values for statistics.
+     * $params['error_trace']            = (boolean) Whether to include the stack trace of returned errors.
+     * $params['source']                 = (string) The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.
+     * $params['filter_path']            = (any) Comma-separated list of filters used to reduce the response.
+     * $params['body']                   = (array) The document (Required)
+     *
+     * @param array $params Associative array of parameters
+     * @return array
+     */
     public function create(array $params = []): iterable|string|null
     {
-        $id = $this->extractArgument($params, 'id');
-        $index = $this->extractArgument($params, 'index');
-        $body = $this->extractArgument($params, 'body');
-
-        $endpoint = $id ?
-            $this->endpointFactory->getEndpoint(Create::class)
-            : $this->endpointFactory->getEndpoint(Index::class);
-        $endpoint->setParams($params);
-        $endpoint->setId($id);
-        $endpoint->setIndex($index);
-        $endpoint->setBody($body);
-
-        return $this->performRequest($endpoint);
+        $id = $this->extract_argument($params, 'id');
+        $index = $this->extract_argument($params, 'index');
+        $body = $this->extract_argument($params, 'body');
+        $endpoint = $id ? $this->endpoint_factory->get_endpoint(Create::class) : $this->endpoint_factory->get_endpoint(Index::class);
+        $endpoint->set_params($params);
+        $endpoint->set_id($id);
+        $endpoint->set_index($index);
+        $endpoint->set_body($body);
+        return $this->perform_request($endpoint);
     }
     /**
      * Proxy function to deletePointInTime() to prevent BC break.
      * This API will be removed in a future version. Use 'deletePit' API instead.
      */
-    public function deletePointInTime(array $params = [])
+    public function delete_point_in_time(array $params = [])
     {
-        return $this->deletePit($params);
+        return $this->delete_pit($params);
     }
     /**
      * Returns the asyncSearch namespace
      *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    public function asyncSearch(): AsyncSearchNamespace
+    public function async_search(): Async_Search_Namespace
     {
         @trigger_error(__METHOD__ . '() is deprecated since 2.4.2 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-        return $this->asyncSearch;
+        return $this->async_search;
     }
     /**
      * Returns the asynchronousSearch namespace
      */
-    public function asynchronousSearch(): AsynchronousSearchNamespace
+    public function asynchronous_search(): Asynchronous_Search_Namespace
     {
-        return $this->asynchronousSearch;
+        return $this->asynchronous_search;
     }
     /**
      * Returns the cat namespace
      */
-    public function cat(): CatNamespace
+    public function cat(): Cat_Namespace
     {
         return $this->cat;
     }
     /**
      * Returns the cluster namespace
      */
-    public function cluster(): ClusterNamespace
+    public function cluster(): Cluster_Namespace
     {
         return $this->cluster;
     }
     /**
      * Returns the danglingIndices namespace
      */
-    public function danglingIndices(): DanglingIndicesNamespace
+    public function dangling_indices(): Dangling_Indices_Namespace
     {
-        return $this->danglingIndices;
+        return $this->dangling_indices;
     }
     /**
      * Returns the dataFrameTransformDeprecated namespace
      *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    public function dataFrameTransformDeprecated(): DataFrameTransformDeprecatedNamespace
+    public function data_frame_transform_deprecated(): Data_Frame_Transform_Deprecated_Namespace
     {
         @trigger_error(__METHOD__ . '() is deprecated since 2.4.2 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-        return $this->dataFrameTransformDeprecated;
+        return $this->data_frame_transform_deprecated;
     }
     /**
      * Returns the flowFramework namespace
      */
-    public function flowFramework(): FlowFrameworkNamespace
+    public function flow_framework(): Flow_Framework_Namespace
     {
-        return $this->flowFramework;
+        return $this->flow_framework;
     }
     /**
      * Returns the geospatial namespace
      */
-    public function geospatial(): GeospatialNamespace
+    public function geospatial(): Geospatial_Namespace
     {
         return $this->geospatial;
     }
     /**
      * Returns the indices namespace
      */
-    public function indices(): IndicesNamespace
+    public function indices(): Indices_Namespace
     {
         return $this->indices;
     }
     /**
      * Returns the ingest namespace
      */
-    public function ingest(): IngestNamespace
+    public function ingest(): Ingest_Namespace
     {
         return $this->ingest;
     }
     /**
      * Returns the ingestion namespace
      */
-    public function ingestion(): IngestionNamespace
+    public function ingestion(): Ingestion_Namespace
     {
         return $this->ingestion;
     }
     /**
      * Returns the insights namespace
      */
-    public function insights(): InsightsNamespace
+    public function insights(): Insights_Namespace
     {
         return $this->insights;
     }
     /**
      * Returns the ism namespace
      */
-    public function ism(): IsmNamespace
+    public function ism(): Ism_Namespace
     {
         return $this->ism;
     }
     /**
      * Returns the knn namespace
      */
-    public function knn(): KnnNamespace
+    public function knn(): Knn_Namespace
     {
         return $this->knn;
     }
     /**
      * Returns the list namespace
      */
-    public function list(): ListNamespace
+    public function list(): List_Namespace
     {
         return $this->list;
     }
     /**
      * Returns the ltr namespace
      */
-    public function ltr(): LtrNamespace
+    public function ltr(): Ltr_Namespace
     {
         return $this->ltr;
     }
     /**
      * Returns the ml namespace
      */
-    public function ml(): MlNamespace
+    public function ml(): Ml_Namespace
     {
         return $this->ml;
     }
@@ -1885,7 +1701,7 @@ class Client
      *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    public function monitoring(): MonitoringNamespace
+    public function monitoring(): Monitoring_Namespace
     {
         @trigger_error(__METHOD__ . '() is deprecated since 2.4.2 and will be removed in 3.0.0.', E_USER_DEPRECATED);
         return $this->monitoring;
@@ -1893,122 +1709,122 @@ class Client
     /**
      * Returns the neural namespace
      */
-    public function neural(): NeuralNamespace
+    public function neural(): Neural_Namespace
     {
         return $this->neural;
     }
     /**
      * Returns the nodes namespace
      */
-    public function nodes(): NodesNamespace
+    public function nodes(): Nodes_Namespace
     {
         return $this->nodes;
     }
     /**
      * Returns the notifications namespace
      */
-    public function notifications(): NotificationsNamespace
+    public function notifications(): Notifications_Namespace
     {
         return $this->notifications;
     }
     /**
      * Returns the observability namespace
      */
-    public function observability(): ObservabilityNamespace
+    public function observability(): Observability_Namespace
     {
         return $this->observability;
     }
     /**
      * Returns the ppl namespace
      */
-    public function ppl(): PplNamespace
+    public function ppl(): Ppl_Namespace
     {
         return $this->ppl;
     }
     /**
      * Returns the query namespace
      */
-    public function query(): QueryNamespace
+    public function query(): Query_Namespace
     {
         return $this->query;
     }
     /**
      * Returns the remoteStore namespace
      */
-    public function remoteStore(): RemoteStoreNamespace
+    public function remote_store(): Remote_Store_Namespace
     {
-        return $this->remoteStore;
+        return $this->remote_store;
     }
     /**
      * Returns the replication namespace
      */
-    public function replication(): ReplicationNamespace
+    public function replication(): Replication_Namespace
     {
         return $this->replication;
     }
     /**
      * Returns the rollups namespace
      */
-    public function rollups(): RollupsNamespace
+    public function rollups(): Rollups_Namespace
     {
         return $this->rollups;
     }
     /**
      * Returns the searchPipeline namespace
      */
-    public function searchPipeline(): SearchPipelineNamespace
+    public function search_pipeline(): Search_Pipeline_Namespace
     {
-        return $this->searchPipeline;
+        return $this->search_pipeline;
     }
     /**
      * Returns the searchRelevance namespace
      */
-    public function searchRelevance(): SearchRelevanceNamespace
+    public function search_relevance(): Search_Relevance_Namespace
     {
-        return $this->searchRelevance;
+        return $this->search_relevance;
     }
     /**
      * Returns the searchableSnapshots namespace
      *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    public function searchableSnapshots(): SearchableSnapshotsNamespace
+    public function searchable_snapshots(): Searchable_Snapshots_Namespace
     {
         @trigger_error(__METHOD__ . '() is deprecated since 2.4.2 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-        return $this->searchableSnapshots;
+        return $this->searchable_snapshots;
     }
     /**
      * Returns the security namespace
      */
-    public function security(): SecurityNamespace
+    public function security(): Security_Namespace
     {
         return $this->security;
     }
     /**
      * Returns the securityAnalytics namespace
      */
-    public function securityAnalytics(): SecurityAnalyticsNamespace
+    public function security_analytics(): Security_Analytics_Namespace
     {
-        return $this->securityAnalytics;
+        return $this->security_analytics;
     }
     /**
      * Returns the sm namespace
      */
-    public function sm(): SmNamespace
+    public function sm(): Sm_Namespace
     {
         return $this->sm;
     }
     /**
      * Returns the snapshot namespace
      */
-    public function snapshot(): SnapshotNamespace
+    public function snapshot(): Snapshot_Namespace
     {
         return $this->snapshot;
     }
     /**
      * Returns the sql namespace
      */
-    public function sql(): SqlNamespace
+    public function sql(): Sql_Namespace
     {
         return $this->sql;
     }
@@ -2017,7 +1833,7 @@ class Client
      *
      * @deprecated in 2.4.2 and will be removed in 3.0.0.
      */
-    public function ssl(): SslNamespace
+    public function ssl(): Ssl_Namespace
     {
         @trigger_error(__METHOD__ . '() is deprecated since 2.4.2 and will be removed in 3.0.0.', E_USER_DEPRECATED);
         return $this->ssl;
@@ -2025,40 +1841,38 @@ class Client
     /**
      * Returns the tasks namespace
      */
-    public function tasks(): TasksNamespace
+    public function tasks(): Tasks_Namespace
     {
         return $this->tasks;
     }
     /**
      * Returns the transforms namespace
      */
-    public function transforms(): TransformsNamespace
+    public function transforms(): Transforms_Namespace
     {
         return $this->transforms;
     }
     /**
      * Returns the ubi namespace
      */
-    public function ubi(): UbiNamespace
+    public function ubi(): Ubi_Namespace
     {
         return $this->ubi;
     }
     /**
      * Returns the wlm namespace
      */
-    public function wlm(): WlmNamespace
+    public function wlm(): Wlm_Namespace
     {
         return $this->wlm;
     }
-
     /**
      * Gets the endpoint factory.
      */
-    protected function getEndpointFactory(): EndpointFactoryInterface
+    protected function get_endpoint_factory(): Endpoint_Factory_Interface
     {
-        return $this->endpointFactory;
+        return $this->endpoint_factory;
     }
-
     /**
      * Catchall for registered namespaces
      *
@@ -2067,63 +1881,47 @@ class Client
      */
     public function __call(string $name, array $arguments)
     {
-        if (isset($this->registeredNamespaces[$name])) {
-            return $this->registeredNamespaces[$name];
+        if (isset($this->registered_namespaces[$name])) {
+            return $this->registered_namespaces[$name];
         }
-        throw new \BadMethodCallException("Namespace [$name] not found");
+        throw new \BadMethodCallException("Namespace [{$name}] not found");
     }
-
     /**
      * Extract an argument from the array of parameters
      *
      * @return null|mixed
      */
-    public function extractArgument(array &$params, string $arg)
+    public function extract_argument(array &$params, string $arg)
     {
         if (array_key_exists($arg, $params) === true) {
             $value = $params[$arg];
-            $value = (is_object($value) && !is_iterable($value)) ?
-                (array) $value :
-                $value;
+            $value = is_object($value) && !is_iterable($value) ? (array) $value : $value;
             unset($params[$arg]);
             return $value;
         }
         return null;
     }
-
     /**
      * Send a raw request to the cluster.
      *
      * @throws \Psr\Http\Client\ClientExceptionInterface
      * @throws \OpenSearch\Exception\HttpExceptionInterface
      */
-    public function request(
-        string $method,
-        string $uri,
-        array $attributes = []
-    ): iterable|string|null {
+    public function request(string $method, string $uri, array $attributes = []): iterable|string|null
+    {
         $params = $attributes['params'] ?? [];
         $body = $attributes['body'] ?? null;
         $options = $attributes['options'] ?? [];
-
-        return $this->httpTransport->sendRequest($method, $uri, $params, $body, $options['headers'] ?? []);
+        return $this->http_transport->send_request($method, $uri, $params, $body, $options['headers'] ?? []);
     }
-
     /**
      * Send a request for an endpoint.
      *
      * @throws \Psr\Http\Client\ClientExceptionInterface
      * @throws \OpenSearch\Exception\HttpExceptionInterface
      */
-    private function performRequest(AbstractEndpoint $endpoint): iterable|string|null
+    private function perform_request(Abstract_Endpoint $endpoint): iterable|string|null
     {
-        return $this->httpTransport->sendRequest(
-            $endpoint->getMethod(),
-            $endpoint->getURI(),
-            $endpoint->getParams(),
-            $endpoint->getBody(),
-            $endpoint->getOptions()
-        );
+        return $this->http_transport->send_request($endpoint->get_method(), $endpoint->get_uri(), $endpoint->get_params(), $endpoint->get_body(), $endpoint->get_options());
     }
-
 }

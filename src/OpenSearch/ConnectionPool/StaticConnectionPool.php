@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,54 +17,46 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connection_Pool;
 
-namespace OpenSearch\ConnectionPool;
-
-use OpenSearch\Common\Exceptions\NoNodesAvailableException;
-use OpenSearch\ConnectionPool\Selectors\SelectorInterface;
-use OpenSearch\Connections\Connection;
-use OpenSearch\Connections\ConnectionFactoryInterface;
-use OpenSearch\Connections\ConnectionInterface;
-
+use Open_Search\Common\Exceptions\No_Nodes_Available_Exception;
+use Open_Search\Connection_Pool\Selectors\Selector_Interface;
+use Open_Search\Connections\Connection;
+use Open_Search\Connections\Connection_Factory_Interface;
+use Open_Search\Connections\Connection_Interface;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(StaticConnectionPool::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Static_Connection_Pool::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  *
  * @phpstan-ignore class.extendsDeprecatedClass
  */
-class StaticConnectionPool extends AbstractConnectionPool implements ConnectionPoolInterface
+class Static_Connection_Pool extends Abstract_Connection_Pool implements Connection_Pool_Interface
 {
-    private int $pingTimeout    = 60;
-
-    private int $maxPingTimeout = 3600;
-
+    private int $ping_timeout = 60;
+    private int $max_ping_timeout = 3600;
     /**
      * @param ConnectionInterface[] $connections
      * @param array<string, mixed>  $connectionPoolParams
      */
-    public function __construct(array $connections, SelectorInterface $selector, ConnectionFactoryInterface $factory, array $connectionPoolParams)
+    public function __construct(array $connections, Selector_Interface $selector, Connection_Factory_Interface $factory, array $connection_pool_params)
     {
-        parent::__construct($connections, $selector, $factory, $connectionPoolParams);
-        $this->scheduleCheck();
+        parent::__construct($connections, $selector, $factory, $connection_pool_params);
+        $this->schedule_check();
     }
-
-    public function nextConnection(bool $force = false): ConnectionInterface
+    public function next_connection(bool $force = false): Connection_Interface
     {
         $skipped = [];
-
         $total = count($this->connections);
         while ($total--) {
             /**
              * @var Connection $connection
-            */
+             */
             $connection = $this->selector->select($this->connections);
-            if ($connection->isAlive() === true) {
+            if ($connection->is_alive() === true) {
                 return $connection;
             }
-
-            if ($this->readyToRevive($connection) === true) {
+            if ($this->ready_to_revive($connection) === true) {
                 if ($connection->ping() === true) {
                     return $connection;
                 }
@@ -73,32 +64,24 @@ class StaticConnectionPool extends AbstractConnectionPool implements ConnectionP
                 $skipped[] = $connection;
             }
         }
-
         // All "alive" nodes failed, force pings on "dead" nodes
         foreach ($skipped as $connection) {
             if ($connection->ping() === true) {
                 return $connection;
             }
         }
-
-        throw new NoNodesAvailableException('No alive nodes found in your cluster');
+        throw new No_Nodes_Available_Exception('No alive nodes found in your cluster');
     }
-
-    public function scheduleCheck(): void
+    public function schedule_check(): void
     {
         foreach ($this->connections as $connection) {
-            $connection->markDead();
+            $connection->mark_dead();
         }
     }
-
-    private function readyToRevive(Connection $connection): bool
+    private function ready_to_revive(Connection $connection): bool
     {
-        $timeout = min(
-            $this->pingTimeout * 2 ** $connection->getPingFailures(),
-            $this->maxPingTimeout
-        );
-
-        if ($connection->getLastPing() + $timeout < time()) {
+        $timeout = min($this->ping_timeout * 2 ** $connection->get_ping_failures(), $this->max_ping_timeout);
+        if ($connection->get_last_ping() + $timeout < time()) {
             return true;
         }
         return false;

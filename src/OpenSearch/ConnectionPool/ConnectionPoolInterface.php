@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,20 +17,16 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connection_Pool;
 
-namespace OpenSearch\ConnectionPool;
-
-use OpenSearch\Connections\ConnectionInterface;
-
+use Open_Search\Connections\Connection_Interface;
 // @phpstan-ignore classConstant.deprecatedInterface
-@trigger_error(ConnectionPoolInterface::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Connection_Pool_Interface::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-interface ConnectionPoolInterface
+interface Connection_Pool_Interface
 {
-    public function nextConnection(bool $force = false): ConnectionInterface;
-
-    public function scheduleCheck(): void;
+    public function next_connection(bool $force = false): Connection_Interface;
+    public function schedule_check(): void;
 }

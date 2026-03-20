@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,20 +17,17 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Common\Exceptions\Curl;
 
-namespace OpenSearch\Common\Exceptions\Curl;
-
-use OpenSearch\Common\Exceptions\OpenSearchException;
-use OpenSearch\Common\Exceptions\TransportException;
-
+use Open_Search\Common\Exceptions\Open_Search_Exception;
+use Open_Search\Common\Exceptions\Transport_Exception;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(CouldNotConnectToHost::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Could_Not_Connect_To_Host::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  *
  * @phpstan-ignore class.extendsDeprecatedClass
  */
-class CouldNotConnectToHost extends TransportException implements OpenSearchException
+class Could_Not_Connect_To_Host extends Transport_Exception implements Open_Search_Exception
 {
 }

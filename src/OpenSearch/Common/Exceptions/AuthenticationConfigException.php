@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,15 +17,13 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
-
-namespace OpenSearch\Common\Exceptions;
+namespace Open_Search\Common\Exceptions;
 
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(AuthenticationConfigException::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Authentication_Config_Exception::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class AuthenticationConfigException extends \RuntimeException implements OpenSearchException
+class Authentication_Config_Exception extends \RuntimeException implements Open_Search_Exception
 {
 }

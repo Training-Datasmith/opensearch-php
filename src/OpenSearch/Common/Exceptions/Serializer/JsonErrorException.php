@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,19 +17,16 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Common\Exceptions\Serializer;
 
-namespace OpenSearch\Common\Exceptions\Serializer;
-
-use OpenSearch\Exception\JsonException;
-
+use Open_Search\Exception\Json_Exception;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(JsonErrorException::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\JsonErrorException instead.', E_USER_DEPRECATED);
-
+@trigger_error(Json_Error_Exception::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\JsonErrorException instead.', E_USER_DEPRECATED);
 /**
  * Class JsonErrorException
  *
  * @deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\JsonErrorException instead.
  */
-class JsonErrorException extends JsonException
+class Json_Error_Exception extends Json_Exception
 {
 }

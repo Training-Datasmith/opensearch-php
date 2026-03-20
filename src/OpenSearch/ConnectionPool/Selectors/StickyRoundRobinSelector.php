@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,40 +17,33 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connection_Pool\Selectors;
 
-namespace OpenSearch\ConnectionPool\Selectors;
-
-use OpenSearch\Connections\ConnectionInterface;
-
+use Open_Search\Connections\Connection_Interface;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(StickyRoundRobinSelector::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Sticky_Round_Robin_Selector::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class StickyRoundRobinSelector implements SelectorInterface
+class Sticky_Round_Robin_Selector implements Selector_Interface
 {
     private int $current = 0;
-
-    private int $currentCounter = 0;
-
+    private int $current_counter = 0;
     /**
      * Use current connection unless it is dead, otherwise round-robin
      *
      * @param ConnectionInterface[] $connections Array of connections to choose from
      */
-    public function select(array $connections): ConnectionInterface
+    public function select(array $connections): Connection_Interface
     {
         /**
- * @var ConnectionInterface[] $connections
-*/
-        if ($connections[$this->current]->isAlive()) {
+         * @var ConnectionInterface[] $connections
+        */
+        if ($connections[$this->current]->is_alive()) {
             return $connections[$this->current];
         }
-
-        $this->currentCounter += 1;
-        $this->current = $this->currentCounter % count($connections);
-
+        $this->current_counter += 1;
+        $this->current = $this->current_counter % count($connections);
         return $connections[$this->current];
     }
 }

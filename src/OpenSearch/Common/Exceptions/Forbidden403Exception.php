@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,19 +17,16 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Common\Exceptions;
 
-namespace OpenSearch\Common\Exceptions;
-
-use OpenSearch\Exception\ForbiddenHttpException;
-
+use Open_Search\Exception\Forbidden_Http_Exception;
 // @phpstan-ignore classConstant.deprecatedClass
 @trigger_error(Forbidden403Exception::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use \OpenSearch\Exception\ForbiddenHttpException instead', E_USER_DEPRECATED);
-
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  *
  * @see \OpenSearch\Exception\ForbiddenHttpException
  */
-class Forbidden403Exception extends ForbiddenHttpException
+class Forbidden403Exception extends Forbidden_Http_Exception
 {
 }

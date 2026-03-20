@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Open_Search\Aws;
 
-namespace OpenSearch\Aws;
-
-use Aws\Credentials\CredentialsInterface;
-use Aws\Signature\SignatureInterface;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-
+use Aws\Credentials\Credentials_Interface;
+use Aws\Signature\Signature_Interface;
+use Psr\Http\Client\Client_Interface;
+use Psr\Http\Message\Request_Interface;
+use Psr\Http\Message\Response_Interface;
 /**
  * A decorator client that signs requests using the provided AWS credentials and signer.
  */
-class SigningClientDecorator implements ClientInterface
+class Signing_Client_Decorator implements Client_Interface
 {
     /**
      * @param ClientInterface $inner The client to decorate.
@@ -21,26 +19,19 @@ class SigningClientDecorator implements ClientInterface
      * @param SignatureInterface $signer The AWS signer to use for signing requests.
      * @param array $headers Additional headers to add to the request. `Host` is required.
      */
-    public function __construct(
-        protected ClientInterface $inner,
-        protected CredentialsInterface $credentials,
-        protected SignatureInterface $signer,
-        protected array $headers = []
-    ) {
+    public function __construct(protected Client_Interface $inner, protected Credentials_Interface $credentials, protected Signature_Interface $signer, protected array $headers = [])
+    {
     }
-
-    public function sendRequest(RequestInterface $request): ResponseInterface
+    public function send_request(Request_Interface $request): Response_Interface
     {
         foreach ($this->headers as $name => $value) {
-            $request = $request->withHeader($name, $value);
+            $request = $request->with_header($name, $value);
         }
-
-        if (empty($request->getHeaderLine('Host'))) {
+        if (empty($request->get_header_line('Host'))) {
             throw new \RuntimeException('Missing Host header.');
         }
-
-        $request = $request->withHeader('x-amz-content-sha256', hash('sha256', (string) $request->getBody()));
-        $request = $this->signer->signRequest($request, $this->credentials);
-        return $this->inner->sendRequest($request);
+        $request = $request->with_header('x-amz-content-sha256', hash('sha256', (string) $request->get_body()));
+        $request = $this->signer->sign_request($request, $this->credentials);
+        return $this->inner->send_request($request);
     }
 }

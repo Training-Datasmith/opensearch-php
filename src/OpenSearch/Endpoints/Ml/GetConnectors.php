@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  *  Copyright OpenSearch Contributors
  *   SPDX-License-Identifier: Apache-2.0
@@ -10,27 +9,23 @@ declare(strict_types=1);
  *   this file be licensed under the Apache-2.0 license or a
  *   compatible open source license.
  */
+namespace Open_Search\Endpoints\Ml;
 
-namespace OpenSearch\Endpoints\Ml;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-
-class GetConnectors extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+class Get_Connectors extends Abstract_Endpoint
 {
     /**
      * @return string[]
      */
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
         return [];
     }
-
-    public function getURI(): string
+    public function get_uri(): string
     {
         return '/_plugins/_ml/connectors/_search';
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'POST';
     }

@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,15 +17,12 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Common;
 
-namespace OpenSearch\Common;
-
-use Psr\Log\AbstractLogger;
-use Psr\Log\LoggerInterface;
-
+use Psr\Log\Abstract_Logger;
+use Psr\Log\Logger_Interface;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(EmptyLogger::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use Psr\Log\NullLogger instead', E_USER_DEPRECATED);
-
+@trigger_error(Empty_Logger::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use Psr\Log\NullLogger instead', E_USER_DEPRECATED);
 /**
  * Class EmptyLogger
  *
@@ -35,7 +31,7 @@ use Psr\Log\LoggerInterface;
  *
  * @deprecated in 2.4.0 and will be removed in 3.0.0. Use Psr\Log\NullLogger instead.
  */
-class EmptyLogger extends AbstractLogger implements LoggerInterface
+class Empty_Logger extends Abstract_Logger implements Logger_Interface
 {
     /**
      * {@inheritDoc}

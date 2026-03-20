@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,30 +17,25 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Indices;
 
-namespace OpenSearch\Endpoints\Indices;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Exception\RuntimeException;
-
-class RefreshSearchAnalyzers extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Exception\RuntimeException;
+class Refresh_Search_Analyzers extends Abstract_Endpoint
 {
-    public function getURI(): string
+    public function get_uri(): string
     {
         $index = $this->index ?? null;
-
         if (isset($index)) {
-            return "/_plugins/_refresh_search_analyzers/$index";
+            return "/_plugins/_refresh_search_analyzers/{$index}";
         }
         throw new RuntimeException('Missing index parameter for the endpoint indices.refresh_search_analyzers');
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
         return [];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'POST';
     }

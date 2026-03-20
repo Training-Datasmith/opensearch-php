@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,70 +17,58 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connections;
 
-namespace OpenSearch\Connections;
-
-use OpenSearch\Transport;
-
+use Open_Search\Transport;
 // @phpstan-ignore classConstant.deprecatedInterface
-@trigger_error(ConnectionInterface::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Connection_Interface::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-interface ConnectionInterface
+interface Connection_Interface
 {
     /**
      * Get the transport schema for this connection
      */
-    public function getTransportSchema(): string;
-
+    public function get_transport_schema(): string;
     /**
      * Get the hostname for this connection
      */
-    public function getHost(): string;
-
+    public function get_host(): string;
     /**
      * Get the port for this connection
      *
      * @return int
      */
-    public function getPort();
-
+    public function get_port();
     /**
      * Get the username:password string for this connection, null if not set
      */
-    public function getUserPass(): ?string;
-
+    public function get_user_pass(): ?string;
     /**
      * Get the URL path suffix, null if not set
      */
-    public function getPath(): ?string;
-
+    public function get_path(): ?string;
     /**
      * Check to see if this instance is marked as 'alive'
      */
-    public function isAlive(): bool;
-
+    public function is_alive(): bool;
     /**
      * Mark this instance as 'alive'
      */
-    public function markAlive(): void;
-
+    public function mark_alive(): void;
     /**
      * Mark this instance as 'dead'
      */
-    public function markDead(): void;
-
+    public function mark_dead(): void;
     /**
      * Return an associative array of information about the last request
      */
-    public function getLastRequestInfo(): array;
-
+    public function get_last_request_info(): array;
     /**
      * @param array<string, mixed>|null $params
      * @param  mixed $body
      * @return mixed
      */
-    public function performRequest(string $method, string $uri, ?array $params = [], $body = null, array $options = [], ?Transport $transport = null);
+    public function perform_request(string $method, string $uri, ?array $params = [], $body = null, array $options = [], ?Transport $transport = null);
 }

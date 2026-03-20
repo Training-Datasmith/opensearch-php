@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,23 +17,20 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connection_Pool\Selectors;
 
-namespace OpenSearch\ConnectionPool\Selectors;
-
-use OpenSearch\Connections\ConnectionInterface;
-
+use Open_Search\Connections\Connection_Interface;
 // @phpstan-ignore classConstant.deprecatedInterface
-@trigger_error(SelectorInterface::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Selector_Interface::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-interface SelectorInterface
+interface Selector_Interface
 {
     /**
      * Perform logic to select a single ConnectionInterface instance from the array provided
      *
      * @param \OpenSearch\Connections\ConnectionInterface[] $connections an array of ConnectionInterface instances to choose from
      */
-    public function select(array $connections): ConnectionInterface;
+    public function select(array $connections): Connection_Interface;
 }

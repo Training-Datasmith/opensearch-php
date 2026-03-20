@@ -1,34 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Open_Search\Aws;
 
-namespace OpenSearch\Aws;
-
-use Aws\Credentials\CredentialProvider;
+use Aws\Credentials\Credential_Provider;
 use Aws\Credentials\Credentials;
-use Aws\Exception\CredentialsException;
-use Aws\Signature\SignatureInterface;
-use Aws\Signature\SignatureV4;
-use Psr\Http\Client\ClientInterface;
-use Psr\Log\LoggerInterface;
-
+use Aws\Exception\Credentials_Exception;
+use Aws\Signature\Signature_Interface;
+use Aws\Signature\Signature_V4;
+use Psr\Http\Client\Client_Interface;
+use Psr\Log\Logger_Interface;
 /**
  * A factory for creating an HTTP Client that signs requests using AWS credentials.
  */
-class SigningClientFactory
+class Signing_Client_Factory
 {
     /**
      * The allowed AWS services.
      */
     public const ALLOWED_SERVICES = ['es', 'aoss'];
-
-    public function __construct(
-        protected ?SignatureInterface $signer = null,
-        protected ?CredentialProvider $provider = null,
-        protected ?LoggerInterface $logger = null,
-    ) {
+    public function __construct(protected ?Signature_Interface $signer = null, protected ?Credential_Provider $provider = null, protected ?Logger_Interface $logger = null)
+    {
     }
-
     /**
      * Creates a new signing client.
      *
@@ -37,79 +30,61 @@ class SigningClientFactory
      * @param array<string,string> $options
      *   The AWS auth options.
      */
-    public function create(ClientInterface $innerClient, array $options): ClientInterface
+    public function create(Client_Interface $inner_client, array $options): Client_Interface
     {
         if (!isset($options['host'])) {
             throw new \InvalidArgumentException('The host option is required.');
         }
-
         // Get the credentials.
-        $provider = $this->getCredentialProvider($options);
+        $provider = $this->get_credential_provider($options);
         $promise = $provider();
         try {
             $credentials = $promise->wait();
-        } catch (CredentialsException $e) {
-            $this->logger?->error('Failed to get AWS credentials: @message', ['@message' => $e->getMessage()]);
+        } catch (Credentials_Exception $e) {
+            $this->logger?->error('Failed to get AWS credentials: @message', ['@message' => $e->get_message()]);
             $credentials = new Credentials('', '');
         }
-
         // Get the signer.
-        $signer = $this->getSigner($options);
-
-        return new SigningClientDecorator($innerClient, $credentials, $signer, ['host' => $options['host']]);
+        $signer = $this->get_signer($options);
+        return new Signing_Client_Decorator($inner_client, $credentials, $signer, ['host' => $options['host']]);
     }
-
     /**
      * Gets the credential provider.
      *
      * @param array<string,mixed> $options
      *   The options array.
      */
-    protected function getCredentialProvider(array $options): CredentialProvider|\Closure|null|callable
+    protected function get_credential_provider(array $options): Credential_Provider|\Closure|null|callable
     {
         // Check for a provided credential provider.
         if ($this->provider) {
             return $this->provider;
         }
-
         // Check for provided access key and secret.
         if (isset($options['credentials'])) {
-            return CredentialProvider::fromCredentials(
-                new Credentials(
-                    $options['credentials']['access_key'] ?? '',
-                    $options['credentials']['secret_key'] ?? '',
-                    $options['credentials']['session_token'] ?? null,
-                )
-            );
+            return Credential_Provider::from_credentials(new Credentials($options['credentials']['access_key'] ?? '', $options['credentials']['secret_key'] ?? '', $options['credentials']['session_token'] ?? null));
         }
-
         // Fallback to the default provider.
-        return CredentialProvider::defaultProvider();
+        return Credential_Provider::default_provider();
     }
-
     /**
      * Gets the request signer.
      *
      * @param array<string,string> $options
      *   The options.
      */
-    protected function getSigner(array $options): SignatureInterface
+    protected function get_signer(array $options): Signature_Interface
     {
         if ($this->signer) {
             return $this->signer;
         }
-
         if (!isset($options['region'])) {
             throw new \InvalidArgumentException('The region option is required.');
         }
-
         $service = $options['service'] ?? 'es';
-
         if (!in_array($service, self::ALLOWED_SERVICES, true)) {
             throw new \InvalidArgumentException('The service option must be either "es" or "aoss".');
         }
-
-        return new SignatureV4($service, $options['region'], $options);
+        return new Signature_V4($service, $options['region'], $options);
     }
-
 }

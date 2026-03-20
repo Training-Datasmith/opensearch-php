@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,47 +17,35 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Data_Frame_Transform_Deprecated;
 
-namespace OpenSearch\Endpoints\DataFrameTransformDeprecated;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Exception\RuntimeException;
-
-class StopTransform extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Exception\RuntimeException;
+class Stop_Transform extends Abstract_Endpoint
 {
     protected $transform_id;
-
-    public function getURI(): string
+    public function get_uri(): string
     {
         $transform_id = $this->transform_id ?? null;
-
         if (isset($transform_id)) {
-            return "/_data_frame/transforms/$transform_id/_stop";
+            return "/_data_frame/transforms/{$transform_id}/_stop";
         }
         throw new RuntimeException('Missing parameter for the endpoint data_frame_transform_deprecated.stop_transform');
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
-        return [
-            'wait_for_completion',
-            'timeout',
-            'allow_no_match',
-        ];
+        return ['wait_for_completion', 'timeout', 'allow_no_match'];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'POST';
     }
-
-    public function setTransformId($transform_id): StopTransform
+    public function set_transform_id($transform_id): Stop_Transform
     {
         if (isset($transform_id) !== true) {
             return $this;
         }
         $this->transform_id = $transform_id;
-
         return $this;
     }
 }

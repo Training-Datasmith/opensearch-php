@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,34 +17,25 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Endpoints\Async_Search;
 
-namespace OpenSearch\Endpoints\AsyncSearch;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Exception\RuntimeException;
-
-class Get extends AbstractEndpoint
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Exception\RuntimeException;
+class Get extends Abstract_Endpoint
 {
-    public function getURI(): string
+    public function get_uri(): string
     {
         $id = $this->id ?? null;
-
         if (isset($id)) {
-            return "/_async_search/$id";
+            return "/_async_search/{$id}";
         }
         throw new RuntimeException('Missing parameter for the endpoint async_search.get');
     }
-
-    public function getParamWhitelist(): array
+    public function get_param_whitelist(): array
     {
-        return [
-            'wait_for_completion_timeout',
-            'keep_alive',
-            'typed_keys',
-        ];
+        return ['wait_for_completion_timeout', 'keep_alive', 'typed_keys'];
     }
-
-    public function getMethod(): string
+    public function get_method(): string
     {
         return 'GET';
     }

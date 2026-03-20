@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,46 +17,33 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connections;
 
-namespace OpenSearch\Connections;
-
-use OpenSearch\Serializers\SerializerInterface;
-use Psr\Log\LoggerInterface;
-
+use Open_Search\Serializers\Serializer_Interface;
+use Psr\Log\Logger_Interface;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(ConnectionFactory::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Connection_Factory::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-class ConnectionFactory implements ConnectionFactoryInterface
+class Connection_Factory implements Connection_Factory_Interface
 {
     /**
      * @var callable
      */
     private $handler;
-
     /**
      * @param array{client?: array{headers?: array<string, list<string>>, curl?: array<int, mixed>}} $connectionParams
      */
-    public function __construct(callable $handler, private readonly array $connectionParams, private readonly SerializerInterface $serializer, private readonly LoggerInterface $logger, private readonly LoggerInterface $tracer)
+    public function __construct(callable $handler, private readonly array $connection_params, private readonly Serializer_Interface $serializer, private readonly Logger_Interface $logger, private readonly Logger_Interface $tracer)
     {
-        $this->handler          = $handler;
+        $this->handler = $handler;
     }
-
-    public function create(array $hostDetails): ConnectionInterface
+    public function create(array $host_details): Connection_Interface
     {
-        if (isset($hostDetails['path'])) {
-            $hostDetails['path'] = rtrim($hostDetails['path'], '/');
+        if (isset($host_details['path'])) {
+            $host_details['path'] = rtrim($host_details['path'], '/');
         }
-
-        return new Connection(
-            $this->handler,
-            $hostDetails,
-            $this->connectionParams,
-            $this->serializer,
-            $this->logger,
-            $this->tracer
-        );
+        return new Connection($this->handler, $host_details, $this->connection_params, $this->serializer, $this->logger, $this->tracer);
     }
 }

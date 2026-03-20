@@ -1,39 +1,34 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Open_Search;
 
-namespace OpenSearch;
-
-use OpenSearch\Endpoints\AbstractEndpoint;
-use OpenSearch\Serializers\SerializerInterface;
-use OpenSearch\Serializers\SmartSerializer;
+use Open_Search\Endpoints\Abstract_Endpoint;
+use Open_Search\Serializers\Serializer_Interface;
+use Open_Search\Serializers\Smart_Serializer;
 use ReflectionClass;
-
 /**
  * A factory for creating endpoints.
  */
-class EndpointFactory implements EndpointFactoryInterface
+class Endpoint_Factory implements Endpoint_Factory_Interface
 {
-    public function __construct(private ?SerializerInterface $serializer = null)
+    public function __construct(private ?Serializer_Interface $serializer = null)
     {
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getEndpoint(string $class): AbstractEndpoint
+    public function get_endpoint(string $class): Abstract_Endpoint
     {
-        return $this->createEndpoint($class);
+        return $this->create_endpoint($class);
     }
-
-    private function getSerializer(): SerializerInterface
+    private function get_serializer(): Serializer_Interface
     {
         if ($this->serializer === null) {
-            $this->serializer = new SmartSerializer();
+            $this->serializer = new Smart_Serializer();
         }
         return $this->serializer;
     }
-
     /**
      * Creates an endpoint.
      *
@@ -42,15 +37,13 @@ class EndpointFactory implements EndpointFactoryInterface
      * @phpstan-return T
      * @throws \ReflectionException
      */
-    private function createEndpoint(string $class): AbstractEndpoint
+    private function create_endpoint(string $class): Abstract_Endpoint
     {
         $reflection = new ReflectionClass($class);
-        $constructor = $reflection->getConstructor();
-
-        if ($constructor && $constructor->getParameters()) {
-            return new $class($this->getSerializer());
+        $constructor = $reflection->get_constructor();
+        if ($constructor && $constructor->get_parameters()) {
+            return new $class($this->get_serializer());
         }
         return new $class();
     }
-
 }

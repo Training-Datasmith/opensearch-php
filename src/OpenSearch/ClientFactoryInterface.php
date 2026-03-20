@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-namespace OpenSearch;
+declare (strict_types=1);
+namespace Open_Search;
 
 /**
  * Creates an OpenSearch client.
  */
-interface ClientFactoryInterface
+interface Client_Factory_Interface
 {
     /**
      * Creates a new OpenSearch client.

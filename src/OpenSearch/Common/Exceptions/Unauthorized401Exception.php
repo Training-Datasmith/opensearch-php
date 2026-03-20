@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,19 +17,16 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Common\Exceptions;
 
-namespace OpenSearch\Common\Exceptions;
-
-use OpenSearch\Exception\UnauthorizedHttpException;
-
+use Open_Search\Exception\Unauthorized_Http_Exception;
 // @phpstan-ignore classConstant.deprecatedClass
 @trigger_error(Unauthorized401Exception::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0. Use OpenSearch\Exception\UnauthorizedHttpException instead.', E_USER_DEPRECATED);
-
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0. Use OpenSearch\Exception\UnauthorizedHttpException instead.
  *
  * @see \OpenSearch\Exception\UnauthorizedHttpException
  */
-class Unauthorized401Exception extends UnauthorizedHttpException
+class Unauthorized401Exception extends Unauthorized_Http_Exception
 {
 }

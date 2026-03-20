@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright OpenSearch Contributors
  * SPDX-License-Identifier: Apache-2.0
@@ -18,21 +17,18 @@ declare(strict_types=1);
  * the GNU Lesser General Public License, Version 2.1, at your option.
  * See the LICENSE file in the project root for more information.
  */
+namespace Open_Search\Connection_Pool;
 
-namespace OpenSearch\ConnectionPool;
-
-use OpenSearch\Common\Exceptions\InvalidArgumentException;
-use OpenSearch\ConnectionPool\Selectors\SelectorInterface;
-use OpenSearch\Connections\ConnectionFactoryInterface;
-use OpenSearch\Connections\ConnectionInterface;
-
+use Open_Search\Common\Exceptions\InvalidArgumentException;
+use Open_Search\Connection_Pool\Selectors\Selector_Interface;
+use Open_Search\Connections\Connection_Factory_Interface;
+use Open_Search\Connections\Connection_Interface;
 // @phpstan-ignore classConstant.deprecatedClass
-@trigger_error(AbstractConnectionPool::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
-
+@trigger_error(Abstract_Connection_Pool::class . ' is deprecated in 2.4.0 and will be removed in 3.0.0.', E_USER_DEPRECATED);
 /**
  * @deprecated in 2.4.0 and will be removed in 3.0.0.
  */
-abstract class AbstractConnectionPool implements ConnectionPoolInterface
+abstract class Abstract_Connection_Pool implements Connection_Pool_Interface
 {
     /**
      * Array of connections
@@ -40,19 +36,16 @@ abstract class AbstractConnectionPool implements ConnectionPoolInterface
      * @var ConnectionInterface[]
      */
     protected array $connections;
-
     /**
      * Array of initial seed connections
      *
      * @var ConnectionInterface[]
      */
-    protected array $seedConnections;
-
+    protected array $seed_connections;
     /**
      * @var array<string, mixed>
      */
-    protected array $connectionPoolParams;
-
+    protected array $connection_pool_params;
     /**
      * Constructor
      *
@@ -61,27 +54,21 @@ abstract class AbstractConnectionPool implements ConnectionPoolInterface
      * @param ConnectionFactoryInterface $connectionFactory ConnectionFactory instance
      * @param array<string, mixed>       $connectionPoolParams
      */
-    public function __construct(array $connections, protected \OpenSearch\ConnectionPool\Selectors\SelectorInterface $selector, protected \OpenSearch\Connections\ConnectionFactoryInterface $connectionFactory, array $connectionPoolParams)
+    public function __construct(array $connections, protected \Open_Search\Connection_Pool\Selectors\Selector_Interface $selector, protected \Open_Search\Connections\Connection_Factory_Interface $connection_factory, array $connection_pool_params)
     {
-        $paramList = ['connections', 'selector', 'connectionPoolParams'];
-        foreach ($paramList as $param) {
+        $param_list = ['connections', 'selector', 'connectionPoolParams'];
+        foreach ($param_list as $param) {
             if (isset(${$param}) === false) {
                 throw new InvalidArgumentException('`' . $param . '` parameter must not be null');
             }
         }
-
-        if (isset($connectionPoolParams['randomizeHosts']) === true
-            && $connectionPoolParams['randomizeHosts'] === true
-        ) {
+        if (isset($connection_pool_params['randomizeHosts']) === true && $connection_pool_params['randomizeHosts'] === true) {
             shuffle($connections);
         }
-
-        $this->connections          = $connections;
-        $this->seedConnections      = $connections;
-        $this->connectionPoolParams = $connectionPoolParams;
+        $this->connections = $connections;
+        $this->seed_connections = $connections;
+        $this->connection_pool_params = $connection_pool_params;
     }
-
-    abstract public function nextConnection(bool $force = false): ConnectionInterface;
-
-    abstract public function scheduleCheck(): void;
+    abstract public function next_connection(bool $force = false): Connection_Interface;
+    abstract public function schedule_check(): void;
 }
